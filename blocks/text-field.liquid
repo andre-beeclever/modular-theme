@@ -11,18 +11,14 @@
     {% if block.settings.required %} required {% endif %} 
     {{ block.shopify_attributes }}
   {% endcapture %}
-  {% capture value %}
-    {% if form.id == "cart_form" cart.note != blank and block.settings.name == "note" %}
-      {{ cart.note }}
-    {% endif %}
-  {% endcapture %}
+  {% capture value %}{% if form.id == "cart_form" cart.note != blank and block.settings.name == "note" %}{{ cart.note }}{% endif %}{% endcapture %}
   {% if block.settings.multiline %}
     <textarea rows="5"
     {{ attributes }}
-    >{{ value | strip_newlines | strip }}</textarea>
+    >{{ value | strip }}</textarea>
   {% else %}
     <input type="text"
-      value="{{ value | strip_newlines | strip }}"
+      value="{{ value | strip }}"
       {{ attributes }}
     >
   {% endif %}
