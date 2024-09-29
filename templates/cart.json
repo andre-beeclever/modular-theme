@@ -157,7 +157,7 @@
                         "html_tag": "p",
                         "heading_style": "h6",
                         "alignment": "left",
-                        "spacing_bottom": "none",
+                        "spacing_bottom": "xs",
                         "text_color": "",
                         "font_size": ""
                       }
