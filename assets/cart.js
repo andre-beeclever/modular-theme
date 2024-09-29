@@ -1,6 +1,6 @@
 Shopify.theme = Shopify.theme || {};
 Shopify.theme.cart = Shopify.theme.cart || {};
-Shopify.theme.cart.action = Shopify.theme.cart.action || "redirect"; 
+Shopify.theme.cart.mode = Shopify.theme.cart.mode || "redirect"; 
 const DEFAULT_OPTIONS = {
   events: true, 
   sections: [],

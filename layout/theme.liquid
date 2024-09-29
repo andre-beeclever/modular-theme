@@ -86,6 +86,10 @@
   <body>
     {% sections "header-group" %}
 
+    {% if settings.cart_mode == "drawer" %}
+      {% section "cart-main" %}
+    {% endif %}
+
     <main
       id="MainContent"
       class="content-for-layout focus-none"

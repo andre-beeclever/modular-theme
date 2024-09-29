@@ -920,6 +920,21 @@
     ]
   },
   {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_mode",
+        "label": "Mode",
+        "options": [
+          { "label": "Page", "value": "page" },
+          { "label": "Drawer", "value": "drawer" }
+        ],
+        "default": "page"
+      }
+    ]
+  },
+  {
     "name": "Color scheme",
     "settings": [
       {
