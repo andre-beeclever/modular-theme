@@ -64,7 +64,8 @@
                 "size": {
                   "flex-basis": "66%",
                   "@media (--mobile)": {
-                    "width": "auto"
+                    "width": "auto",
+                    "flex-basis": "100%"
                   }
                 },
                 "spacing": {
