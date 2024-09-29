@@ -5,6 +5,9 @@
       height: 100%;
       max-width: min(100vw, 400px);
       max-height: 100%;
+      & .cart-drawer-inner{
+        height: 100%;
+      }
     }
   }
 </style>
@@ -13,7 +16,7 @@
   <div class="color-{{ section.settings.color_scheme }} cart-drawer">
     <cart-form section="{{section.id}}">
       {% form "cart", cart %}
-        <div class="{{ section.settings | class_list }} ">
+        <div class="cart-drawer-inner{{ section.settings | class_list }} ">
           {% content_for "blocks" %}
         </div>
       {% endform %}
@@ -40,14 +43,6 @@
       "label": "ID",
       "default": "cart-drawer",
       "info": "The ID of this popup. Enter this into any popup button to toggle this popup."
-    },
-    {
-      "type": "style.size_panel",
-      "id": "size",
-      "label": "Size",
-      "default": {
-        "width": "auto"
-      }
     },
     {
       "type": "style.spacing_panel",
