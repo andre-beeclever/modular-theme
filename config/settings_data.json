@@ -21,6 +21,22 @@
     "font_size_small_mobile": 10,
     "button_tertiary_border_color": "#e1e1e1",
     "cart_mode": "drawer",
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {
+          "position": "",
+          "overflow": "",
+          "size": {
+          },
+          "spacing": {
+          },
+          "layout": {
+          },
+          "color_scheme": ""
+        }
+      }
+    },
     "content_for_index": [
 
     ],
