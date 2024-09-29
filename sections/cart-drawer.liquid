@@ -1,63 +1,34 @@
 
-<div class="color-{{ section.settings.color_scheme }} full-width {{ section.settings.overflow }} {{ section.settings.position }}">
+
+<pop-up id="{{ section.settings.id }}" class="color-{{ section.settings.color_scheme }}">
   <cart-form section="{{section.id}}">
     {% form "cart", cart %}
-      <div class="theme-section {{ section.settings | class_list }} ">
+      <div class="{{ section.settings | class_list }} ">
         {% content_for "blocks" %}
       </div>
     {% endform %}
   </cart-form>
-</div>
+</pop-up>
+
+
+<pop-up-button
+  for="{{ section.settings.id }}"
+  class="spacing-xs">
+  toggle popup
+</pop-up-button>
 
 {% schema %}
 {
   "name": "Cart drawer",
-  "tag": "section",
+  "tag": "aside",
   "blocks": [{ "type": "@theme" }, { "type": "@app" }],
   "settings": [
     {
-      "type": "header",
-      "content": "Position"
-    },
-    {
-      "type": "select",
-      "id": "position",
-      "label": "Position",
-      "options": [
-        {
-          "value": "",
-          "label": "static"
-        },
-        {
-          "value": "is-relative",
-          "label": "relative"
-        }
-      ],
-      "default": ""
-    },
-    {
-      "type": "header",
-      "content": "Overflow"
-    },
-    {
-      "type": "select",
-      "id": "overflow",
-      "label": "Overflow",
-      "options": [
-        {
-          "value": "",
-          "label": "visible"
-        },
-        {
-          "value": "overflow-hidden",
-          "label": "hidden"
-        },
-        {
-          "value": "overflow-scroll",
-          "label": "scroll"
-        }
-      ],
-      "default": ""
+      "type": "text",
+      "id": "id",
+      "label": "ID",
+      "default": "cart-drawer",
+      "info": "The ID of this popup. Enter this into any popup button to toggle this popup."
     },
     {
       "type": "style.size_panel",
