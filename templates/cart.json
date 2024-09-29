@@ -64,9 +64,16 @@
                 "position": "",
                 "overflow": "",
                 "size": {
-                  "flex-basis": "66%"
+                  "flex-basis": "66%",
+                  "@media (--mobile)": {
+                    "flex-basis": "100%"
+                  }
                 },
                 "spacing": {
+                  "@media (--mobile)": {
+                    "padding-inline-start": "20px",
+                    "padding-inline-end": "20px"
+                  }
                 },
                 "layout": {
                   "flex-direction": "column"
