@@ -115,6 +115,11 @@
               "spacing": {
               },
               "layout": {
+                "flex-direction": "column",
+                "row-gap": "0px",
+                "column-gap": "0px",
+                "align-items": "stretch",
+                "justify-content": "flex-start"
               },
               "color_scheme": ""
             },
