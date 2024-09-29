@@ -58,68 +58,86 @@
             "color_scheme": ""
           },
           "blocks": {
-            "line_items_rzaDfi": {
-              "type": "line-items",
+            "container_BQddbB": {
+              "type": "container",
               "settings": {
+                "position": "",
+                "overflow": "",
                 "size": {
-                  "flex-basis": "66%",
-                  "@media (--mobile)": {
-                    "width": "auto",
-                    "flex-basis": "100%"
-                  }
+                  "flex-basis": "66%"
                 },
                 "spacing": {
-                  "@media (--mobile)": {
-                    "padding-inline-start": "20px",
-                    "padding-inline-end": "20px"
-                  }
                 },
-                "color_scheme": "scheme-1"
+                "layout": {
+                  "flex-direction": "column"
+                },
+                "color_scheme": ""
               },
               "blocks": {
-                "cart-empty": {
-                  "type": "container",
-                  "static": true,
+                "line_items_Be94fm": {
+                  "type": "line-items",
                   "settings": {
-                    "position": "",
-                    "overflow": "",
                     "size": {
-                      "@media (--mobile)": {
-                        "width": "auto"
-                      }
+                      "width": "100%",
+                      "flex-grow": "1"
                     },
                     "spacing": {
-                      "padding-block-start": "20px",
-                      "padding-block-end": "20px",
-                      "padding-inline-start": "20px",
-                      "padding-inline-end": "20px"
-                    },
-                    "layout": {
-                      "flex-direction": "column"
                     },
                     "color_scheme": ""
                   },
                   "blocks": {
-                    "heading_9tfEiD": {
-                      "type": "heading",
+                    "cart-empty": {
+                      "type": "container",
+                      "static": true,
                       "settings": {
-                        "heading": "Your cart is currently empty.",
-                        "html_tag": "p",
-                        "heading_style": "h6",
-                        "alignment": "center",
-                        "spacing_bottom": "none",
-                        "text_color": "",
-                        "font_size": ""
-                      }
+                        "position": "",
+                        "overflow": "",
+                        "size": {
+                        },
+                        "spacing": {
+                        },
+                        "layout": {
+                        },
+                        "color_scheme": ""
+                      },
+                      "blocks": {
+                        "text_aeLPJB": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Your cart is currently empty.</p>",
+                            "text_style": "small",
+                            "alignment": "center",
+                            "spacing_bottom": "none"
+                          }
+                        }
+                      },
+                      "block_order": [
+                        "text_aeLPJB"
+                      ]
                     }
                   },
                   "block_order": [
-                    "heading_9tfEiD"
+
                   ]
+                },
+                "text_field_YdwNMC": {
+                  "type": "text-field",
+                  "settings": {
+                    "required": false,
+                    "multiline": true,
+                    "label_hidden": false,
+                    "name": "note",
+                    "title": "Order note",
+                    "pattern": "",
+                    "placeholder": "",
+                    "max_length": 1000,
+                    "spacing_bottom": "none"
+                  }
                 }
               },
               "block_order": [
-
+                "line_items_Be94fm",
+                "text_field_YdwNMC"
               ]
             },
             "container_AKG3JD": {
@@ -190,7 +208,7 @@
             }
           },
           "block_order": [
-            "line_items_rzaDfi",
+            "container_BQddbB",
             "container_AKG3JD"
           ]
         }
