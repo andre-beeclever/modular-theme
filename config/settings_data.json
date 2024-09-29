@@ -133,11 +133,11 @@
                     "type": "button",
                     "static": true,
                     "settings": {
-                      "label": "Button label",
-                      "name": "",
+                      "label": "Check out",
+                      "name": "checkout",
                       "button_style": "btn btn--primary",
                       "small": false,
-                      "full_width": false,
+                      "full_width": true,
                       "spacing_bottom": "none"
                     }
                   }
