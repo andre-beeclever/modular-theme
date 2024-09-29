@@ -127,7 +127,7 @@
                     "multiline": true,
                     "label_hidden": false,
                     "name": "note",
-                    "title": "Order note",
+                    "title": "Order notes",
                     "pattern": "",
                     "placeholder": "Notes about your order, e.g. special notes for delivery",
                     "max_length": 300,
