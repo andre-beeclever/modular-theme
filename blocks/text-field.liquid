@@ -14,11 +14,7 @@
   {% if block.settings.multiline %}
     <textarea rows="5"
     {{ attributes }}
-    >
-      {% if cart.note != blank and block.settings.name == "note" %}
-        {{ cart.note }}
-      {% endif %}
-    </textarea>
+    >{% if form.id == "cart_form" cart.note != blank and block.settings.name == "note" %}{{ cart.note }}{% endif %}</textarea>
   {% else %}
     <input type="text"
       {{ attributes }}
