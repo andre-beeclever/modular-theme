@@ -9,6 +9,9 @@
     {% if block.settings.placeholder != blank %}placeholder="{{ block.settings.placeholder }}"{% endif %}
     {% if block.settings.max_length != blank %}maxlength="{{ block.settings.max_length }}"{% endif %}
     {% if block.settings.required %} required {% endif %}
+    {% if form.id == "cart_form" and cart.note != blank and block.settings.name == "note" %}
+      value="{{ cart.note }}"
+    {% endif %}
     {{ block.shopify_attributes }}
   {% endcapture %}
   {% if block.settings.multiline %}
