@@ -2,17 +2,19 @@
   <p class="h6">{{ "cart.subtotal" | t }}</p>
   <p class="h6">{{ cart.items_subtotal_price | money }}</p>
 </div>
-<div class="cart-discount-applications spacing-bottom-xs">
-  {% for discount_application in cart.cart_level_discount_applications %}
-    <div class="discount-application flex row middle space-between">
-      <div class="flex row middle discount-application-title">
-        {% render 'icon', icon: 'discount', size: "18px" %}
-        <p class="small">{{ discount_application.title }} </p>
+{% if cart.cart_level_discount_applications.size > 0 %}
+  <div class="cart-discount-applications spacing-bottom-xs">
+    {% for discount_application in cart.cart_level_discount_applications %}
+      <div class="discount-application flex row middle space-between">
+        <div class="flex row middle discount-application-title">
+          {% render 'icon', icon: 'discount', size: "18px" %}
+          <p class="small">{{ discount_application.title }} </p>
+        </div>
+        <p class="small">-{{ discount_application.total_allocated_amount | money }}</p>
       </div>
-      <p class="small">-{{ discount_application.total_allocated_amount | money }}</p>
-    </div>
-  {% endfor %}
-</div>
+    {% endfor %}
+  </div>
+{% endif %}
 <div class="flex row wrap space-between">
   <p class="h6">{{ "cart.total" | t }}</p>
   <p class="h6">{{ cart.total_price | money }}</p>
