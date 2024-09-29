@@ -129,8 +129,8 @@
                     "name": "note",
                     "title": "Order note",
                     "pattern": "",
-                    "placeholder": "",
-                    "max_length": 1000,
+                    "placeholder": "Notes about your order, e.g. special notes for delivery",
+                    "max_length": 300,
                     "spacing_bottom": "none"
                   }
                 }
