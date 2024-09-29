@@ -8,16 +8,17 @@
     {% if block.settings.pattern != blank %}pattern="{{ block.settings.pattern }}"{% endif %}
     {% if block.settings.placeholder != blank %}placeholder="{{ block.settings.placeholder }}"{% endif %}
     {% if block.settings.max_length != blank %}maxlength="{{ block.settings.max_length }}"{% endif %}
-    {% if block.settings.required %} required {% endif %}
-    {% if cart.note != blank and block.settings.name == "note" %}
-      value="{{ cart.note }}"
-    {% endif %}
+    {% if block.settings.required %} required {% endif %} 
     {{ block.shopify_attributes }}
   {% endcapture %}
   {% if block.settings.multiline %}
     <textarea rows="5"
     {{ attributes }}
-    ></textarea>
+    >
+      {% if cart.note != blank and block.settings.name == "note" %}
+        {{ cart.note }}
+      {% endif %}
+    </textarea>
   {% else %}
     <input type="text"
       {{ attributes }}
