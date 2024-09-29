@@ -76,6 +76,9 @@
                 "padding-inline-end": "20px"
               },
               "layout": {
+                "align-items": "stretch",
+                "flex-direction": "column",
+                "justify-content": "flex-start"
               },
               "color_scheme": ""
             },
