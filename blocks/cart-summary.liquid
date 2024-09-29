@@ -17,7 +17,7 @@
   <p class="h6">{{ "cart.total" | t }}</p>
   <p class="h6">{{ cart.total_price | money }}</p>
 </div>
-<div class="flex row wrap right spacing-bottom-xs">
+<div class="flex row wrap right ">
   <p class="small">
   {% if cart.taxes_included %}
     {{ "cart.incl_vat" | t }}
@@ -26,13 +26,11 @@
   {% endif %}
   </p>
 </div>
+<div class="spacing-bottom-xs">
+  {% content_for "block", type: "button", id: "checkout-button" %}
+</div>
 {% if cart.requires_shipping %}
-  <div class="flex row wrap space-between spacing-bottom-xs">
-    <p class="small">{{ "cart.shipping" | t }}</p>
-    <p class="small">
-      &nbsp;{{ "cart.calculated_at_checkout" | t }}
-    </p>
-  </div>
+  <p class="small text-center">{{ "cart.shipping_and_vat" | t }}</p>
 {% endif %}
 
 {% schema %}
