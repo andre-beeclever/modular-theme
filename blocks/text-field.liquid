@@ -19,10 +19,10 @@
   {% if block.settings.multiline %}
     <textarea rows="5"
     {{ attributes }}
-    >{{ value | strip }}</textarea>
+    >{{ value | strip_newlines | strip }}</textarea>
   {% else %}
     <input type="text"
-      value="{{ value | strip }}"
+      value="{{ value | strip_newlines | strip }}"
       {{ attributes }}
     >
   {% endif %}
