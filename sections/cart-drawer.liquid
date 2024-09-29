@@ -1,12 +1,14 @@
 
 
-<pop-up id="{{ section.settings.id }}" class="color-{{ section.settings.color_scheme }}">
+<pop-up id="{{ section.settings.id }}" >
   <cart-form section="{{section.id}}">
-    {% form "cart", cart %}
-      <div class="{{ section.settings | class_list }} ">
-        {% content_for "blocks" %}
-      </div>
-    {% endform %}
+    <div class="color-{{ section.settings.color_scheme }} cart-drawer">
+      {% form "cart", cart %}
+        <div class="{{ section.settings | class_list }} ">
+          {% content_for "blocks" %}
+        </div>
+      {% endform %}
+    </div>
   </cart-form>
 </pop-up>
 
