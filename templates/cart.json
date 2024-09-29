@@ -158,24 +158,29 @@
                 "cart_summary_6JcHTj": {
                   "type": "cart-summary",
                   "settings": {
-                  }
-                },
-                "button_NNKn6H": {
-                  "type": "button",
-                  "settings": {
-                    "label": "Check out",
-                    "name": "checkout",
-                    "button_style": "btn btn--primary",
-                    "small": false,
-                    "full_width": true,
-                    "spacing_bottom": "none"
-                  }
+                  },
+                  "blocks": {
+                    "checkout-button": {
+                      "type": "button",
+                      "static": true,
+                      "settings": {
+                        "label": "Check out",
+                        "name": "checkout",
+                        "button_style": "btn btn--primary",
+                        "small": false,
+                        "full_width": true,
+                        "spacing_bottom": "none"
+                      }
+                    }
+                  },
+                  "block_order": [
+
+                  ]
                 }
               },
               "block_order": [
                 "text_field_yaBYXL",
-                "cart_summary_6JcHTj",
-                "button_NNKn6H"
+                "cart_summary_6JcHTj"
               ]
             }
           },
