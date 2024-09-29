@@ -67,7 +67,7 @@
               "overflow": "",
               "size": {
                 "height": "100%",
-                "min-height": "100%"
+                "min-height": ""
               },
               "spacing": {
                 "padding-block-start": "20px",
