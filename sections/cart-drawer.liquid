@@ -1,4 +1,13 @@
-
+<style>
+  #{{ section.settings.id }}{
+    align-items: end;
+    & .cart-drawer{
+      height: 100%;
+      max-width: min(100vw, 400px);
+      max-height: 100%;
+    }
+  }
+</style>
 
 <pop-up id="{{ section.settings.id }}" >
   <div class="color-{{ section.settings.color_scheme }} cart-drawer">
