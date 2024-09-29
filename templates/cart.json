@@ -76,7 +76,9 @@
                   }
                 },
                 "layout": {
-                  "flex-direction": "column"
+                  "flex-direction": "column",
+                  "row-gap": "60px",
+                  "column-gap": "60px"
                 },
                 "color_scheme": ""
               },
