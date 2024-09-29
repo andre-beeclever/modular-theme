@@ -68,6 +68,10 @@
                   }
                 },
                 "spacing": {
+                  "@media (--mobile)": {
+                    "padding-inline-start": "20px",
+                    "padding-inline-end": "20px"
+                  }
                 },
                 "color_scheme": "scheme-1"
               },
