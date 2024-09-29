@@ -127,24 +127,48 @@
 
                   ]
                 },
-                "text_field_YdwNMC": {
-                  "type": "text-field",
+                "collapsible_9KBmTw": {
+                  "type": "collapsible",
                   "settings": {
-                    "required": false,
-                    "multiline": true,
-                    "label_hidden": false,
-                    "name": "note",
-                    "title": "Order notes",
-                    "pattern": "",
-                    "placeholder": "Notes about your order, e.g. special notes for delivery",
-                    "max_length": 300,
-                    "spacing_bottom": "none"
-                  }
+                    "open": false
+                  },
+                  "blocks": {
+                    "text_field_imJFMX": {
+                      "type": "text-field",
+                      "settings": {
+                        "required": false,
+                        "multiline": true,
+                        "label_hidden": true,
+                        "name": "note",
+                        "title": "Order notes",
+                        "pattern": "",
+                        "placeholder": "",
+                        "max_length": 3000,
+                        "spacing_bottom": "none"
+                      }
+                    },
+                    "collapsible-label": {
+                      "type": "heading",
+                      "static": true,
+                      "settings": {
+                        "heading": "Order notes",
+                        "html_tag": "p",
+                        "heading_style": "h6",
+                        "alignment": "left",
+                        "spacing_bottom": "none",
+                        "text_color": "",
+                        "font_size": ""
+                      }
+                    }
+                  },
+                  "block_order": [
+                    "text_field_imJFMX"
+                  ]
                 }
               },
               "block_order": [
                 "line_items_Be94fm",
-                "text_field_YdwNMC"
+                "collapsible_9KBmTw"
               ]
             },
             "container_AKG3JD": {
