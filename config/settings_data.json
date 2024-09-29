@@ -66,6 +66,7 @@
               "position": "",
               "overflow": "",
               "size": {
+                "height": "100%"
               },
               "spacing": {
                 "padding-block-start": "20px",
@@ -82,7 +83,7 @@
                 "type": "line-items",
                 "settings": {
                   "size": {
-                    "height": "100%"
+                    "height": "auto"
                   },
                   "spacing": {
                   },
