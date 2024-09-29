@@ -24,9 +24,136 @@
     "sections": {
       "cart-drawer": {
         "type": "cart-drawer",
+        "blocks": {
+          "container_EXYiXP": {
+            "type": "container",
+            "settings": {
+              "position": "",
+              "overflow": "",
+              "size": {
+              },
+              "spacing": {
+              },
+              "layout": {
+              },
+              "color_scheme": ""
+            },
+            "blocks": {
+              "heading_gqJrFL": {
+                "type": "heading",
+                "settings": {
+                  "heading": "Cart",
+                  "html_tag": "p",
+                  "heading_style": "h4",
+                  "alignment": "left",
+                  "spacing_bottom": "none",
+                  "text_color": "",
+                  "font_size": ""
+                }
+              }
+            },
+            "block_order": [
+              "heading_gqJrFL"
+            ]
+          },
+          "container_eDGURP": {
+            "type": "container",
+            "settings": {
+              "position": "",
+              "overflow": "",
+              "size": {
+              },
+              "spacing": {
+              },
+              "layout": {
+              },
+              "color_scheme": ""
+            },
+            "blocks": {
+              "line_items_AU9C74": {
+                "type": "line-items",
+                "settings": {
+                  "size": {
+                  },
+                  "spacing": {
+                  },
+                  "color_scheme": ""
+                },
+                "blocks": {
+                  "cart-empty": {
+                    "type": "container",
+                    "static": true,
+                    "settings": {
+                      "position": "",
+                      "overflow": "",
+                      "size": {
+                      },
+                      "spacing": {
+                      },
+                      "layout": {
+                      },
+                      "color_scheme": ""
+                    }
+                  }
+                },
+                "block_order": [
+
+                ]
+              }
+            },
+            "block_order": [
+              "line_items_AU9C74"
+            ]
+          },
+          "container_BiCUJp": {
+            "type": "container",
+            "settings": {
+              "position": "",
+              "overflow": "",
+              "size": {
+              },
+              "spacing": {
+              },
+              "layout": {
+              },
+              "color_scheme": ""
+            },
+            "blocks": {
+              "cart_summary_WzCi9E": {
+                "type": "cart-summary",
+                "settings": {
+                },
+                "blocks": {
+                  "checkout-button": {
+                    "type": "button",
+                    "static": true,
+                    "settings": {
+                      "label": "Button label",
+                      "name": "",
+                      "button_style": "btn btn--primary",
+                      "small": false,
+                      "full_width": false,
+                      "spacing_bottom": "none"
+                    }
+                  }
+                },
+                "block_order": [
+
+                ]
+              }
+            },
+            "block_order": [
+              "cart_summary_WzCi9E"
+            ]
+          }
+        },
+        "block_order": [
+          "container_EXYiXP",
+          "container_eDGURP",
+          "container_BiCUJp"
+        ],
         "settings": {
-          "position": "",
-          "overflow": "",
+          "id": "cart-drawer",
           "size": {
           },
           "spacing": {
