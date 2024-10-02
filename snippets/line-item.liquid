@@ -33,7 +33,7 @@
             {% endfor %}
           </div>
         </div>
-        <div class="spacing-bottom-xs">
+        <div class="flex row spacing-bottom-xs">
           <quantity-rocker
             class="p"
             {% unless line_item.variant.inventory_management == nil %}
@@ -48,6 +48,9 @@
             name="updates[]"
             data-line-item-key="{{ line_item.key }}">
           </quantity-rocker>
+          <a href="{{ line_item.url_to_remove }}" data-line-item-key="{{ line_item.key }}" name="line-item-remove">
+            {% render 'icon', icon: 'delete' %}
+          </a>
         </div>
         
       </div>
@@ -70,11 +73,6 @@
               {{- line_item.final_price | money -}}
             </span>
           </p>
-        </div>
-        <div class="flex col">
-          <a href="{{ line_item.url_to_remove }}" data-line-item-key="{{ line_item.key }}" name="line-item-remove">
-            {% render 'icon', icon: 'delete' %}
-          </a>
         </div>
       </div>
     </div>
