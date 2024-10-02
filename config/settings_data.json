@@ -51,9 +51,16 @@
                   }
                 },
                 "blocks": {
-                  
+                  "icon_Mpm4xG": {
+                    "type": "icon",
+                    "settings": {
+                      "size": {
+                      }
+                    }
+                  }
                 },
                 "block_order": [
+                  "icon_Mpm4xG"
                 ]
               },
               "heading_gqJrFL": {
