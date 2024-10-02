@@ -51,16 +51,9 @@
                   }
                 },
                 "blocks": {
-                  "theme_icon_CgeN3e": {
-                    "type": "theme-icon",
-                    "settings": {
-                      "size": {
-                      }
-                    }
-                  }
+                  
                 },
                 "block_order": [
-                  "theme_icon_CgeN3e"
                 ]
               },
               "heading_gqJrFL": {
