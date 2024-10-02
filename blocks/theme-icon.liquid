@@ -1,0 +1,22 @@
+<div class="shopify-block--theme-icon">
+  {{ block.settings.size.width }}
+</div>
+
+{% schema %}
+{
+  "name": "Theme icon",
+  "tag": null,
+  "settings": [
+    {
+      "type": "style.size_panel",
+      "id": "size",
+      "label": "Size"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Theme icon"
+    }
+  ]
+}
+{% endschema %}

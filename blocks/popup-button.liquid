@@ -1,0 +1,35 @@
+<div class="shopify-block--popup-button">
+  <pop-up-button
+    for="{{ section.settings.id }}"
+    class="{{ section.settings | class_list }}"
+    {{ block.shopify_attributes }}>
+    {% content_for "blocks" %}
+  </pop-up-button>
+</div>
+
+{% schema %}
+{
+  "name": "Popup button",
+  "tag": null,
+  "blocks": [{ "type": "@theme" }],
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "ID",
+      "default": "cart-drawer",
+      "info": "The ID of this popup. Enter this into any popup button to toggle this popup."
+    },
+    {
+      "type": "style.spacing_panel",
+      "id": "spacing",
+      "label": "Spacing"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Popup button"
+    }
+  ]
+}
+{% endschema %}
