@@ -1,55 +1,71 @@
 window.theme = window.theme || {};
-window.theme.scroll =
-  window.theme.scroll ||
-  (function () {
-    // left: 37, up: 38, right: 39, down: 40,
-    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
-    const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
-    function preventDefaultForScrollKeys(e) {
-      if (keys[e.keyCode]) {
-        e.preventDefault();
-        return false;
+window.theme.scroll = window.theme.scroll || (function () {
+  let lastScrollPosition = 0;
+  let scrollEnabled = true;
+  return {
+    isEnabled() {
+      return scrollEnabled;
+    },
+    disable: () => {
+      scrollEnabled = false;
+      lastScrollPosition = window.scrollY;
+      document.body.style.top = -window.scrollY + "px";
+      if (window.innerWidth > 750) {
+        document.body.style.paddingRight = "14px";
       }
-    }
+      document.body.style.position = "fixed";
+    },
+    enable: () => {
+      scrollEnabled = true;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.paddingRight = "";
+      window.scrollTo({
+        top: lastScrollPosition,
+        behavior: "instant",
+      });
+    },
+  };
+})();
 
-    function preventDefault(e) {
-      e.preventDefault();
-      return false;
-    }
+class PopupButton extends HTMLElement {
+  static TAGS = ['pop-up','theme-alert','theme-notification']
+  static TAG_NAMES = PopupButton.TAGS.map(tag => tag.toUpperCase())
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.addEventListener("click", (e) => {
+      const id = this.getAttribute("for") || this.closest(PopupButton.TAGS.join(',')).id
+      if(!id){
+        console.warn(`[${this.tagName}] Target not found.`);
+        return;
+      }
+      const target = document.getElementById(id);
+      if (!target) {
+        console.warn(`[${this.tagName}] Target not found.`);
+        return;
+      }
+      if (!PopupButton.TAG_NAMES.includes(target.tagName)) {
+        console.warn(`[${this.tagName}] Invalid target.`);
+        return;
+      }
 
-    // modern Chrome requires { passive: false } when adding event
-    let supportsPassive = false;
-    try {
-      window.addEventListener(
-        "test",
-        null,
-        Object.defineProperty({}, "passive", {
-          get: function () {
-            supportsPassive = true;
-          },
-        }),
-      );
-    } catch (e) {}
+      target.toggle();
+    });
+  }
 
-    const wheelOpt = supportsPassive ? { passive: false } : false;
-    const wheelEvent = "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
+  static get observedAttributes() {
+    return [];
+  }
+  attributeChangedCallback(property, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    this[property] = newValue;
+  }
+}
 
-    return {
-      disable: () => {
-        window.addEventListener("DOMMouseScroll", preventDefault, false); // older FF
-        window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-        window.addEventListener("touchmove", preventDefault, wheelOpt); // mobile
-        window.addEventListener("keydown", preventDefaultForScrollKeys, false);
-      },
-      enable: () => {
-        window.removeEventListener("DOMMouseScroll", preventDefault, false);
-        window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-        window.removeEventListener("touchmove", preventDefault, wheelOpt);
-        window.removeEventListener("keydown", preventDefaultForScrollKeys, false);
-      },
-    };
-  })();
-
+customElements.define("pop-up-button", PopupButton);
+  
 class Popup extends HTMLElement {
   constructor() {
     super();
@@ -117,50 +133,12 @@ class Popup extends HTMLElement {
 }
 customElements.define("pop-up", Popup);
 
-class PopupButton extends HTMLElement {
-  constructor() {
-    super();
-  }
-  connectedCallback() {
-    this.addEventListener("click", (e) => {
-      const id = this.getAttribute("for") || this.closest('pop-up, theme-alert, theme-notification').id
-      if(!id){
-        console.warn(`[${this.tagName}] Target not found.`);
-        return;
-      }
-      const target = document.getElementById(id);
-      if (!target) {
-        console.warn(`[${this.tagName}] Target not found.`);
-        return;
-      }
-      const validTagNames = ["POP-UP", "THEME-ALERT", "THEME-NOTIFICATION"];
-      if (!validTagNames.includes(target.tagName)) {
-        console.warn(`[${this.tagName}] Invalid target.`);
-        return;
-      }
-
-      target.toggle();
-    });
-  }
-
-  static get observedAttributes() {
-    return [];
-  }
-  attributeChangedCallback(property, oldValue, newValue) {
-    if (oldValue === newValue) return;
-    this[property] = newValue;
-  }
-}
-
-customElements.define("pop-up-button", PopupButton);
-
 class ThemeAlert extends Popup {
   constructor() {
     super();
   }
 }
 customElements.define("theme-alert", ThemeAlert);
-
 
 window.Shopify.theme.alert = (
   message,

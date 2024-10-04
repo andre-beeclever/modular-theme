@@ -14,6 +14,12 @@ pop-up{
   transition: opacity 0s 0.5s;
   opacity: 0;
   pointer-events: none;
+  > * {
+    display: block;
+    background-color: #fff;
+    max-width: 80%;
+    max-height: 90dvh;
+  }
   &[open] {
     opacity: 1;
     pointer-events: initial;
@@ -25,18 +31,8 @@ pop-up {
 theme-alert {
   justify-content: flex-start;
 }
-theme-alert > *,
-pop-up > * {
-  display: block;
-  background-color: #fff;
-  max-width: 80%;
-  max-height: 90dvh;
-}
-pop-up-button {
-  display: block;
-  cursor: pointer;
-}
 
+/* Theme notification */
 theme-notification{
   display: block;
   position: fixed;
@@ -44,4 +40,9 @@ theme-notification{
   top: 20%;
   width: min(80vw, 400px);
   background-color: #fff;
+}
+/* Popup Button */
+pop-up-button {
+  display: block;
+  cursor: pointer;
 }
