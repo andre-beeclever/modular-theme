@@ -195,6 +195,7 @@ window.theme.notify = (
 ) => {
   const elementId = `notification-${crypto.randomUUID()}`;
   const notificationElement = document.createElement("theme-notification");
+  // const template = document.getElementById("cart-notification-template");
   notificationElement.id = elementId;
   const clone = template.content.cloneNode(true);
   notificationElement.body.appendChild(clone);
