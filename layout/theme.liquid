@@ -18,7 +18,7 @@
         const url = new URL(location);
         url.searchParams.set('cart-drawer', 'open');
         url.pathname = "{{ routes.root_url }}";
-        location.pathname = url;
+        location.href = url;
       </script>
     {% endif %}
     <link rel="canonical" href="{{ canonical_url }}">
