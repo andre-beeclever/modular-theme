@@ -157,7 +157,7 @@ class ThemeAlert extends Popup {
 customElements.define("theme-alert", ThemeAlert);
 
 
-window.theme.alert = (
+window.Shopify.theme.alert = (
   message,
   options = {
     button: { label: "Close", class: "btn btn--primary" },
@@ -190,12 +190,11 @@ class ThemeNotification extends Popup {
 customElements.define("theme-notification", ThemeNotification);
 
 
-window.theme.notify = (
+window.Shopify.theme.notify = (
   template
 ) => {
   const elementId = `notification-${crypto.randomUUID()}`;
   const notificationElement = document.createElement("theme-notification");
-  // const template = document.getElementById("cart-notification-template");
   notificationElement.id = elementId;
   const clone = template.content.cloneNode(true);
   notificationElement.body.appendChild(clone);

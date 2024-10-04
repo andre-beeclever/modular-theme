@@ -23,7 +23,8 @@ Shopify.theme.cart = {
           window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
           break;
         case "notification":
-          // Todo: show a notification with a to cart link
+          const template = document.getElementById("cart-notification-template");
+          window.Shopify.theme.notify(template)
           break;
         case "popup":
           // Todo: show a cart popup with success message and upselling
