@@ -1,5 +1,5 @@
 <div class="shopify-block--theme-icon">
-  {{ block.settings.size }}
+  {% render 'icon', icon: block.settings.icon %}
 </div>
 
 {% schema %}
@@ -7,6 +7,11 @@
   "name": "Icon",
   "tag": null,
   "settings": [
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon"
+    },
     {
       "type": "style.size_panel",
       "id": "size",
