@@ -22,7 +22,7 @@
   <div class="color-{{ section.settings.color_scheme }} cart-drawer">
     <cart-form section="{{section.id}}">
       {% form "cart", cart %}
-        <div class="cart-drawer-inner {{ section.settings | class_list }} ">
+        <div class="cart-drawer-inner flex col space-between stretch {{ section.settings | class_list }} ">
           {% content_for "blocks" %}
         </div>
       {% endform %}
@@ -54,20 +54,6 @@
       "type": "style.spacing_panel",
       "id": "spacing",
       "label": "Spacing"
-    },
-    {
-      "type": "style.layout_panel",
-      "id": "layout",
-      "label": "Layout",
-      "default": {
-        "flex-direction": "row",
-        "gap": "20px",
-        "justify-content": "center",
-        "align-items": "center",
-        "@media (--mobile)": {
-          "flex-wrap": "wrap"
-        }
-      }
     },
     {
       "type": "header",
