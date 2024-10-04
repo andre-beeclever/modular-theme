@@ -71,6 +71,9 @@ class Popup extends HTMLElement {
       if(e.detail.id == this.id) this.toggle();
     })
   }
+  get scrollingEnabled(){
+    return this.getAttribute('scrolling') != "disabled"
+  }
   isOpen() {
     return this.hasAttribute("open");
   }
@@ -94,11 +97,16 @@ class Popup extends HTMLElement {
     if (oldValue === newValue) return;
     if (property === "open") {
       if (this.isOpen()) {
-        window.theme.scroll.disable();
+        if(!scrollingEnabled){
+          window.theme.scroll.disable();
+        }
         this.dispatchEvent(new CustomEvent("opened"));
         console.warn(`[${this.tagName}] Disabled scroll.`);
-      } else {
-        window.theme.scroll.enable();
+      } 
+      else {
+        if(!scrollingEnabled){
+          window.theme.scroll.enable();
+        }
         this.dispatchEvent(new CustomEvent("closed"));
         console.warn(`[${this.tagName}] Enabled scroll.`);
       }
@@ -159,6 +167,7 @@ window.theme.alert = (
   const elementId = `alert-${crypto.randomUUID()}`;
   const alertElement = document.createElement("theme-alert");
   alertElement.setAttribute("id", elementId);
+  alertElement.setAttribute("scrolling", "disabled");
   alertElement.innerHTML = `
     <div class="${options.container.class}">
       <p>${message}</p>
