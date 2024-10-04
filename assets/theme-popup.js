@@ -205,10 +205,12 @@ window.Shopify.theme.notify = (
   notificationElement.appendChild(clone);
   document.body.appendChild(notificationElement);
   notificationElement.addEventListener("closed", () => {
-    notificationElement.remove();
+    setTimeout(() => {
+      notificationElement.remove();
+    }, 1000)
   });
-  // setTimeout(() => {
-  //   notificationElement.close();
-  // }, 5000)
+  setTimeout(() => {
+    notificationElement.close();
+  }, 10000)
   notificationElement.open();
 };
