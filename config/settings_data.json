@@ -150,6 +150,7 @@
             "type": "icon",
             "static": true,
             "settings": {
+              "icon": "close",
               "size": {
               }
             }
