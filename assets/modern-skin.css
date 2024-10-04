@@ -156,23 +156,12 @@ textarea{
   padding: 8px 10px;
 }
 
-.discount-application{
-  --gap: 5px;
-  & .discount-application-title{
-    --gap: 5px;
-  }
-}
 .line-item{
-  --gap: 10px;
   & .line-item-image{
     flex-basis: 140px;
   }
-  & .line-item-components{
-    --gap: 5px;
-  }
 }
 .line-component{
-  --gap: 10px;
   & .line-component-image{
     flex-basis: 60px;
   }

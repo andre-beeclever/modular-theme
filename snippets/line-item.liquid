@@ -1,5 +1,5 @@
 
-<div class="flex row line-item ">
+<div class="flex row line-item gap-s">
   <div class="flex col top line-item-image">
     <div class="flex">
       {% render 'image-element', image: line_item.image, aspect_ratio: 1, fit: 'cover', sizes: "100px" %}
@@ -25,8 +25,7 @@
           {% endunless %}
           <div class="line-item-discount-applications spacing-bottom-s">
             {% for discount_allocation in line_item.line_level_discount_allocations %}
-              
-                <div class="discount-application flex row middle {% unless forloop.last %}spacing-bottom-2xs{% endunless %}">
+                <div class="discount-application gap-xs flex row middle {% unless forloop.last %}spacing-bottom-2xs{% endunless %}">
                   {% render 'icon', icon: 'discount', size: "18px" %}
                   <p class="small">{{ discount_allocation.discount_application.title }} (-{{ discount_allocation.discount_application.total_allocated_amount | money }})</p>
                 </div>
@@ -102,7 +101,7 @@
               </div>
             </div>
           </collapsible-label>
-          <collapsible-content class="flex col gap-s">
+          <collapsible-content class="flex col gap-s line-item-components">
             {% for component in line_item.item_components %}
               {% render 'line-component', component: component  %}
             {% endfor %}
