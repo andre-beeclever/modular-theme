@@ -71,7 +71,7 @@ class Popup extends HTMLElement {
       if(e.detail.id == this.id) this.toggle();
     })
   }
-  get scrollingEnabled(){
+  get isScrollingEnabled(){
     return this.getAttribute('scrolling') != "disabled"
   }
   isOpen() {
@@ -97,14 +97,14 @@ class Popup extends HTMLElement {
     if (oldValue === newValue) return;
     if (property === "open") {
       if (this.isOpen()) {
-        if(!this.scrollingEnabled){
+        if(!this.isScrollingEnabled){
           window.theme.scroll.disable();
         }
         this.dispatchEvent(new CustomEvent("opened"));
         console.warn(`[${this.tagName}] Disabled scroll.`);
       } 
       else {
-        if(!this.scrollingEnabled){
+        if(!this.isScrollingEnabled){
           window.theme.scroll.enable();
         }
         this.dispatchEvent(new CustomEvent("closed"));
