@@ -181,5 +181,7 @@ As with a normal setting, it is accessed via its ID.
 
 - cart:add      fired when an item is added to cart through cart.js functions or product form component
 - cart:changed  fired when the cart is changed through cart.js functions.
-- cart:open     updates & opens the cart drawer.
-- cart:build    updates the cart form (cart page / drawer)
+
+- popup:open    opens a popup specified by detail.id
+- popup:close   closes a popup specified by detail.id
+- popup:toggle  toggles a popup specified by detail.id

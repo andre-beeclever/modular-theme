@@ -3,6 +3,7 @@ Shopify.theme.cart = Shopify.theme.cart || {};
 Shopify.theme.cart.mode = Shopify.theme.cart.mode || "page"; 
 Shopify.theme.cart.onAdd = Shopify.theme.cart.onAdd || "redirect"; 
 Shopify.theme.cart.sections = Shopify.theme.cart.sections || []
+
 const DEFAULT_OPTIONS = {
   events: true, 
   sections: [],
