@@ -19,7 +19,7 @@ Shopify.theme.cart = {
       e.preventDefault()
       switch (this.onAdd) {
         case "drawer":
-          window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer '}}))
+          window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
           break;
         case "notification":
           // Todo: show a notification with a to cart link
@@ -41,7 +41,7 @@ Shopify.theme.cart = {
         if (target) {
             if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
                e.preventDefault(); 
-               window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer '}}))
+               window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
             }
         }
       });
