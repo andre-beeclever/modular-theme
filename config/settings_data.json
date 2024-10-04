@@ -129,7 +129,24 @@
                       "layout": {
                       },
                       "color_scheme": ""
-                    }
+                    },
+                    "blocks": {
+                      "heading_YB3dXd": {
+                        "type": "heading",
+                        "settings": {
+                          "heading": "Your cart is currently empty.",
+                          "html_tag": "p",
+                          "heading_style": "h6",
+                          "alignment": "center",
+                          "spacing_bottom": "none",
+                          "text_color": "",
+                          "font_size": ""
+                        }
+                      }
+                    },
+                    "block_order": [
+                      "heading_YB3dXd"
+                    ]
                   }
                 },
                 "block_order": [
