@@ -37,7 +37,10 @@ body:has(theme-drawer[open]){
     top: 0;
     width: 100vw;
     height: 100dvh;
-    background: #0002;
+    background: #0004;
+    opacity: 0;
+    transition: opacity 0.3;
+    opacity: 1;
     z-index: 9000;
   }
 }
