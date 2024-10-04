@@ -120,7 +120,7 @@ class PopupButton extends HTMLElement {
         console.warn(`[${this.tagName}] Target not found.`);
         return;
       }
-      const validTagNames = ["POP-UP", "THEME-ALERT"];
+      const validTagNames = ["POP-UP", "THEME-ALERT", "THEME-NOTIFICATION"];
       if (!validTagNames.includes(target.tagName)) {
         console.warn(`[${this.tagName}] Invalid target.`);
         return;
@@ -148,6 +148,7 @@ class ThemeAlert extends Popup {
 }
 customElements.define("theme-alert", ThemeAlert);
 
+
 window.theme.alert = (
   message,
   options = {
@@ -169,4 +170,37 @@ window.theme.alert = (
     alertElement.remove();
   });
   alertElement.open();
+};
+
+
+class ThemeNotification extends Popup {
+  constructor() {
+    super();
+  }
+}
+customElements.define("theme-notification", ThemeNotification);
+
+
+
+window.theme.notify = (
+  message,
+  options = {
+    button: { label: "Close", class: "btn btn--primary" },
+    container: { class: "flex col gap-m spacing-m" },
+  },
+) => {
+  const elementId = `notification-${crypto.randomUUID()}`;
+  const notificationElement = document.createElement("theme-notification");
+  notificationElement.setAttribute("id", elementId);
+  notificationElement.innerHTML = `
+    <div class="${options.container.class}">
+      <p>${message}</p>
+      <pop-up-button class="${options.button.class}" for="${elementId}">${options.button.label}</pop-up-button>
+    </div>
+  `;
+  document.body.appendChild(notificationElement);
+  notificationElement.addEventListener("closed", () => {
+    notificationElement.remove();
+  });
+  notificationElement.open();
 };
