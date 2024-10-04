@@ -37,7 +37,7 @@ Shopify.theme.cart = {
       console.log("Cart mode: Drawer")
       document.addEventListener('click', (e) => {    
         const target = e.target.closest('a');  
-        console.log(target)  
+        console.log("Link clicked: ", target)  
         if (target) {
             if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
                e.preventDefault(); 

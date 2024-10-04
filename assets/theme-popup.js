@@ -59,12 +59,15 @@ class Popup extends HTMLElement {
       if (e.target == this) this.close();
     });
     window.addEventListener('popup:open', (e) => {
+      console.log("popup:open", e.detail.id, this.id)
       if(e.detail.id == this.id) this.open();
     })
     window.addEventListener('popup:close', (e) => {
+      console.log("popup:close", e.detail.id, this.id)
       if(e.detail.id == this.id) this.close();
     })
     window.addEventListener('popup:toggle', (e) => {
+      console.log("popup:toggle", e.detail.id, this.id)
       if(e.detail.id == this.id) this.toggle();
     })
   }
