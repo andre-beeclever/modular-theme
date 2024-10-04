@@ -37,12 +37,12 @@ Shopify.theme.cart = {
       console.log("Cart mode: Drawer")
       document.addEventListener('click', (e) => {    
         const target = e.target.closest('a');  
-        console.log("Link clicked: ", target)  
         if (target) {
-            if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
-               e.preventDefault(); 
-               window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
-            }
+          // console.log("Link clicked: ", target)  
+          if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
+              e.preventDefault(); 
+              window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
+          }
         }
       });
     }
