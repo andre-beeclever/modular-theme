@@ -12,6 +12,7 @@ const DEFAULT_OPTIONS = {
 const ADD_EVENT_NAME = "cart:add"
 const CHANGE_EVENT_NAME = "cart:changed"
 const OPEN_EVENT_NAME = "cart:open"
+const BUILD_EVENT_NAME = "cart:build"
 
 Shopify.theme.cart = {
   ...Shopify.theme.cart,
@@ -20,6 +21,7 @@ Shopify.theme.cart = {
       e.preventDefault()
       switch (this.onAdd) {
         case "drawer":
+          window.dispatchEvent(new CustomEvent(BUILD_EVENT_NAME, e))
           window.dispatchEvent(new CustomEvent(OPEN_EVENT_NAME, e))
           break;
         case "notification":
