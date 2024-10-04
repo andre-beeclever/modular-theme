@@ -60,8 +60,10 @@ Shopify.theme.cart = {
       if(response.status){
         throw new Error(`${response.message}: ${response.description}`)
       }
-      options.callback(response);
-      if (options.events) {
+      if(!!options.callback){
+        options.callback(response);
+      }
+      if (options.events || true) {
         window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: { ...response } }));
         return response
       }
@@ -84,8 +86,10 @@ Shopify.theme.cart = {
       if(response.status){
         throw new Error(`${response.message}: ${response.description}`)
       }
-      options.callback(response);
-      if (options.events) {
+      if(!!options.callback){
+        options.callback(response);
+      }
+      if (options.events || true) {
         window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
         return response
       }
@@ -107,8 +111,10 @@ Shopify.theme.cart = {
       if(response.status){
         throw new Error(`${response.message}: ${response.description}`)
       }
-      options.callback(response);
-      if (options.events) {
+      if(!!options.callback){
+        options.callback(response);
+      }
+      if (options.events || true) {
         window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
         return response
       }
