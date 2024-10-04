@@ -43,19 +43,6 @@
               "color_scheme": ""
             },
             "blocks": {
-              "popup_button_hmxbNY": {
-                "type": "popup-button",
-                "settings": {
-                  "id": "cart-drawer",
-                  "spacing": {
-                  }
-                },
-                "blocks": {
-                  
-                },
-                "block_order": [
-                ]
-              },
               "heading_gqJrFL": {
                 "type": "heading",
                 "settings": {
@@ -67,11 +54,32 @@
                   "text_color": "",
                   "font_size": ""
                 }
+              },
+              "popup_button_hmxbNY": {
+                "type": "popup-button",
+                "settings": {
+                  "id": "cart-drawer",
+                  "spacing": {
+                  }
+                },
+                "blocks": {
+                  "icon_r8WRrq": {
+                    "type": "icon",
+                    "settings": {
+                      "icon": "close",
+                      "size": {
+                      }
+                    }
+                  }
+                },
+                "block_order": [
+                  "icon_r8WRrq"
+                ]
               }
             },
             "block_order": [
-              "popup_button_hmxbNY",
-              "heading_gqJrFL"
+              "heading_gqJrFL",
+              "popup_button_hmxbNY"
             ]
           },
           "container_eDGURP": {
