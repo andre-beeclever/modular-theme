@@ -102,7 +102,7 @@
               </div>
             </div>
           </collapsible-label>
-          <collapsible-content class="flex col line-item-components">
+          <collapsible-content class="flex col gap-s">
             {% for component in line_item.item_components %}
               {% render 'line-component', component: component  %}
             {% endfor %}
