@@ -44,11 +44,4 @@ theme-notification{
   top: 20%;
   width: min(80vw, 400px);
   background-color: #fff;
-  transition: opacity 0s 0.5s;
-  opacity: 0;
-  pointer-events: none;
-}
-theme-notification[open]{
-  opacity: 1;
-  pointer-events: initial;
 }
