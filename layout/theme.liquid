@@ -14,7 +14,9 @@
       name="theme-color"
       content="">
     {% if settings.cart_mode == "drawer" and request.page_type == "cart" %}
-      <meta http-equiv="refresh" content="0; url=/" />
+      <script>
+        location.pathname = "{{ routes.root_url }}"
+      </script>
     {% endif %}
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
