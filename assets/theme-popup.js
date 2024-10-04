@@ -206,9 +206,9 @@ window.Shopify.theme.notify = (
   document.body.appendChild(notificationElement);
   console.log(notificationElement.cloneNode(true))
   notificationElement.addEventListener("closed", () => {
-    setTimeout(() => {
-      notificationElement.remove();
-    }, 1000)
+    // setTimeout(() => {
+    //   notificationElement.remove();
+    // }, 1000)
   });
   // setTimeout(() => {
   //   notificationElement.close();
