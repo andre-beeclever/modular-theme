@@ -8,18 +8,17 @@ pop-up{
   height: 100dvh;
   background-color: #0008;
   z-index: 9999;
-  display: flex;
   flex-direction: column;
   align-items: center;
   display:none;
   > * {
-    display: block;
+    display:block;
     background-color: #fff;
     max-width: 80%;
     max-height: 90dvh;
   }
   &[open] {
-    display:block;
+    display: flex;
   }
 }
 pop-up {
