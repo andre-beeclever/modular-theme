@@ -147,19 +147,23 @@ window.Shopify.theme.alert = (
     container: { class: "flex col gap-small spacing-m" },
   },
 ) => {
-  const alertElement = document.createElement("theme-alert");
-  alertElement.setAttribute("scrolling", "disabled");
-  alertElement.innerHTML = `
-    <div class="${options.container.class}">
-      <p>${message}</p>
-      <pop-up-button class="${options.button.class}">${options.button.label}</pop-up-button>
-    </div>
-  `;
-  document.body.appendChild(alertElement);
-  alertElement.addEventListener("closed", () => {
-    alertElement.remove();
-  });
-  alertElement.open();
+  return new Promise((resolve) => {
+    const alertElement = document.createElement("theme-alert");
+    alertElement.setAttribute("scrolling", "disabled");
+    alertElement.innerHTML = `
+      <div class="${options.container.class}">
+        <p>${message}</p>
+        <pop-up-button class="${options.button.class}">${options.button.label}</pop-up-button>
+      </div>
+    `;
+    document.body.appendChild(alertElement);
+    alertElement.addEventListener("closed", () => {
+      alertElement.remove();
+      resolve()
+    });
+    alertElement.open();
+  })
+  
 };
 
 
