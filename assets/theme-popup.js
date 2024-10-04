@@ -202,8 +202,8 @@ window.Shopify.theme.notify = (
   notificationElement.addEventListener("closed", () => {
     notificationElement.remove();
   });
-  setTimeout(() => {
-    notificationElement.close();
-  }, 5000)
+  // setTimeout(() => {
+  //   notificationElement.close();
+  // }, 5000)
   notificationElement.open();
 };
