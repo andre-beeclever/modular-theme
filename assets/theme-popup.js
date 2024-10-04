@@ -123,7 +123,12 @@ class PopupButton extends HTMLElement {
   }
   connectedCallback() {
     this.addEventListener("click", (e) => {
-      const target = document.getElementById(this.getAttribute("for"));
+      const id = this.getAttribute("for") || this.closest('pop-up, theme-alert, theme-notification').id
+      if(!id){
+        console.warn(`[${this.tagName}] Target not found.`);
+        return;
+      }
+      const target = document.getElementById(id);
       if (!target) {
         console.warn(`[${this.tagName}] Target not found.`);
         return;
