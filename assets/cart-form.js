@@ -15,7 +15,6 @@ class CartForm extends HTMLElement {
     quantities.forEach((qty) => {
       qty.addEventListener("change", async (e) => {
         this.loading = true;
-        console.log("Change")
         const res = await Shopify.theme.cart.update({ updates: { [qty.dataset.lineItemKey]: Number(qty.value) } }, {
           events: true,
           callback: resolve,
