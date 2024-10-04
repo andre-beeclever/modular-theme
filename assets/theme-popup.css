@@ -27,6 +27,21 @@ theme-alert {
   justify-content: flex-start;
 }
 
+theme-alert,
+pop-up,
+theme-drawer{
+  &::before{
+    content: '';
+    display:block;
+    position: fixed;
+    left:0;
+    top: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: #0002;
+  }
+}
+
 /* Theme notification */
 theme-notification{
   display: block;
