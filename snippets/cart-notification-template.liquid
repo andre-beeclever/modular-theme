@@ -1,0 +1,7 @@
+<template id="cart-notification-template">
+  <div class="flex row gap-m spacing-m">
+    <p>Das Produkt wurde zu deinem Warenkorb hinzugefügt.</p>
+    <a href="{{ routes.cart_url }}" class="link">anzeigen</a>
+    {% render 'icon', icon: 'close' %}
+  </div>
+</template>

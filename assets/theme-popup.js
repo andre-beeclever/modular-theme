@@ -191,21 +191,14 @@ customElements.define("theme-notification", ThemeNotification);
 
 
 window.theme.notify = (
-  message,
-  options = {
-    button: { label: "close", class: "" },
-    container: { class: "flex col gap-m spacing-m" },
-  },
+  template
 ) => {
   const elementId = `notification-${crypto.randomUUID()}`;
   const notificationElement = document.createElement("theme-notification");
-  notificationElement.setAttribute("id", elementId);
-  notificationElement.innerHTML = `
-    <div class="${options.container.class}">
-      <p>${message}</p>
-      <pop-up-button class="${options.button.class}" for="${elementId}">${options.button.label}</pop-up-button>
-    </div>
-  `;
+  const template = document.getElementById("cart-notification-template");
+  notificationElement.id = elementId;
+  const clone = template.content.cloneNode(true);
+  notificationElement.body.appendChild(clone);
   document.body.appendChild(notificationElement);
   notificationElement.addEventListener("closed", () => {
     notificationElement.remove();

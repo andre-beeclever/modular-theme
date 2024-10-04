@@ -96,6 +96,9 @@
     {% if settings.cart_mode == "drawer" %}
       {% section "cart-drawer" %}
     {% endif %}
+    {% if settings.cart_add == "notification" %}
+        {% render 'cart-notification-template' %}
+    {% endif %}
 
     <main
       id="MainContent"
