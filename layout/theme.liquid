@@ -13,7 +13,7 @@
     <meta
       name="theme-color"
       content="">
-    {% if settings.cart_mode == "drawer" and request.page_type == "cart" %}
+    {% if settings.cart_mode == "drawer" and request.path == routes.cart_url %}
       <script>
         location.pathname = "{{ routes.root_url }}"
       </script>
