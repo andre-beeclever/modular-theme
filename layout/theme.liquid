@@ -19,7 +19,7 @@
         url.searchParams.set('cart-drawer', 'open');
         url.pathname = "{{ routes.root_url }}";
         console.log(url)
-        {% comment %} location.href = url; {% endcomment %}
+        location.href = url.href;
       </script>
     {% endif %}
     <link rel="canonical" href="{{ canonical_url }}">
