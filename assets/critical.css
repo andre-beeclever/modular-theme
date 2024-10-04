@@ -282,28 +282,28 @@ a {
 
 /* Spacing System */
 .spacing-2xs{
-  spacing: 4px;
+  padding: 4px;
 }
 .spacing-xs{
-  spacing: 8px;
+  padding: 8px;
 }
 .spacing-s{
-  spacing: 12px;
+  padding: 12px;
 }
 .spacing-m{
-  spacing: 16px;
+  padding: 16px;
 }
 .spacing-l{
-  spacing: 20px;
+  padding: 20px;
 }
 .spacing-xl{
-  spacing: 28px;
+  padding: 28px;
 }
 .spacing-2xl{
-  spacing: 40px;
+  padding: 40px;
 }
 .spacing-3xl{
-  spacing: 60px;
+  padding: 60px;
 }
 .gap-2xs{
   gap: 4px;
