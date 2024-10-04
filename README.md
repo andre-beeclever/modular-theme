@@ -175,3 +175,9 @@ As with a normal setting, it is accessed via its ID.
 - variables & functions should be formatted as `camelCase`
 - do not use `var` use `const` where ever possible and `let` when necessary
 - use arrow functions `() => {}` where possible
+
+
+## Theme events
+
+- cart:add      fired when an item is added to cart
+- cart:changed  fired when the cart changed in another way than an added item.

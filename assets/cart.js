@@ -9,13 +9,29 @@ const DEFAULT_OPTIONS = {
   callback: (cart) => {}
 }
 
+const ADD_EVENT_NAME = "cart:add"
+const CHANGE_EVENT_NAME = "cart:changed"
+
 Shopify.theme.cart = {
+  links: [],
   init: function () {
-    window.addEventListener("cart:add", function (e) {
-      if(this.onAdd == "drawer") {
-        e.preventDefault();
-        window.dispatchEvent(new CustomEvent("cart:drawer:open"));
-      }
+    window.addEventListener(ADD_EVENT_NAME, function (e) {
+      const observeUrlChange = () => {
+        // let oldHref = document.location.href;
+        const body = document.querySelector('body');
+        const observer = new MutationObserver(mutations => {
+          // if (oldHref !== document.location.href) {
+          //   oldHref = document.location.href;
+          //   /* Changed ! your code here */
+          // }
+          if(document.location.href == window.Shopify.routes.cartUrl){
+            console.log("Cart url")
+          }
+        });
+        observer.observe(body, { childList: true, subtree: true });
+      };
+      
+      window.onload = observeUrlChange;
     });
   },
   add: function (itemsToAdd, options = DEFAULT_OPTIONS) {
@@ -32,14 +48,14 @@ Shopify.theme.cart = {
       .then(function (response) {
         if (response.status) {
           if (options.events) {
-            window.dispatchEvent(new CustomEvent("cart:add", { detail: {} }));
+            window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: {} }));
           }
           const error_string = `\nCART ADD FAILED \nStatus: ${response.status} \nMessage: ${response.message} \nDescription: ${response.description}`;
           throw new Error(error_string, { cause: "Cart Error" });
         } else {
           options.callback(response);
           if (options.events) {
-            window.dispatchEvent(new CustomEvent("cart:add", { detail: { ...response } }));
+            window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: { ...response } }));
           }
         }
       })
@@ -64,7 +80,7 @@ Shopify.theme.cart = {
         } else {
           options.callback(response);
           if (options.events) {
-            window.dispatchEvent(new CustomEvent("cart:changed", { detail: { ...response } }));
+            window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
           }
         }
       })
@@ -90,7 +106,7 @@ Shopify.theme.cart = {
         } else {
           options.callback(response);
           if (options.events) {
-            window.dispatchEvent(new CustomEvent("cart:changed", { detail: { ...response } }));
+            window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
           }
         }
       })
@@ -116,7 +132,7 @@ Shopify.theme.cart = {
         } else {
           options.callback(response);
           if (options.events) {
-            window.dispatchEvent(new CustomEvent("cart:changed", { detail: { ...response } }));
+            window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
           }
         }
       })
