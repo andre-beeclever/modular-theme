@@ -2,6 +2,22 @@ window.theme = window.theme || {};
 window.theme.scroll = window.theme.scroll || (function () {
   let lastScrollPosition = 0;
   let scrollEnabled = true;
+
+  function getScrollbarWidth(){
+    let scrollDiv = document.createElement("div");
+    scrollDiv.className = "scrollbar-measure";
+    document.body.appendChild(scrollDiv);
+  
+    // Get the scrollbar width
+    const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  
+    // Delete the div
+    document.body.removeChild(scrollDiv);
+
+    return scrollbarWidth;
+  }
+  this.scrollbarWidth = getScrollbarWidth();
+  
   return {
     isEnabled() {
       return scrollEnabled;
@@ -11,7 +27,7 @@ window.theme.scroll = window.theme.scroll || (function () {
       lastScrollPosition = window.scrollY;
       document.body.style.top = -window.scrollY + "px";
       if (window.innerWidth > 750) {
-        document.body.style.paddingRight = "14px";
+        document.body.style.paddingRight = `${this.scrollbarWidth}px`;
       }
       document.body.style.position = "fixed";
     },
