@@ -184,3 +184,11 @@ textarea{
   color: #b6b6b6;
   text-decoration: line-through;
 }
+
+cart-form[loading] {
+  & .line-item{
+    & p {
+      background: #0002
+    }
+  }
+}
