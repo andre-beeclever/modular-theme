@@ -97,14 +97,14 @@ class Popup extends HTMLElement {
     if (oldValue === newValue) return;
     if (property === "open") {
       if (this.isOpen()) {
-        if(!scrollingEnabled){
+        if(!this.scrollingEnabled){
           window.theme.scroll.disable();
         }
         this.dispatchEvent(new CustomEvent("opened"));
         console.warn(`[${this.tagName}] Disabled scroll.`);
       } 
       else {
-        if(!scrollingEnabled){
+        if(!this.scrollingEnabled){
           window.theme.scroll.enable();
         }
         this.dispatchEvent(new CustomEvent("closed"));
