@@ -169,14 +169,12 @@ window.Shopify.theme.alert = (
     container: { class: "flex col gap-small spacing-m" },
   },
 ) => {
-  const elementId = `alert-${crypto.randomUUID()}`;
   const alertElement = document.createElement("theme-alert");
-  alertElement.setAttribute("id", elementId);
   alertElement.setAttribute("scrolling", "disabled");
   alertElement.innerHTML = `
     <div class="${options.container.class}">
       <p>${message}</p>
-      <pop-up-button class="${options.button.class}" for="${elementId}">${options.button.label}</pop-up-button>
+      <pop-up-button class="${options.button.class}">${options.button.label}</pop-up-button>
     </div>
   `;
   document.body.appendChild(alertElement);
@@ -198,21 +196,19 @@ customElements.define("theme-notification", ThemeNotification);
 window.Shopify.theme.notify = (
   template
 ) => {
-  const elementId = `notification-${crypto.randomUUID()}`;
   const notificationElement = document.createElement("theme-notification");
-  notificationElement.id = elementId;
   const clone = template.content.cloneNode(true);
   notificationElement.appendChild(clone);
   document.body.appendChild(notificationElement);
   console.log(notificationElement.cloneNode(true))
   notificationElement.addEventListener("closed", () => {
-    // setTimeout(() => {
-    //   notificationElement.remove();
-    // }, 1000)
+    setTimeout(() => {
+      notificationElement.remove();
+    }, 1000)
   });
-  // setTimeout(() => {
-  //   notificationElement.close();
-  // }, 10000)
+  setTimeout(() => {
+    notificationElement.close();
+  }, 10000)
   setTimeout(() => {
     notificationElement.open();
   }, 300)
