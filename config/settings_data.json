@@ -39,23 +39,11 @@
                 "padding-inline-end": "20px"
               },
               "layout": {
+                "justify-content": "space-between"
               },
               "color_scheme": ""
             },
             "blocks": {
-              "popup_button_hmxbNY": {
-                "type": "popup-button",
-                "settings": {
-                  "id": "cart-drawer",
-                  "spacing": {
-                  }
-                },
-                "blocks": {
-                  
-                },
-                "block_order": [
-                ]
-              },
               "heading_gqJrFL": {
                 "type": "heading",
                 "settings": {
@@ -67,11 +55,32 @@
                   "text_color": "",
                   "font_size": ""
                 }
+              },
+              "popup_button_hmxbNY": {
+                "type": "popup-button",
+                "settings": {
+                  "id": "cart-drawer",
+                  "spacing": {
+                  }
+                },
+                "blocks": {
+                  "icon_r8WRrq": {
+                    "type": "icon",
+                    "settings": {
+                      "icon": "close",
+                      "size": {
+                      }
+                    }
+                  }
+                },
+                "block_order": [
+                  "icon_r8WRrq"
+                ]
               }
             },
             "block_order": [
-              "popup_button_hmxbNY",
-              "heading_gqJrFL"
+              "heading_gqJrFL",
+              "popup_button_hmxbNY"
             ]
           },
           "container_eDGURP": {
@@ -120,7 +129,24 @@
                       "layout": {
                       },
                       "color_scheme": ""
-                    }
+                    },
+                    "blocks": {
+                      "heading_YB3dXd": {
+                        "type": "heading",
+                        "settings": {
+                          "heading": "Your cart is currently empty.",
+                          "html_tag": "p",
+                          "heading_style": "h6",
+                          "alignment": "center",
+                          "spacing_bottom": "none",
+                          "text_color": "",
+                          "font_size": ""
+                        }
+                      }
+                    },
+                    "block_order": [
+                      "heading_YB3dXd"
+                    ]
                   }
                 },
                 "block_order": [
@@ -195,7 +221,9 @@
           "layout": {
             "flex-direction": "column",
             "align-items": "stretch",
-            "justify-content": "space-between"
+            "justify-content": "space-between",
+            "row-gap": "0px",
+            "column-gap": "0px"
           },
           "color_scheme": ""
         }
