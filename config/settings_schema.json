@@ -940,7 +940,7 @@
           { "label": "Redirect", "value": "redirect" },
           { "label": "Open drawer", "value": "drawer" },
           { "label": "Show notification", "value": "notification" },
-          { "label": "Show popup", "value": "popup" },
+          { "label": "Show popup", "value": "popup" }
         ],
         "default": "page"
       }
