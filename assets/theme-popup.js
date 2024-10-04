@@ -44,7 +44,7 @@ window.theme.scroll = window.theme.scroll || (function () {
 })();
 
 class PopupButton extends HTMLElement {
-  static TAGS = ['pop-up','theme-alert','theme-notification']
+  static TAGS = ['pop-up','theme-alert','theme-notification', 'theme-drawer']
   static TAG_NAMES = PopupButton.TAGS.map(tag => tag.toUpperCase())
   constructor() {
     super();
