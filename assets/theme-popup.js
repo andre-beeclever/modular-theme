@@ -3,7 +3,7 @@ window.theme.scroll = window.theme.scroll || (function () {
   let lastScrollPosition = 0;
   let scrollEnabled = true;
 
-  function getScrollbarWidth(){
+  const getScrollbarWidth = () => {
     let scrollDiv = document.createElement("div");
     scrollDiv.className = "scrollbar-measure";
     document.body.appendChild(scrollDiv);
@@ -16,8 +16,7 @@ window.theme.scroll = window.theme.scroll || (function () {
 
     return scrollbarWidth;
   }
-  this.scrollbarWidth = getScrollbarWidth();
-  
+
   return {
     isEnabled() {
       return scrollEnabled;
@@ -27,7 +26,7 @@ window.theme.scroll = window.theme.scroll || (function () {
       lastScrollPosition = window.scrollY;
       document.body.style.top = -window.scrollY + "px";
       if (window.innerWidth > 750) {
-        document.body.style.paddingRight = `${this.scrollbarWidth}px`;
+        document.body.style.paddingRight = `${getScrollbarWidth()}px`;
       }
       document.body.style.position = "fixed";
     },
