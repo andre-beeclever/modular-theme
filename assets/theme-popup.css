@@ -30,21 +30,26 @@ theme-alert {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+body::after{
+  content: '';
+  display:block;
+  position: fixed;
+  left:0;
+  top: 0;
+  width: 100vw;
+  height: 100dvh;
+  background: #0004;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 9000;
+}
 body:has(theme-alert[open]),
 body:has(pop-up[open]),
 body:has(theme-drawer[open]){
-  &::before{
-    content: '';
-    display:block;
-    position: fixed;
-    left:0;
-    top: 0;
-    width: 100vw;
-    height: 100dvh;
-    background: #0004;
-    opacity: 0;
-    animation: fadeIn 0.3s forwards;
-    z-index: 9000;
+  &::after{
+    pointer-events: none;
+    opacity: 1;
   }
 }
 
