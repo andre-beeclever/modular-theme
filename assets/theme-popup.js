@@ -185,7 +185,7 @@ window.theme.notify = (
   message,
   options = {
     button: { label: "close", class: "" },
-    container: { class: "flex col gap-m " },
+    container: { class: "flex col gap-m spacing-m" },
   },
 ) => {
   const elementId = `notification-${crypto.randomUUID()}`;
@@ -201,5 +201,8 @@ window.theme.notify = (
   notificationElement.addEventListener("closed", () => {
     notificationElement.remove();
   });
+  setTimeout(() => {
+    notificationElement.close();
+  }, 5000)
   notificationElement.open();
 };
