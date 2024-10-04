@@ -16,23 +16,13 @@ Shopify.theme.cart = {
   links: [],
   init: function () {
     window.addEventListener(ADD_EVENT_NAME, function (e) {
-      const observeUrlChange = () => {
-        // let oldHref = document.location.href;
-        const body = document.querySelector('body');
-        const observer = new MutationObserver(mutations => {
-          // if (oldHref !== document.location.href) {
-          //   oldHref = document.location.href;
-          //   /* Changed ! your code here */
-          // }
-          if(document.location.href == window.Shopify.routes.cartUrl){
-            console.log("Cart url")
-          }
-        });
-        observer.observe(body, { childList: true, subtree: true });
-      };
-      
-      window.onload = observeUrlChange;
+      // if(this.onAdd == "drawer") {
+      //   e.preventDefault();
+        // Cart drawer listens for add event event
+      // }
     });
+    this.links = Array.from(document.querySelectorAll('a[href="/cart"]'))
+    console.log(this.links)
   },
   add: function (itemsToAdd, options = DEFAULT_OPTIONS) {
     const url = window.Shopify.routes.cartAddUrl + "?sections=" + options.sections.join(",");
