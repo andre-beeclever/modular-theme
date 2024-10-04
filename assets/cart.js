@@ -34,6 +34,7 @@ Shopify.theme.cart = {
       }
     })
     if(this.mode == "drawer"){
+      console.log("Cart mode: Drawer")
       document.addEventListener('click', (e) => {    
         const target = e.target.closest('a');  
         console.log(target)  
@@ -44,6 +45,9 @@ Shopify.theme.cart = {
             }
         }
       });
+    }
+    else{
+      console.log("Cart mode: Page")
     }
   },
   get: async (options = DEFAULT_OPTIONS) => {
