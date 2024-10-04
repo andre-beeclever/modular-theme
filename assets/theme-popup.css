@@ -1,6 +1,7 @@
 theme-alert:not([open]),
 pop-up:not([open]) {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 theme-alert[open],
 pop-up[open] {
@@ -14,6 +15,7 @@ pop-up[open] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: opacity 0s 0.5s;
 }
 pop-up[open] {
   justify-content: center;
