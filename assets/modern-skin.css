@@ -184,16 +184,3 @@ textarea{
   color: #b6b6b6;
   text-decoration: line-through;
 }
-
-/* [loading] */
-cart-form {
-  & .line-item{
-    & p, .image-wrapper, quantity-rocker, .theme-icon {
-      background: #0002;
-      color: transparent;
-      & > *{
-        opacity: 0;
-      }
-    }
-  }
-}
