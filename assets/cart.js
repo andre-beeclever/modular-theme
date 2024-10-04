@@ -35,7 +35,8 @@ Shopify.theme.cart = {
     })
     if(this.mode == "drawer"){
       document.addEventListener('click', (e) => {    
-        const target = e.target.closest('a');    
+        const target = e.target.closest('a');  
+        console.log(target)  
         if (target) {
             if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
                e.preventDefault(); 
