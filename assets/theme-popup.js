@@ -181,12 +181,11 @@ class ThemeNotification extends Popup {
 customElements.define("theme-notification", ThemeNotification);
 
 
-
 window.theme.notify = (
   message,
   options = {
-    button: { label: "Close", class: "btn btn--primary" },
-    container: { class: "flex col gap-m spacing-m" },
+    button: { label: "close", class: "" },
+    container: { class: "flex col gap-m " },
   },
 ) => {
   const elementId = `notification-${crypto.randomUUID()}`;

@@ -281,6 +281,80 @@ a {
 }
 
 /* Spacing System */
+.spacing-2xs{
+  spacing: 4px;
+}
+.spacing-xs{
+  spacing: 8px;
+}
+.spacing-s{
+  spacing: 12px;
+}
+.spacing-m{
+  spacing: 16px;
+}
+.spacing-l{
+  spacing: 20px;
+}
+.spacing-xl{
+  spacing: 28px;
+}
+.spacing-2xl{
+  spacing: 40px;
+}
+.spacing-3xl{
+  spacing: 60px;
+}
+.gap-2xs{
+  gap: 4px;
+}
+.gap-xs{
+  gap: 8px;
+}
+.gap-s{
+  gap: 12px;
+}
+.gap-m{
+  gap: 16px;
+}
+.gap-l{
+  gap: 20px;
+}
+.gap-xl{
+  gap: 28px;
+}
+.gap-2xl{
+  gap: 40px;
+}
+.gap-3xl{
+  gap: 60px;
+}
+/* Bottom */
+.spacing-bottom-2xs{
+  padding-bottom: 4px;
+}
+.spacing-bottom-xs{
+  padding-bottom: 8px;
+}
+.spacing-bottom-s{
+  padding-bottom: 12px;
+}
+.spacing-bottom-m{
+  padding-bottom: 16px;
+}
+.spacing-bottom-l{
+  padding-bottom: 20px;
+}
+.spacing-bottom-xl{
+  padding-bottom: 28px;
+}
+.spacing-bottom-2xl{
+  padding-bottom: 40px;
+}
+.spacing-bottom-3xl{
+  padding-bottom: 60px;
+}
+/* Bottom */
 .spacing-bottom-2xs{
   padding-bottom: 4px;
 }
