@@ -150,6 +150,7 @@ window.Shopify.theme.alert = (
   return new Promise((resolve) => {
     const alertElement = document.createElement("theme-alert");
     alertElement.setAttribute("scrolling", "disabled");
+    alertElement.setAttribute("id", `alert-${crypto.randomUUID()}`)
     alertElement.innerHTML = `
       <div class="${options.container.class}">
         <p>${message}</p>
@@ -179,6 +180,7 @@ window.Shopify.theme.notify = (
   template
 ) => {
   const notificationElement = document.createElement("theme-notification");
+  notificationElement.setAttribute("id", `notification-${crypto.randomUUID()}`)
   const clone = template.content.cloneNode(true);
   notificationElement.appendChild(clone);
   document.body.appendChild(notificationElement);
