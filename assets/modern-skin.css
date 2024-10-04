@@ -189,7 +189,11 @@ textarea{
 cart-form {
   & .line-item{
     & p, .image-wrapper, quantity-rocker {
-      background: #0002
+      background: #0002;
+      color: transparent;
+      & > *{
+        opacity: p;
+      }
     }
   }
 }
