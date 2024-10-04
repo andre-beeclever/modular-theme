@@ -164,15 +164,31 @@
               "flex-direction": "row"
             }
           }
+        },
+        "link_q78JTb": {
+          "type": "link",
+          "settings": {
+            "link": "/cart",
+            "icon": "cart",
+            "label": "",
+            "button_style": "link",
+            "small": false,
+            "full_width": false,
+            "open_in_new_tab": false,
+            "spacing_bottom": "none"
+          }
         }
       },
       "block_order": [
         "heading_CJHPWc",
-        "linklist_f7VBe3"
+        "linklist_f7VBe3",
+        "link_q78JTb"
       ],
       "settings": {
         "position": "",
         "overflow": "",
+        "size": {
+        },
         "spacing": {
           "padding-block-start": "20px",
           "padding-block-end": "20px"
