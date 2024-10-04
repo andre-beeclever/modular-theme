@@ -43,13 +43,6 @@
     
     {{ "critical.css" | asset_url | stylesheet_tag }}
 
-    {% assign skin = "modern" %}
-    {% case skin %}
-      {% when "modern" %}
-        {{ "modern-skin.css" | asset_url | stylesheet_tag }}
-      {% when "minimal" %}
-        {{ "minimal-skin.css" | asset_url | stylesheet_tag }}
-    {% endcase %}
     <script
       defer
       src="{{ 'utils.js' | asset_url }}"></script>
@@ -88,6 +81,15 @@
       type="module"
       src="{{ 'cart-form.js' | asset_url }}"></script>
     <link rel="stylesheet" href="{{ 'cart-form.css' | asset_url }}">
+
+
+    {% assign skin = "modern" %}
+    {% case skin %}
+      {% when "modern" %}
+        {{ "modern-skin.css" | asset_url | stylesheet_tag }}
+      {% when "minimal" %}
+        {{ "minimal-skin.css" | asset_url | stylesheet_tag }}
+    {% endcase %}
   </head>
 
   <body>
