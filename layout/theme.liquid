@@ -13,6 +13,9 @@
     <meta
       name="theme-color"
       content="">
+    {% if settings.cart_mode == "drawer" %}
+      <meta http-equiv="refresh" content="0; url=/" />
+    {% endif %}
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
