@@ -42,7 +42,8 @@
               "layout": {
                 "justify-content": "space-between"
               },
-              "color_scheme": ""
+              "color_scheme": "",
+              "title": "Header"
             },
             "blocks": {
               "heading_gqJrFL": {
@@ -103,7 +104,8 @@
                 "flex-direction": "column",
                 "justify-content": "flex-start"
               },
-              "color_scheme": ""
+              "color_scheme": "",
+              "title": "Body"
             },
             "blocks": {
               "line_items_AU9C74": {
@@ -129,7 +131,8 @@
                       },
                       "layout": {
                       },
-                      "color_scheme": ""
+                      "color_scheme": "",
+                      "title": "Container"
                     },
                     "blocks": {
                       "heading_YB3dXd": {
@@ -206,7 +209,8 @@
                 "align-items": "stretch",
                 "justify-content": "flex-start"
               },
-              "color_scheme": ""
+              "color_scheme": "",
+              "title": "Footer"
             },
             "blocks": {
               "cart_summary_WzCi9E": {
