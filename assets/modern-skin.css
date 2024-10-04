@@ -188,7 +188,7 @@ textarea{
 /* [loading] */
 cart-form {
   & .line-item{
-    & p {
+    & p, .image-wrapper, quantity-rocker {
       background: #0002
     }
   }
