@@ -1,5 +1,5 @@
 <style>
-  #{{ section.settings.id }}{
+  pop-up#cart-drawer{
     align-items: end;
     & .cart-drawer{
       height: 100%;
@@ -18,7 +18,7 @@
   }
 </style>
 
-<pop-up id="{{ section.settings.id }}" >
+<pop-up id="cart-drawer" >
   <div class="color-{{ section.settings.color_scheme }} cart-drawer">
     <cart-form section="{{section.id}}">
       {% form "cart", cart %}
@@ -36,13 +36,6 @@
   "tag": "aside",
   "blocks": [{ "type": "@theme" }, { "type": "@app" }],
   "settings": [
-    {
-      "type": "text",
-      "id": "id",
-      "label": "ID",
-      "default": "cart-drawer",
-      "info": "The ID of this popup. Enter this into any popup button to toggle this popup."
-    },
     {
       "type": "style.spacing_panel",
       "id": "spacing",
