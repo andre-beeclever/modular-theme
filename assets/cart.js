@@ -51,6 +51,9 @@ Shopify.theme.cart = {
     }
     else{
       console.log("Cart mode: Page")
+      window.addEventListener(OPEN_EVENT_NAME, (e) => {
+        window.location.href = window.Shopify.routes.cartUrl
+      })
     }
   },
   get: async (options = DEFAULT_OPTIONS) => {
