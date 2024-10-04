@@ -87,7 +87,7 @@ class Popup extends HTMLElement {
   }
   connectedCallback() {
     this.addEventListener("click", (e) => {
-      if (e.target == this) this.close();
+      if (!this.contains(e.target)) this.close();
     });
     window.addEventListener('popup:open', (e) => {
       // console.log("popup:open", e.detail.id, this.id)
