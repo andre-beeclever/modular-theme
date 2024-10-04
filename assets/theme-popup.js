@@ -60,15 +60,15 @@ class Popup extends HTMLElement {
     });
     window.addEventListener('popup:open', (e) => {
       console.log("popup:open", e.detail.id, this.id)
-      if(e.detail.id == this.id) this.open();
+      if(e.detail.id == this.id) this.open.bind(this);
     })
     window.addEventListener('popup:close', (e) => {
       console.log("popup:close", e.detail.id, this.id)
-      if(e.detail.id == this.id) this.close();
+      if(e.detail.id == this.id) this.close.bind(this);
     })
     window.addEventListener('popup:toggle', (e) => {
       console.log("popup:toggle", e.detail.id, this.id)
-      if(e.detail.id == this.id) this.toggle();
+      if(e.detail.id == this.id) this.toggle.bind(this);
     })
   }
   isOpen() {
