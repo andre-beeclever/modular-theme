@@ -79,6 +79,9 @@ a {
 
 /* Flex System */
 .flex {
+  & > * {
+    white-space: no-wrap;
+  }
   --gap: 0px;
   display: flex;
   gap: var(--gap);
