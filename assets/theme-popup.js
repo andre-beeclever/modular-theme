@@ -182,7 +182,12 @@ window.Shopify.theme.alert = (
   
 };
 
-
+class ThemeDrawer extends Popup {
+  constructor() {
+    super();
+  }
+}
+customElements.define("theme-drawer", ThemeDrawer);
 class ThemeNotification extends Popup {
   constructor() {
     super();
