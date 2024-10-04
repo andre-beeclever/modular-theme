@@ -188,11 +188,11 @@ textarea{
 /* [loading] */
 cart-form {
   & .line-item{
-    & p, .image-wrapper, quantity-rocker {
+    & p, .image-wrapper, quantity-rocker, .theme-icon {
       background: #0002;
       color: transparent;
       & > *{
-        opacity: p;
+        opacity: 0;
       }
     }
   }
