@@ -10,7 +10,7 @@ class CartForm extends HTMLElement {
     const quantities = this.querySelectorAll(`[name="updates[]"]`);
     const removeButtons = this.querySelectorAll(`[name="line-item-remove"]`);
     
-    Shopify.theme.cart.sections.push(this.section())
+    Shopify.theme.cart.sections.push(this.section)
 
     quantities.forEach((qty) => {
       qty.addEventListener("change", async (e) => {
