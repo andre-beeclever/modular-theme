@@ -184,3 +184,11 @@ textarea{
   color: #b6b6b6;
   text-decoration: line-through;
 }
+theme-notification,
+pop-up#cart-drawer > *{
+  translate: 100% 0%;
+  &[open]{
+    translate: 0% 0%;
+    transition: translate .25s cubic-bezier(.165,.84,.44,1);
+  }
+}
