@@ -14,6 +14,7 @@ const CHANGE_EVENT_NAME = "cart:changed"
 const OPEN_EVENT_NAME = "cart:open"
 
 Shopify.theme.cart = {
+  ...Shopify.theme.cart,
   init: function () {
     window.addEventListener(ADD_EVENT_NAME, (e) => {
       e.preventDefault()
