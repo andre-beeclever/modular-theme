@@ -1,10 +1,5 @@
 theme-alert:not([open]),
 pop-up:not([open]) {
-  opacity: 0;
-  pointer-events: none;
-}
-theme-alert[open],
-pop-up[open] {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,11 +11,17 @@ pop-up[open] {
   flex-direction: column;
   align-items: center;
   transition: opacity 0s 0.5s;
+  opacity: 0;
+  pointer-events: none;
+  &[open] {
+    opacity: 1;
+    pointer-events: initial;
+  }
 }
-pop-up[open] {
+pop-up {
   justify-content: center;
 }
-theme-alert[open] {
+theme-alert {
   justify-content: flex-start;
 }
 theme-alert > *,
@@ -35,11 +36,18 @@ pop-up-button {
   cursor: pointer;
 }
 
-theme-notification[open]{
+theme-notification{
   display: block;
   position: fixed;
   right: 0;
   top: 20%;
   width: min(50vw, 400px);
   background-color: #fff;
+  transition: opacity 0s 0.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+theme-notification[open]{
+  opacity: 1;
+  pointer-events: initial;
 }
