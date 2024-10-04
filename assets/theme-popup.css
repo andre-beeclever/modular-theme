@@ -26,6 +26,10 @@ pop-up {
 theme-alert {
   justify-content: flex-start;
 }
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
 body:has(theme-alert[open]),
 body:has(pop-up[open]),
 body:has(theme-drawer[open]){
@@ -39,8 +43,7 @@ body:has(theme-drawer[open]){
     height: 100dvh;
     background: #0004;
     opacity: 0;
-    transition: opacity 0.3;
-    opacity: 1;
+    animation: fadeIn 0.3s forwards;
     z-index: 9000;
   }
 }
