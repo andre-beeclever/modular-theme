@@ -34,7 +34,7 @@ Shopify.theme.cart = {
     })
   },
   get: async (options = DEFAULT_OPTIONS) => {
-    const url = window.Shopify.routes.cartUrl + "?sections=" + [...Shopify.theme.cart.sections, ...options.sections].uniq().join(",");
+    const url = window.Shopify.routes.cartUrl + "?sections=" + [...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq().join(",");
     return await fetch(url, {
       headers: { 
         "Content-Type": "application/json", 
@@ -46,7 +46,7 @@ Shopify.theme.cart = {
     .catch(console.error);
   },
   add: async (itemsToAdd, options = DEFAULT_OPTIONS) => {
-    const url = window.Shopify.routes.cartAddUrl + "?sections=" + ([...Shopify.theme.cart.sections, ...options.sections].uniq()).join(",");
+    const url = window.Shopify.routes.cartAddUrl + "?sections=" + ([...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq()).join(",");
     return await fetch(url, {
       body: JSON.stringify(itemsToAdd),
       headers: { 
@@ -70,7 +70,7 @@ Shopify.theme.cart = {
   },
   
   update: async (itemsToUpdate, options = DEFAULT_OPTIONS) => {
-    const url = window.Shopify.routes.cartUpdateUrl + "?sections=" + [...Shopify.theme.cart.sections, ...options.sections].uniq().join(",");
+    const url = window.Shopify.routes.cartUpdateUrl + "?sections=" + [...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq().join(",");
     return await fetch(url, {
       body: JSON.stringify(itemsToUpdate),
       headers: { 
@@ -93,7 +93,7 @@ Shopify.theme.cart = {
     .catch(console.error);
   },
   clear: async (options = DEFAULT_OPTIONS) => {
-    const url = window.Shopify.routes.cartClearUrl + "?sections=" + [...Shopify.theme.cart.sections, ...options.sections].uniq().join(",");
+    const url = window.Shopify.routes.cartClearUrl + "?sections=" + [...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq().join(",");
     return await fetch(url, {
       body: "",
       headers: { 
