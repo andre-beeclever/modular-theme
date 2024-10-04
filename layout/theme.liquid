@@ -16,7 +16,7 @@
     {% if settings.cart_mode == "drawer" and request.path == routes.cart_url %}
       <script>
         const url = new URL(location);
-        url.searchParams.set('cart-drawer', 'open');
+        url.searchParams.set('cart', 'open');
         url.pathname = "{{ routes.root_url }}";
         location.href = url.href;
       </script>

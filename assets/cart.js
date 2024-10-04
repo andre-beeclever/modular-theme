@@ -47,6 +47,14 @@ Shopify.theme.cart = {
           }
         }
       });
+      const url = new URL(location)
+      const shouldOpen = url.searchParams.get('cart') == "open"
+      if(shouldOpen){
+        window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
+        url.searchParams.delete('cart')
+        history.replaceState({}, "", url.href)
+      }
+
     }
     else{
       console.log("Cart mode: Page")
