@@ -1,5 +1,5 @@
-theme-alert:not([open]),
-pop-up:not([open]) {
+theme-alert,
+pop-up{
   position: fixed;
   top: 0;
   left: 0;
