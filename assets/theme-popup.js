@@ -213,5 +213,7 @@ window.Shopify.theme.notify = (
   // setTimeout(() => {
   //   notificationElement.close();
   // }, 10000)
-  notificationElement.open();
+  setTimeout(() => {
+    notificationElement.open();
+  }, 300)
 };
