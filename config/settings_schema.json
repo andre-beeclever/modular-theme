@@ -930,7 +930,8 @@
           { "label": "Page", "value": "page" },
           { "label": "Drawer", "value": "drawer" }
         ],
-        "default": "page"
+        "default": "page",
+        "info": "Decide wether your store uses a drawer style cart or a dedicated cart page."
       },
       {
         "type": "select",
@@ -942,7 +943,8 @@
           { "label": "Show notification", "value": "notification" },
           { "label": "Show popup", "value": "popup" }
         ],
-        "default": "redirect"
+        "default": "redirect",
+        "info": "Decide what happens when a customer adds a product to the cart."
       }
     ]
   },
