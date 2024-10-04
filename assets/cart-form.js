@@ -28,11 +28,8 @@ class CartForm extends HTMLElement {
         this.removeByUrl(rm.href);
       });
     });
-    window.addEventListener("cart:build", (e) => {
+    window.addEventListener("cart:add", (e) => {
       this.updateView(e.detail?.sections[this.section]);
-    });
-    window.addEventListener("cart:open", (e) => {
-      this.open()
     });
   }
 

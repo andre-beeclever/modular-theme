@@ -11,8 +11,6 @@ const DEFAULT_OPTIONS = {
 
 const ADD_EVENT_NAME = "cart:add"
 const CHANGE_EVENT_NAME = "cart:changed"
-const OPEN_EVENT_NAME = "cart:open"
-const BUILD_EVENT_NAME = "cart:build"
 
 Shopify.theme.cart = {
   ...Shopify.theme.cart,
@@ -21,8 +19,7 @@ Shopify.theme.cart = {
       e.preventDefault()
       switch (this.onAdd) {
         case "drawer":
-          window.dispatchEvent(new CustomEvent(BUILD_EVENT_NAME, e))
-          window.dispatchEvent(new CustomEvent(OPEN_EVENT_NAME, e))
+          window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer '}}))
           break;
         case "notification":
           // Todo: show a notification with a to cart link
@@ -44,16 +41,13 @@ Shopify.theme.cart = {
         if (target) {
             if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
                e.preventDefault(); 
-               window.dispatchEvent(new CustomEvent(OPEN_EVENT_NAME, e))
+               window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer '}}))
             }
         }
       });
     }
     else{
       console.log("Cart mode: Page")
-      window.addEventListener(OPEN_EVENT_NAME, (e) => {
-        window.location.href = window.Shopify.routes.cartUrl
-      })
     }
   },
   get: async (options = DEFAULT_OPTIONS) => {
