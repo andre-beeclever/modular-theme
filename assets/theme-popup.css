@@ -26,10 +26,9 @@ pop-up {
 theme-alert {
   justify-content: flex-start;
 }
-
-theme-alert,
-pop-up,
-theme-drawer{
+body:has(theme-alert[open]),
+body:has(pop-up[open]),
+body:has(theme-drawer[open]){
   &::before{
     content: '';
     display:block;
