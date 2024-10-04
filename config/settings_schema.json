@@ -931,6 +931,18 @@
           { "label": "Drawer", "value": "drawer" }
         ],
         "default": "page"
+      },
+      {
+        "type": "select",
+        "id": "cart_add",
+        "label": "On cart add",
+        "options": [
+          { "label": "Redirect", "value": "redirect" },
+          { "label": "Open drawer", "value": "drawer" },
+          { "label": "Show notification", "value": "notification" },
+          { "label": "Show popup", "value": "popup" },
+        ],
+        "default": "page"
       }
     ]
   },

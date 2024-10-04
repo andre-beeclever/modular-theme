@@ -1,18 +1,19 @@
 Shopify.theme = Shopify.theme || {};
 Shopify.theme.cart = Shopify.theme.cart || {};
-Shopify.theme.cart.mode = Shopify.theme.cart.mode || "redirect"; 
+Shopify.theme.cart.mode = Shopify.theme.cart.mode || "page"; 
+Shopify.theme.cart.onAdd = Shopify.theme.cart.onAdd || "redirect"; 
+
 const DEFAULT_OPTIONS = {
   events: true, 
   sections: [],
   callback: (cart) => {}
 }
+
 Shopify.theme.cart = {
   init: function () {
     window.addEventListener("cart:add", function (e) {
-      e.preventDefault();
-      if (Shopify.theme.cart.action == "redirect") {
-        location.pathname = window.Shopify.routes.cartUrl;
-      } else if (Shopify.theme.cart.action == "drawer") {
+      if(this.onAdd == "drawer") {
+        e.preventDefault();
         window.dispatchEvent(new CustomEvent("cart:drawer:open"));
       }
     });
