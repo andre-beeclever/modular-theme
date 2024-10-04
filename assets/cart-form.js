@@ -16,8 +16,7 @@ class CartForm extends HTMLElement {
       qty.addEventListener("change", async (e) => {
         this.loading = true;
         const res = await Shopify.theme.cart.update({ updates: { [qty.dataset.lineItemKey]: Number(qty.value) } }, {
-          events: true,
-          sections: [this.section]
+          events: true
         });
         this.updateView(res.sections[this.section]);
       });
