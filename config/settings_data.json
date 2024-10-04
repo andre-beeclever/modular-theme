@@ -39,6 +39,7 @@
                 "padding-inline-end": "20px"
               },
               "layout": {
+                "justify-content": "space-between"
               },
               "color_scheme": ""
             },
