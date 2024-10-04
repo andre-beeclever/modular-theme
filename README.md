@@ -179,5 +179,6 @@ As with a normal setting, it is accessed via its ID.
 
 ## Theme events
 
-- cart:add      fired when an item is added to cart
-- cart:changed  fired when the cart changed in another way than an added item.
+- cart:add      fired when an item is added to cart through cart.js functions or product form component
+- cart:changed  fired when the cart is changed through cart.js functions.
+- cart:open     updates & opens the cart drawer.

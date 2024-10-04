@@ -49,7 +49,9 @@
       {% when "minimal" %}
         {{ "minimal-skin.css" | asset_url | stylesheet_tag }}
     {% endcase %}
-
+    <script
+      defer
+      src="{{ 'utils.js' | asset_url }}"></script>
     <script
       defer
       src="{{ 'embla-carousel.umd.js' | asset_url }}"></script>

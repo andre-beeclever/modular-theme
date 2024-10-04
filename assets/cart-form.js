@@ -1,4 +1,7 @@
-
+    
+Shopify.theme = Shopify.theme || {};
+Shopify.theme.cart = Shopify.theme.cart || {};
+Shopify.theme.cart.sections = Shopify.theme.cart.sections || []
 class CartForm extends HTMLElement {
   constructor() {
     super();
@@ -6,15 +9,18 @@ class CartForm extends HTMLElement {
   connectedCallback() {
     const quantities = this.querySelectorAll(`[name="updates[]"]`);
     const removeButtons = this.querySelectorAll(`[name="line-item-remove"]`);
+    
+    Shopify.theme.cart.sections.push(this.section())
 
     quantities.forEach((qty) => {
-      qty.addEventListener("change", (e) => {
+      qty.addEventListener("change", async (e) => {
         this.loading = true;
-        this.updateCart({ [qty.dataset.lineItemKey]: Number(qty.value) })
-        .then((res) => {
-          this.updateView(res.sections[this.section]);
-          this.loading = false;
+        const res = await Shopify.theme.cart.update({ updates: { [qty.dataset.lineItemKey]: Number(qty.value) } }, {
+          events: true,
+          callback: resolve,
+          sections: [this.section]
         });
+        this.updateView(res.sections[this.section]);
       });
     });
 
@@ -25,10 +31,9 @@ class CartForm extends HTMLElement {
       });
     });
 
-    window.addEventListener("cart:add", (e) => {
-      this.loading = true;
+    window.addEventListener("cart:open", (e) => {
       this.updateView(e.detail?.sections[this.section]);
-      this.loading = false;
+      this.open()
     });
   }
 
@@ -57,22 +62,15 @@ class CartForm extends HTMLElement {
   }
 
   updateView(htmlString) {
+    this.loading = true;
     const div = document.createElement("div");
     div.innerHTML = htmlString.trim();
     const newForm = div.querySelector("cart-form");
     this.replaceWith(newForm);
     window.dispatchEvent(new CustomEvent("cart:updated"));
+    this.loading = false;
   }
 
-  async updateCart(updates) {
-    return new Promise((resolve) => {
-      Shopify.theme.cart.update({ updates }, {
-        events: true,
-        callback: resolve,
-        sections: [this.section]
-      });
-    });
-  }
   set loading(v) {
     if (v) {
       this.setAttribute("loading", v);

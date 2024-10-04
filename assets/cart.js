@@ -2,7 +2,7 @@ Shopify.theme = Shopify.theme || {};
 Shopify.theme.cart = Shopify.theme.cart || {};
 Shopify.theme.cart.mode = Shopify.theme.cart.mode || "page"; 
 Shopify.theme.cart.onAdd = Shopify.theme.cart.onAdd || "redirect"; 
-
+Shopify.theme.cart.sections = Shopify.theme.cart.sections || []
 const DEFAULT_OPTIONS = {
   events: true, 
   sections: [],
@@ -13,122 +13,107 @@ const ADD_EVENT_NAME = "cart:add"
 const CHANGE_EVENT_NAME = "cart:changed"
 
 Shopify.theme.cart = {
-  links: [],
   init: function () {
-    window.addEventListener(ADD_EVENT_NAME, function (e) {
-      // if(this.onAdd == "drawer") {
-      //   e.preventDefault();
-        // Cart drawer listens for add event event
-      // }
-    });
-    this.links = Array.from(document.querySelectorAll('a[href="/cart"]'))
-    console.log(this.links)
-  },
-  add: function (itemsToAdd, options = DEFAULT_OPTIONS) {
-    const url = window.Shopify.routes.cartAddUrl + "?sections=" + options.sections.join(",");
-    fetch(url, {
-      body: JSON.stringify(itemsToAdd),
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json", Accept: "application/json", "X-Requested-With": "XMLHttpRequest" },
-      method: "POST",
+    window.addEventListener(ADD_EVENT_NAME, (e) => {
+      e.preventDefault()
+      switch (this.onAdd) {
+        case "drawer":
+          window.dispatchEvent(new CustomEvent('cart:open', e))
+          break;
+        case "notification":
+          // Todo: show a notification with a to cart link
+          break;
+        case "popup":
+          // Todo: show a cart popup with success message and upselling
+          break;
+        case "redirect":
+        default:
+          window.location.href = window.Shopify.routes.cartUrl
+          break;
+      }
     })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        if (response.status) {
-          if (options.events) {
-            window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: {} }));
-          }
-          const error_string = `\nCART ADD FAILED \nStatus: ${response.status} \nMessage: ${response.message} \nDescription: ${response.description}`;
-          throw new Error(error_string, { cause: "Cart Error" });
-        } else {
-          options.callback(response);
-          if (options.events) {
-            window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: { ...response } }));
-          }
-        }
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
   },
-  get: function (options = DEFAULT_OPTIONS) {
-    const url = window.Shopify.routes.cartUrl + "?sections=" + options.sections.join(",");
-    fetch(window.Shopify.routes.cartUrl, {
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json", Accept: "application/json", "X-Requested-With": "XMLHttpRequest" },
+  get: async (options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartUrl + "?sections=" + [...Shopify.theme.cart.sections, ...options.sections].uniq().join(",");
+    return await fetch(url, {
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
       method: "GET",
     })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        if (response.status) {
-          const error_string = `\nCART GET FAILED \nStatus: ${response.status} \nMessage: ${response.message} \nDescription: ${response.description}`;
-          throw new Error(error_string, { cause: "Cart Error" });
-        } else {
-          options.callback(response);
-          if (options.events) {
-            window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
-          }
-        }
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
+    .then((response) => response.json())
+    .catch(console.error);
   },
-  update: function (itemsToUpdate, options = DEFAULT_OPTIONS) {
-    const url = window.Shopify.routes.cartUpdateUrl + "?sections=" + options.sections.join(",");
-    fetch(url, {
+  add: async (itemsToAdd, options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartAddUrl + "?sections=" + ([...Shopify.theme.cart.sections, ...options.sections].uniq()).join(",");
+    return await fetch(url, {
+      body: JSON.stringify(itemsToAdd),
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
+      method: "POST",
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      if(response.status){
+        throw new Error(`${response.message}: ${response.description}`)
+      }
+      options.callback(response);
+      if (options.events) {
+        window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: { ...response } }));
+        return response
+      }
+    })
+    .catch(console.error);
+  },
+  
+  update: async (itemsToUpdate, options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartUpdateUrl + "?sections=" + [...Shopify.theme.cart.sections, ...options.sections].uniq().join(",");
+    return await fetch(url, {
       body: JSON.stringify(itemsToUpdate),
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json", Accept: "application/json", "X-Requested-With": "XMLHttpRequest" },
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
       method: "POST",
     })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        if (response.status) {
-          const error_string = `\nCART UPDATE FAILED \nStatus: ${response.status} \nMessage: ${response.message} \nDescription: ${response.description}`;
-          throw new Error(error_string, { cause: "Cart Error" });
-        } else {
-          options.callback(response);
-          if (options.events) {
-            window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
-          }
-        }
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      if(response.status){
+        throw new Error(`${response.message}: ${response.description}`)
+      }
+      options.callback(response);
+      if (options.events) {
+        window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
+        return response
+      }
+    })
+    .catch(console.error);
   },
-  clear: function (options = DEFAULT_OPTIONS) {
-    const url = window.Shopify.routes.cartClearUrl + "?sections=" + options.sections.join(",");
-    fetch(url, {
+  clear: async (options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartClearUrl + "?sections=" + [...Shopify.theme.cart.sections, ...options.sections].uniq().join(",");
+    return await fetch(url, {
       body: "",
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json", Accept: "application/json", "X-Requested-With": "XMLHttpRequest" },
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
       method: "POST",
     })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        if (response.status) {
-          const error_string = `\nCART CLEAR FAILED \nStatus: ${response.status} \nMessage: ${response.message} \nDescription: ${response.description}`;
-          throw new Error(error_string, { cause: "Cart Error" });
-        } else {
-          options.callback(response);
-          if (options.events) {
-            window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
-          }
-        }
-      })
-      .catch(function (err) {
-        console.error(err);
-      });
+    .then((response) => response.json())
+    .then((response) => {
+      if(response.status){
+        throw new Error(`${response.message}: ${response.description}`)
+      }
+      options.callback(response);
+      if (options.events) {
+        window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
+        return response
+      }
+    })
+    .catch(console.error);
   },
 
 };
