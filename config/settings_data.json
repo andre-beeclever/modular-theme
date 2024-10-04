@@ -25,62 +25,6 @@
       "cart-drawer": {
         "type": "cart-drawer",
         "blocks": {
-          "container_EXYiXP": {
-            "type": "container",
-            "settings": {
-              "position": "",
-              "overflow": "",
-              "size": {
-              },
-              "spacing": {
-                "padding-block-start": "20px",
-                "padding-block-end": "20px",
-                "padding-inline-start": "20px",
-                "padding-inline-end": "20px"
-              },
-              "layout": {
-              },
-              "color_scheme": ""
-            },
-            "blocks": {
-              "popup_button_hmxbNY": {
-                "type": "popup-button",
-                "settings": {
-                  "id": "cart-drawer",
-                  "spacing": {
-                  }
-                },
-                "blocks": {
-                  "icon_Mpm4xG": {
-                    "type": "icon",
-                    "settings": {
-                      "size": {
-                      }
-                    }
-                  }
-                },
-                "block_order": [
-                  "icon_Mpm4xG"
-                ]
-              },
-              "heading_gqJrFL": {
-                "type": "heading",
-                "settings": {
-                  "heading": "Cart",
-                  "html_tag": "p",
-                  "heading_style": "h4",
-                  "alignment": "left",
-                  "spacing_bottom": "none",
-                  "text_color": "",
-                  "font_size": ""
-                }
-              }
-            },
-            "block_order": [
-              "popup_button_hmxbNY",
-              "heading_gqJrFL"
-            ]
-          },
           "container_eDGURP": {
             "type": "container",
             "settings": {
@@ -188,10 +132,30 @@
             "block_order": [
               "cart_summary_WzCi9E"
             ]
+          },
+          "heading": {
+            "type": "heading",
+            "static": true,
+            "settings": {
+              "heading": "Heading",
+              "html_tag": "p",
+              "heading_style": "h4",
+              "alignment": "center",
+              "spacing_bottom": "none",
+              "text_color": "",
+              "font_size": ""
+            }
+          },
+          "close-icon": {
+            "type": "icon",
+            "static": true,
+            "settings": {
+              "size": {
+              }
+            }
           }
         },
         "block_order": [
-          "container_EXYiXP",
           "container_eDGURP",
           "container_BiCUJp"
         ],
