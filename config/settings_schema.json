@@ -942,7 +942,7 @@
           { "label": "Show notification", "value": "notification" },
           { "label": "Show popup", "value": "popup" }
         ],
-        "default": "page"
+        "default": "redirect"
       }
     ]
   },
