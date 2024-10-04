@@ -11,8 +11,10 @@ pop-up{
   flex-direction: column;
   align-items: center;
   display:flex;
+  opacity: 1;
   &:not([open]) {
-    display: none;
+    opacity:0;
+    pointer-events: none;
   }
   background-color: #fff;
   max-width: 80%;
@@ -33,6 +35,12 @@ theme-notification{
   top: 20%;
   width: min(80vw, 400px);
   background-color: #fff;
+  will-change: transform;
+  transition: transform .3s cubic-bezier(.165,.84,.44,1);
+  transform: translateX(0%);
+  &:not([open]) {   
+    transform: translateX(100%);
+  }
 }
 /* Popup Button */
 pop-up-button {
@@ -50,7 +58,10 @@ theme-drawer{
   flex-direction: column;
   background-color: #fff;
   display:flex;
-  &:not([open]) {
-    display: none;
+  transform: translateX(0%);
+  will-change: transform;
+  transition: transform .3s cubic-bezier(.165,.84,.44,1);
+  &:not([open]) {   
+    transform: translateX(100%);
   }
 }

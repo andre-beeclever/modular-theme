@@ -184,22 +184,3 @@ textarea{
   color: #b6b6b6;
   text-decoration: line-through;
 }
-
-pop-up#cart-drawer{
-  & > * {
-    transform: translate(100%, 0%);
-    will-change: transform;
-    transition: transform .5s cubic-bezier(.165,.84,.44,1);
-  }
-  &[open] > *{
-    transform: translate(0%, 0%);
-  }
-}
-theme-notification{
-  transform: translate(100%, 0%);
-  will-change: transform;
-  transition: transform .3s cubic-bezier(.165,.84,.44,1);
-  &[open]{
-    transform: translate(0%, 0%);
-  }
-}
