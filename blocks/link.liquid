@@ -9,9 +9,15 @@
     target="_blank" rel="noopener noreferrer"
   {%- endif -%}
   {{ block.shopify_attributes }}>
-  <span>
-    {{ block.settings.label }}
-  </span>
+  {% if block.settings.icon != blank %}
+    {% render 'icon', icon: block.settings.icon %}
+  {% endif %}
+  {% if block.settings.label != blank %}
+    <span>
+      {{ block.settings.label }}
+    </span>  
+  {% endif %}
+  
 </a>
 
 
@@ -24,6 +30,26 @@
       "type": "url",
       "id": "link",
       "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "",
+          "label": "Select an icon"
+        },
+        {
+          "value": "close",
+          "label": "Close"
+        },
+        {
+          "value": "cart",
+          "label": "Cart"
+        }
+      ],
+      "default": ""
     },
     {
       "type": "text",
