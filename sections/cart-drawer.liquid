@@ -23,13 +23,6 @@
     <cart-form section="{{section.id}}">
       {% form "cart", cart %}
         <div class="cart-drawer-inner {{ section.settings | class_list }} ">
-          <div class="flex row space-between">
-            {% content_for "block", type: 'heading', id: 'heading' %}
-            <pop-up-button
-              for="{{ section.settings.id }}">
-              {% content_for "block", type: 'icon', id: 'close-icon' %}
-            </pop-up-button>
-          </div>
           {% content_for "blocks" %}
         </div>
       {% endform %}
