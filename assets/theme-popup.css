@@ -38,6 +38,7 @@ body:has(theme-drawer[open]){
     width: 100vw;
     height: 100dvh;
     background: #0002;
+    z-index: 9000;
   }
 }
 
