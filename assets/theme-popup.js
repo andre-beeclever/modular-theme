@@ -197,7 +197,7 @@ window.Shopify.theme.notify = (
   const notificationElement = document.createElement("theme-notification");
   notificationElement.id = elementId;
   const clone = template.content.cloneNode(true);
-  notificationElement.body.appendChild(clone);
+  notificationElement.appendChild(clone);
   document.body.appendChild(notificationElement);
   notificationElement.addEventListener("closed", () => {
     notificationElement.remove();
