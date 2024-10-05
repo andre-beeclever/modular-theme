@@ -2,10 +2,7 @@
 /* Flex System */
 .flex {
   display: flex;
-  --gap: 0px;
-  .gap{
-    gap: var(--gap);
-  }
+  gap: var(--gap);
   &.wrap{
     flex-wrap: wrap;
   }

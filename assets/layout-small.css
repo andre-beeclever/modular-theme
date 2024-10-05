@@ -1,9 +1,6 @@
 
 /* Flex System */
 .flex {
-  .small_gap{
-    gap: var(--gap);
-  }
   &.small_wrap{
     flex-wrap: wrap;
   }
