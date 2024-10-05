@@ -88,11 +88,11 @@ class ThemeModal extends HTMLElement {
     const hideAfter = this.hasAttribute('hide-after')
     if(hideAfter){
       const hideAfterTime = Number(this.getAttribute('hide-after') || 10000)
-      this.addEventListener('opened', () => {
-        setTimeout(() => {
-          this.close()
-        }, hideAfterTime)
-      })
+      // this.addEventListener('opened', () => {
+      //   setTimeout(() => {
+      //     this.close()
+      //   }, hideAfterTime)
+      // })
     }
     if(hideOnBlur){
       document.addEventListener("click", (e) => {
