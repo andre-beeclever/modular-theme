@@ -17,31 +17,6 @@
     "main": {
       "type": "container",
       "blocks": {
-        "popup_button_DqE9eE": {
-          "type": "modal-button",
-          "settings": {
-            "id": "cart-notification",
-            "spacing": {
-            }
-          },
-          "blocks": {
-            "heading_q8kRD3": {
-              "type": "heading",
-              "settings": {
-                "heading": "Cart notification",
-                "html_tag": "p",
-                "heading_style": "h6",
-                "alignment": "left",
-                "spacing_bottom": "none",
-                "text_color": "",
-                "font_size": ""
-              }
-            }
-          },
-          "block_order": [
-            "heading_q8kRD3"
-          ]
-        },
         "quantity_rocker_qNCwMm": {
           "type": "quantity-rocker",
           "settings": {
@@ -122,7 +97,6 @@
         }
       },
       "block_order": [
-        "popup_button_DqE9eE",
         "quantity_rocker_qNCwMm",
         "text_field_ANxHgG",
         "text_field_TmqNgV",
