@@ -64,6 +64,7 @@ theme-notification{
   will-change: transform;
   transition: transform .3s cubic-bezier(.165,.84,.44,1);
   transform: translateX(0%);
+  z-index: 9999;
   &:not([open]) {   
     transform: translateX(100%);
   }
