@@ -23,10 +23,9 @@ Shopify.theme.cart = {
           window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer'}}))
           break;
         case "notification":
-          const cartNotification = document.getElementById("cart-notification");
-          cartNotification.open()
+          window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-notification'}}))
           setTimeout(() => {
-            cartNotification.close()
+            window.dispatchEvent(new CustomEvent("modal:close", { detail: { id: 'cart-notification' }}))
           }, 10000)
           break;
         case "modal":
