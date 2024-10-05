@@ -24,9 +24,6 @@ Shopify.theme.cart = {
           break;
         case "notification":
           window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-notification'}}))
-          setTimeout(() => {
-            window.dispatchEvent(new CustomEvent("modal:close", { detail: { id: 'cart-notification' }}))
-          }, 10000)
           break;
         case "modal":
           // Todo: show a cart modal with success message and upselling
