@@ -111,7 +111,8 @@
               "cart_success_message_8DCGP3": {
                 "type": "cart-success-message",
                 "settings": {
-                  "message": "The Product was added."
+                  "message": "The Product was added.",
+                  "color_scheme": ""
                 }
               },
               "line_items_AU9C74": {
@@ -277,49 +278,41 @@
         "settings": {
           "background": "#ffffff",
           "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#121212"
+          "text": "#121212"
         }
       },
       "scheme-2": {
         "settings": {
           "background": "#000000",
           "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#27293b",
-          "secondary_button_label": "#ffffff"
+          "text": "#ffffff"
         }
       },
       "scheme-3": {
         "settings": {
           "background": "#ececec",
           "background_gradient": "",
-          "text": "#313039",
-          "button": "#121212",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#121212"
+          "text": "#313039"
         }
       },
       "scheme-4": {
         "settings": {
           "background": "#ffffff",
           "background_gradient": "linear-gradient(46deg, rgba(52, 133, 236, 0) 4%, rgba(170, 248, 219, 0) 100%)",
-          "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#27293b",
-          "secondary_button_label": "#ffffff"
+          "text": "#ffffff"
         }
       },
       "scheme-success": {
         "settings": {
-          "text": "#54c63a"
+          "background": "#c0fcc4",
+          "background_gradient": "",
+          "text": "#1e4a40"
         }
       },
       "scheme-error": {
         "settings": {
+          "background": "#FFFFFF",
+          "background_gradient": "",
           "text": "#d02e2e"
         }
       },
@@ -327,10 +320,7 @@
         "settings": {
           "background": "rgba(0,0,0,0)",
           "background_gradient": "radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 65%)",
-          "text": "#ffffff",
-          "button": "#121212",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#121212"
+          "text": "#ffffff"
         }
       }
     }
