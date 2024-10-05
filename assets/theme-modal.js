@@ -106,22 +106,10 @@ class ThemeModal extends HTMLElement {
     return this.hasAttribute("open");
   }
   open() {
-    if(!this.isScrollingEnabled){
-      window.theme.scroll.disable();
-      console.warn(`[${this.tagName}] Disabled scroll.`);
-    }
-    console.log("open")
     this.setAttribute("open", true);
-    this.dispatchEvent(new CustomEvent("opened"));
   }
   close() {
-    if(!this.isScrollingEnabled){
-      window.theme.scroll.enable();
-      console.warn(`[${this.tagName}] Enabled scroll.`);
-    }
-    console.log("close")
     this.removeAttribute("open");
-    this.dispatchEvent(new CustomEvent("closed"));
   }
   toggle() {
     console.log("toggle")
@@ -137,12 +125,20 @@ class ThemeModal extends HTMLElement {
   attributeChangedCallback(property, oldValue, newValue) {
     if (oldValue === newValue) return;
     if (property === "open") {
-      // if(newValue == "true"){
-      //   this.open()
-      // }
-      // else{
-      //   this.close()
-      // }
+      if (this.isOpen()) {
+        if(!this.isScrollingEnabled){
+          window.theme.scroll.disable();
+          console.warn(`[${this.tagName}] Disabled scroll.`);
+        }
+        this.dispatchEvent(new CustomEvent("opened"));
+      } 
+      else {
+        if(!this.isScrollingEnabled){
+          window.theme.scroll.enable();
+          console.warn(`[${this.tagName}] Enabled scroll.`);
+        }
+        this.dispatchEvent(new CustomEvent("closed"));
+      }
       return;
     } // do not sync open as it is used as a function
     this[property] = newValue;
