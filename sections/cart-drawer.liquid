@@ -22,6 +22,21 @@
   </cart-form>
 </theme-drawer>
 
+{% if request.design_mode %}
+  <script>
+    window.addEventListener("shopify:section:select", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer' } }))
+      }
+    })
+    window.addEventListener("shopify:section:deselect", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:close", { detail: { id: 'cart-drawer' } }))
+      }
+    })
+  </script>
+{% endif %}
+
 {% schema %}
 {
   "name": "Cart drawer",
