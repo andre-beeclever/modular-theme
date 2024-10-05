@@ -235,6 +235,8 @@
           "settings": {
             "control_style": "embla-simple",
             "spacing": {
+              "padding-inline-start": "40px",
+              "padding-inline-end": "40px"
             },
             "layout": {
             },
