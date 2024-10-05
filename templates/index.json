@@ -282,8 +282,8 @@
             "spacing": {
             },
             "layout": {
-              "justify-content": "between",
-              "align-items": "baseline"
+              "align-items": "baseline",
+              "justify-content": "space-between"
             },
             "color_scheme": "",
             "title": "Container"
