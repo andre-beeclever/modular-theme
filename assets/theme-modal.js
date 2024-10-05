@@ -106,12 +106,15 @@ class ThemeModal extends HTMLElement {
     return this.hasAttribute("open");
   }
   open() {
+    console.log("open")
     this.setAttribute("open", true);
   }
   close() {
+    console.log("close")
     this.removeAttribute("open");
   }
   toggle() {
+    console.log("toggle")
     if (this.isOpen()) {
       this.close();
     } else {
