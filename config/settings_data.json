@@ -126,10 +126,12 @@
                       "position": "",
                       "overflow": "",
                       "size": {
+                        "height": "100%"
                       },
                       "spacing": {
                       },
                       "layout": {
+                        "flex-direction": "column"
                       },
                       "color_scheme": "",
                       "title": "Container"
@@ -250,6 +252,13 @@
           "spacing": {
           },
           "color_scheme": ""
+        }
+      },
+      "cart-notification": {
+        "type": "cart-notification",
+        "settings": {
+          "message": "Das Produkt wurde zu deinem Warenkorb hinzugefügt.",
+          "hide_after": 10
         }
       }
     },
