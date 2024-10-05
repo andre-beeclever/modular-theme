@@ -1,4 +1,7 @@
-<theme-notification id="cart-notification" hide-after="10000">
+<theme-notification id="cart-notification" 
+  {% unless request.design_mode %}
+    hide-after="10000"
+  {% endunless %}>
   <div class="flex row middle gap-xs spacing-m">
     <p>{{ section.settings.message }}</p>
     <a href="{{ routes.cart_url }}" class="link">anzeigen</a>
@@ -7,6 +10,21 @@
     </theme-modal-button>
   </div>
 </theme-notification>
+
+{% if request.design_mode %}
+  <script>
+    window.addEventListener("shopify:section:select", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-notification' } }))
+      }
+    })
+    window.addEventListener("shopify:section:deselect", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:close", { detail: { id: 'cart-notification' } }))
+      }
+    })
+  </script>
+{% endif %}
 
 {% schema %}
   {
