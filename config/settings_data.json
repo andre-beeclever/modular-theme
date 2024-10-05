@@ -309,23 +309,18 @@
                   "spacing_bottom": "none"
                 }
               },
-              "link_h6efxB": {
-                "type": "link",
+              "modal_button_J4Fp3c": {
+                "type": "modal-button",
                 "settings": {
-                  "link": "",
-                  "icon": "",
-                  "label": "Continue shopping",
-                  "button_style": "btn btn--secondary",
-                  "small": false,
-                  "full_width": false,
-                  "open_in_new_tab": false,
-                  "spacing_bottom": "none"
+                  "id": "cart-modal",
+                  "spacing": {
+                  }
                 }
               }
             },
             "block_order": [
               "link_QqeK7L",
-              "link_h6efxB"
+              "modal_button_J4Fp3c"
             ]
           }
         },
