@@ -84,6 +84,15 @@ class ThemeModal extends HTMLElement {
   }
   connectedCallback() {
     const hideOnBlur = this.hasAttribute('hide-on-blur')
+    const hideAfter = this.hasAttribute('hide-after')
+    if(hideAfter){
+      const hideAfterTime = Number(this.getAttribute('hide-after') || 10000)
+      this.addEventListener('opened', () => {
+        setTimeout(() => {
+          this.close()
+        }, hideAfterTime)
+      })
+    }
     if(hideOnBlur){
       document.addEventListener("click", (e) => {
         if (!this.contains(e.target)) this.close();
