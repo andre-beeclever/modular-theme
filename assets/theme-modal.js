@@ -53,6 +53,7 @@ class ThemeModalButton extends HTMLElement {
     this.addEventListener("click", (e) => {
       const id = this.getAttribute("for")
       const target = document.getElementById(id) || this.closest(ThemeModalButton.TAGS.join(','))
+      console.log("target",target)
       if (!target) {
         console.warn(`[${this.tagName}] Target not found.`);
         return;
