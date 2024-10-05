@@ -88,7 +88,6 @@ class ThemeModal extends HTMLElement {
     const hideAfter = this.hasAttribute('hide-after')
     if(hideAfter){
       const hideAfterTime = Number(this.getAttribute('hide-after') || 10000)
-      this.style.setProperty("--hide-after", `${hideAfterTime}ms`)
       this.addEventListener('opened', () => {
         setTimeout(() => {
           this.close()

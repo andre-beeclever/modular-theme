@@ -77,16 +77,6 @@ theme-notification{
   &:not([open]) {   
     transform: translateX(100%);
   }
-  &::after{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left:0;
-    width: 0;
-    height: 2px;
-    background: #000;
-    animation: var(--hide-after) progress linear;
-  }
 }
 /* Modal Button */
 theme-modal-button {
