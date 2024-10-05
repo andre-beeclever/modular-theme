@@ -3,8 +3,8 @@
   <div class="line-component-image">
     {% render 'image-element', image: component.image, aspect_ratio: 1, fit: 'cover', sizes: "100px" %}
   </div>
-  <div class="flex row space-between full-width">
-    <div class="flex col space-between">
+  <div class="flex row between full-width">
+    <div class="flex col between">
       <div class="flex col">
         <p class="p spacing-bottom-2xs">{{ component.product.title }}</p>
         {% unless component.product.has_only_default_variant %}

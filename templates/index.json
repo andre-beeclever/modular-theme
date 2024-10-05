@@ -282,7 +282,7 @@
             "spacing": {
             },
             "layout": {
-              "justify-content": "space-between",
+              "justify-content": "between",
               "align-items": "baseline"
             },
             "color_scheme": "",

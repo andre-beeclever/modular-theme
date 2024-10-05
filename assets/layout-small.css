@@ -30,8 +30,8 @@
     &.small_stretch {
       align-items: stretch;
     }
-    &.small_space-between {
-      justify-content: space-between;
+    &.small_between {
+      justify-content: between;
     }
   }
   &.small_row {
@@ -60,8 +60,8 @@
     &.small_stretch {
       align-items: stretch;
     }
-    &.small_space-between {
-      justify-content: space-between;
+    &.small_between {
+      justify-content: between;
     }
   }
 }

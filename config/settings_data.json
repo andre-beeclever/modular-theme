@@ -40,7 +40,7 @@
                 "padding-inline-end": "20px"
               },
               "layout": {
-                "justify-content": "space-between"
+                "justify-content": "between"
               },
               "color_scheme": "",
               "title": "Header"

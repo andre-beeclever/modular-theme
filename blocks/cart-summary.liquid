@@ -1,11 +1,11 @@
-<div class="flex row wrap space-between spacing-bottom-xs">
+<div class="flex row wrap between spacing-bottom-xs">
   <p class="h6">{{ "cart.subtotal" | t }}</p>
   <p class="h6">{{ cart.items_subtotal_price | money }}</p>
 </div>
 {% if cart.cart_level_discount_applications.size > 0 %}
   <div class="cart-discount-applications spacing-bottom-xs">
     {% for discount_application in cart.cart_level_discount_applications %}
-      <div class="discount-application gap-xs flex row middle space-between">
+      <div class="discount-application gap-xs flex row middle between">
         <div class="flex row middle discount-application-title gap-xs">
           {% render 'icon', icon: 'discount', size: "18px" %}
           <p class="small">{{ discount_application.title }} </p>
@@ -15,7 +15,7 @@
     {% endfor %}
   </div>
 {% endif %}
-<div class="flex row wrap space-between">
+<div class="flex row wrap between">
   <p class="h6">{{ "cart.total" | t }}</p>
   <p class="h6">{{ cart.total_price | money }}</p>
 </div>
