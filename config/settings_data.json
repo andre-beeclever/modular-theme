@@ -21,7 +21,7 @@
     "font_size_small_mobile": 10,
     "button_tertiary_border_color": "#e1e1e1",
     "cart_mode": "drawer",
-    "cart_add": "notification",
+    "cart_add": "modal",
     "sections": {
       "cart-drawer": {
         "type": "cart-drawer",
