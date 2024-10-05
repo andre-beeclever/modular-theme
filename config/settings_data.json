@@ -61,7 +61,14 @@
               "modal_button_hmxbNY": {
                 "type": "modal-button",
                 "settings": {
-                  "id": "cart-drawer"
+                  "id": "cart-drawer",
+                  "icon": "",
+                  "label": "Button label",
+                  "button_style": "btn btn--primary",
+                  "small": false,
+                  "full_width": false,
+                  "open_in_new_tab": false,
+                  "spacing_bottom": "none"
                 }
               }
             },
@@ -97,7 +104,8 @@
                 "type": "cart-success-message",
                 "settings": {
                   "message": "The Product was added.",
-                  "color_scheme": ""
+                  "color_scheme": "",
+                  "hidden": true
                 }
               },
               "line_items_AU9C74": {
@@ -144,7 +152,14 @@
                       "modal_button_w7AFNc": {
                         "type": "modal-button",
                         "settings": {
-                          "id": "cart-drawer"
+                          "id": "cart-drawer",
+                          "icon": "",
+                          "label": "Button label",
+                          "button_style": "btn btn--primary",
+                          "small": false,
+                          "full_width": false,
+                          "open_in_new_tab": false,
+                          "spacing_bottom": "none"
                         }
                       }
                     },
@@ -241,7 +256,8 @@
             "type": "cart-success-message",
             "settings": {
               "message": "The Product was added.",
-              "color_scheme": ""
+              "color_scheme": "",
+              "hidden": false
             }
           },
           "container_qf8ywb": {
@@ -277,7 +293,14 @@
               "modal_button_J4Fp3c": {
                 "type": "modal-button",
                 "settings": {
-                  "id": "cart-modal"
+                  "id": "cart-modal",
+                  "icon": "",
+                  "label": "Continue shopping",
+                  "button_style": "btn btn--secondary",
+                  "small": false,
+                  "full_width": false,
+                  "open_in_new_tab": false,
+                  "spacing_bottom": "none"
                 }
               }
             },
