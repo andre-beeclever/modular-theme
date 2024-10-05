@@ -1,6 +1,6 @@
 <theme-notification id="cart-notification" hide-after="10000">
   <div class="flex row middle gap-xs spacing-m">
-    <p>Das Produkt wurde zu deinem Warenkorb hinzugefügt.</p>
+    <p>{{ section.settings.message }}</p>
     <a href="{{ routes.cart_url }}" class="link">anzeigen</a>
     <theme-modal-button class="">
       {% render 'icon', icon: 'close' %}
@@ -12,7 +12,13 @@
   {
     "name": "Cart notification",
     "settings": [
-    
+      {
+        "type": "text",
+        "id": "message",
+        "label": "Message",
+        "default": "Das Produkt wurde zu deinem Warenkorb hinzugefügt.",
+        "info": "The message shown to the customer."
+      }
     ]
   }
 {% endschema %}
