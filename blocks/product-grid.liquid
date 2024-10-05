@@ -7,7 +7,12 @@
 <div
   class="shopify-block--product-grid {{ block.settings.spacing | class_list }} color-{{ block.settings.color_scheme }}">
   <div
-    class="grid col-{{ block.settings.columns }} row-{{ block.settings.rows }} gap-{{ block.settings.gap }}">
+    class="grid 
+    col-{{ block.settings.columns }} 
+    row-{{ block.settings.rows }} 
+    small_col-{{ block.settings.small_columns }} 
+    small_row-{{ block.settings.small_rows }} 
+    gap-{{ block.settings.gap }}">
     {% if products.count > 0 %}
       {% for product in products limit: 4 %}
         {% render "product-card", product: product %}
@@ -81,6 +86,24 @@
       "step": 1,
       "label": "Rows",
       "default": 1
+    },
+    {
+      "type": "range",
+      "id": "small_columns",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "label": "Columns",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "small_rows",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "label": "Rows",
+      "default": 2
     },
     {
       "type": "select",
