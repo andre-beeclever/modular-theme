@@ -62,9 +62,9 @@
                 "type": "modal-button",
                 "settings": {
                   "id": "cart-drawer",
-                  "icon": "",
-                  "label": "Button label",
-                  "button_style": "btn btn--primary",
+                  "icon": "close",
+                  "label": "",
+                  "button_style": "",
                   "small": false,
                   "full_width": false,
                   "open_in_new_tab": false,
@@ -154,8 +154,8 @@
                         "settings": {
                           "id": "cart-drawer",
                           "icon": "",
-                          "label": "Button label",
-                          "button_style": "btn btn--primary",
+                          "label": "Continue shopping",
+                          "button_style": "link",
                           "small": false,
                           "full_width": false,
                           "open_in_new_tab": false,
