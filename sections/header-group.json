@@ -194,6 +194,7 @@
           "padding-block-end": "20px"
         },
         "layout": {
+          "align-items": "center"
         },
         "color_scheme": ""
       }
