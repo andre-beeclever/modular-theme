@@ -77,7 +77,8 @@ class ThemeModalButton extends HTMLElement {
 }
 
 customElements.define("theme-modal-button", ThemeModalButton);
-  
+
+
 class ThemeModal extends HTMLElement {
   constructor() {
     super();
