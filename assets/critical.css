@@ -21,6 +21,10 @@ body {
   text-rendering: optimizeSpeed;
 }
 
+[hidden]{
+  display:none;
+}
+
 input[type="text"],
 textarea{
   border: 1px solid #e1e1e1; 
