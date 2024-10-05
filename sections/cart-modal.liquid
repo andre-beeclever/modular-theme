@@ -4,6 +4,22 @@
   {% content_for "blocks" %}
 </theme-modal>
 
+{% if request.design_mode %}
+  <script>
+    window.addEventListener("shopify:section:select", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-modal' } }))
+      }
+    })
+    window.addEventListener("shopify:section:deselect", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:close", { detail: { id: 'cart-modal' } }))
+      }
+    })
+  </script>
+{% endif %}
+
+
 {% schema %}
 {
   "name": "Cart modal",
