@@ -83,9 +83,12 @@ class ThemeModal extends HTMLElement {
     super();
   }
   connectedCallback() {
-    document.addEventListener("click", (e) => {
-      if (!this.contains(e.target)) this.close();
-    });
+    const hideOnBlur = this.hasAttribute('hide-on-blur')
+    if(hideOnBlur){
+      document.addEventListener("click", (e) => {
+        if (!this.contains(e.target)) this.close();
+      });
+    }
     window.addEventListener('modal:open', (e) => {
       // console.log("modal:open", e.detail.id, this.id)
       if(e.detail.id == this.id) this.open();
