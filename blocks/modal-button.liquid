@@ -1,17 +1,28 @@
+
 <div class="shopify-block--modal-button">
-  <theme-modal-button
-    for="{{ block.settings.id }}"
-    class="{{ block.settings | class_list }}"
-    {{ block.shopify_attributes }}>
-    {% content_for "blocks" %}
-  </theme-modal-button>
+    <theme-modal-button
+      for="{{ block.settings.id }}"
+      class="{{ block.settings.button_style }} 
+      {% if block.settings.small %}btn--small{% endif %} 
+      {% if block.settings.full_width %}btn--full{% endif %}"
+      {{ block.shopify_attributes }}>
+      {% if block.settings.icon != blank %}
+        {% render 'icon', icon: block.settings.icon %}
+      {% endif %}
+      {% if block.settings.label != blank %}
+        <span>
+          {{ block.settings.label }}
+        </span>  
+      {% endif %}
+    </theme-modal-button>
 </div>
+
+
 
 {% schema %}
 {
   "name": "Modal button",
   "tag": null,
-  "blocks": [{ "type": "@theme" }],
   "settings": [
     {
       "type": "text",
@@ -21,9 +32,93 @@
       "info": "The ID of this modal. Enter this into any modal button to toggle this modal."
     },
     {
-      "type": "style.spacing_panel",
-      "id": "spacing",
-      "label": "Spacing"
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "",
+          "label": "Select an icon"
+        },
+        {
+          "value": "close",
+          "label": "Close"
+        },
+        {
+          "value": "cart",
+          "label": "Cart"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Button label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Style",
+      "options": [
+        {
+          "value": "btn btn--primary",
+          "label": "Primary"
+        },
+        {
+          "value": "btn btn--secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "btn btn--tertiary",
+          "label": "Tertiary"
+        },
+        {
+          "value": "link",
+          "label": "Link"
+        },
+        {
+          "value": "",
+          "label": "plain"
+        }
+      ],
+      "default": "btn btn--primary"
+    },
+    {
+      "type": "checkbox",
+      "id": "small",
+      "label": "Small",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Open this link in a new window",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Spacing bottom",
+      "options": [
+        { "value": "none", "label": "none" },
+        { "value": "2xs", "label": "2xs" },
+        { "value": "xs", "label": "xs" },
+        { "value": "s", "label": "s" },
+        { "value": "m", "label": "m" },
+        { "value": "l", "label": "l" },
+        { "value": "xl", "label": "xl" },
+        { "value": "2xl", "label": "2xl" },
+        { "value": "3xl", "label": "3xl" }
+      ],
+      "default": "none"
     }
   ],
   "presets": [
