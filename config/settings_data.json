@@ -268,6 +268,88 @@
           "message": "Das Produkt wurde zu deinem Warenkorb hinzugefügt.",
           "hide_after": 10
         }
+      },
+      "cart-modal": {
+        "type": "cart-modal",
+        "blocks": {
+          "cart_success_message_LFkjVh": {
+            "type": "cart-success-message",
+            "settings": {
+              "message": "The Product was added.",
+              "color_scheme": ""
+            }
+          },
+          "container_qf8ywb": {
+            "type": "container",
+            "settings": {
+              "position": "",
+              "overflow": "",
+              "size": {
+              },
+              "spacing": {
+              },
+              "layout": {
+                "row-gap": "10px",
+                "column-gap": "10px"
+              },
+              "color_scheme": "",
+              "title": "Container"
+            },
+            "blocks": {
+              "link_QqeK7L": {
+                "type": "link",
+                "settings": {
+                  "link": "/cart",
+                  "icon": "",
+                  "label": "Go to cart",
+                  "button_style": "btn btn--primary",
+                  "small": false,
+                  "full_width": false,
+                  "open_in_new_tab": false,
+                  "spacing_bottom": "none"
+                }
+              },
+              "link_h6efxB": {
+                "type": "link",
+                "settings": {
+                  "link": "",
+                  "icon": "",
+                  "label": "Continue shopping",
+                  "button_style": "btn btn--secondary",
+                  "small": false,
+                  "full_width": false,
+                  "open_in_new_tab": false,
+                  "spacing_bottom": "none"
+                }
+              }
+            },
+            "block_order": [
+              "link_QqeK7L",
+              "link_h6efxB"
+            ]
+          }
+        },
+        "block_order": [
+          "cart_success_message_LFkjVh",
+          "container_qf8ywb"
+        ],
+        "settings": {
+          "overflow": "",
+          "size": {
+          },
+          "spacing": {
+            "padding-block-start": "20px",
+            "padding-block-end": "20px",
+            "padding-inline-start": "20px",
+            "padding-inline-end": "20px"
+          },
+          "layout": {
+            "flex-direction": "column",
+            "align-items": "stretch"
+          },
+          "color_scheme": "",
+          "title": "Modal"
+        }
       }
     },
     "content_for_index": [
