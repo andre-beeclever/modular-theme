@@ -20,22 +20,26 @@
         "popup_button_DqE9eE": {
           "type": "popup-button",
           "settings": {
-            "id": "cart-drawer",
+            "id": "cart-notification",
             "spacing": {
             }
           },
           "blocks": {
-            "icon_FqBWfH": {
-              "type": "icon",
+            "heading_q8kRD3": {
+              "type": "heading",
               "settings": {
-                "icon": "cart",
-                "size": {
-                }
+                "heading": "Cart notification",
+                "html_tag": "p",
+                "heading_style": "h6",
+                "alignment": "left",
+                "spacing_bottom": "none",
+                "text_color": "",
+                "font_size": ""
               }
             }
           },
           "block_order": [
-            "icon_FqBWfH"
+            "heading_q8kRD3"
           ]
         },
         "quantity_rocker_qNCwMm": {
