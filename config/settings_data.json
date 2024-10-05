@@ -108,6 +108,12 @@
               "title": "Body"
             },
             "blocks": {
+              "cart_success_message_8DCGP3": {
+                "type": "cart-success-message",
+                "settings": {
+                  "message": "The Product was added."
+                }
+              },
               "line_items_AU9C74": {
                 "type": "line-items",
                 "settings": {
@@ -188,6 +194,7 @@
               }
             },
             "block_order": [
+              "cart_success_message_8DCGP3",
               "line_items_AU9C74"
             ]
           },
