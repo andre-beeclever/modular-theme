@@ -309,6 +309,20 @@
           "text": "#1e4a40"
         }
       },
+      "scheme-attention": {
+        "settings": {
+          "background": "#FCEC89",
+          "background_gradient": "",
+          "text": "#4E4712"
+        }
+      },
+      "scheme-warning": {
+        "settings": {
+          "background": "#F8D8AA",
+          "background_gradient": "",
+          "text": "#5E4716"
+        }
+      },
       "scheme-error": {
         "settings": {
           "background": "#f7d3d7",
