@@ -4,15 +4,16 @@
   lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
-    <meta
-      http-equiv="X-UA-Compatible"
-      content="IE=edge">
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1">
-    <meta
-      name="theme-color"
-      content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://cdn.shopify.com">
+
     {% if settings.cart_mode == "drawer" and request.path == routes.cart_url %}
       <script>
         const url = new URL(location);
@@ -21,11 +22,6 @@
         location.href = url.href;
       </script>
     {% endif %}
-    <link rel="canonical" href="{{ canonical_url }}">
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://cdn.shopify.com">
 
     <title>
       {{ page_title }}
