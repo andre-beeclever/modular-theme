@@ -1,0 +1,24 @@
+
+<div class="shopify-block--cart-success-message flex row gap-xs middle spacing-2xs" {{ block.shopify_attributes }}>
+  {% render 'icon', icon: 'check' %}
+  <p class="small">{{ block.settings.message }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Cart success message",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Message"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart success message"
+    }
+  ]
+}
+{% endschema %}
