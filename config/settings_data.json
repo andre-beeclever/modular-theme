@@ -61,9 +61,7 @@
               "modal_button_hmxbNY": {
                 "type": "modal-button",
                 "settings": {
-                  "id": "cart-drawer",
-                  "spacing": {
-                  }
+                  "id": "cart-drawer"
                 },
                 "blocks": {
                   "icon_r8WRrq": {
@@ -159,9 +157,7 @@
                       "modal_button_w7AFNc": {
                         "type": "modal-button",
                         "settings": {
-                          "id": "cart-drawer",
-                          "spacing": {
-                          }
+                          "id": "cart-drawer"
                         },
                         "blocks": {
                           "link_DywhVK": {
@@ -312,9 +308,7 @@
               "modal_button_J4Fp3c": {
                 "type": "modal-button",
                 "settings": {
-                  "id": "cart-modal",
-                  "spacing": {
-                  }
+                  "id": "cart-modal"
                 }
               }
             },
