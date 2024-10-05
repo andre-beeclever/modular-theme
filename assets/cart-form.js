@@ -30,6 +30,12 @@ class CartForm extends HTMLElement {
     });
     window.addEventListener("cart:add", (e) => {
       this.updateView(e.detail?.sections[this.section]);
+      this.querySelectorAll('[data-cart-success]').forEach((element) => {
+        element.show()
+        setTimeout(() => {
+          element.hide()
+        }, 10000)
+      })
     });
   }
 
