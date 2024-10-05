@@ -64,7 +64,7 @@
                       "row-gap": "0px",
                       "column-gap": "0px"
                     },
-                    "color_scheme": "scheme-d64ff18b-05a6-4c0f-85a3-edcd6de19b8c",
+                    "color_scheme": "scheme-overlay",
                     "title": "Container"
                   },
                   "blocks": {
@@ -173,7 +173,7 @@
                     "layout": {
                       "flex-direction": "column"
                     },
-                    "color_scheme": "scheme-d64ff18b-05a6-4c0f-85a3-edcd6de19b8c",
+                    "color_scheme": "scheme-overlay",
                     "title": "Container"
                   },
                   "blocks": {

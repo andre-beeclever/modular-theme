@@ -313,7 +313,17 @@
           "secondary_button_label": "#ffffff"
         }
       },
-      "scheme-d64ff18b-05a6-4c0f-85a3-edcd6de19b8c": {
+      "scheme-success": {
+        "settings": {
+          "text": "#54c63a"
+        }
+      },
+      "scheme-error": {
+        "settings": {
+          "text": "#d02e2e"
+        }
+      },
+      "scheme-overlay": {
         "settings": {
           "background": "rgba(0,0,0,0)",
           "background_gradient": "radial-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 65%)",

@@ -971,24 +971,6 @@
             "id": "text",
             "label": "Text",
             "default": "#121212"
-          },
-          {
-            "type": "color",
-            "id": "button",
-            "label": "Button",
-            "default": "#121212"
-          },
-          {
-            "type": "color",
-            "id": "button_label",
-            "label": "Button label",
-            "default": "#FFFFFF"
-          },
-          {
-            "type": "color",
-            "id": "secondary_button_label",
-            "label": "Secondary button label",
-            "default": "#121212"
           }
         ],
         "role": {
@@ -997,21 +979,15 @@
             "solid": "background",
             "gradient": "background_gradient"
           },
-          "links": "secondary_button_label",
+          "links": "text",
           "icons": "text",
-          "primary_button": "button",
-          "on_primary_button": "button_label",
-          "primary_button_border": "button",
+          "primary_button": "background",
+          "on_primary_button": "background",
+          "primary_button_border": "background",
           "secondary_button": "background",
-          "on_secondary_button": "secondary_button_label",
-          "secondary_button_border": "secondary_button_label"
+          "on_secondary_button": "background",
+          "secondary_button_border": "background"
         }
-      },
-      {
-        "type": "color",
-        "id": "color_success",
-        "label": "Success",
-        "default": "#54c63a"
       }
     ]
   },
