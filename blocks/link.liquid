@@ -1,24 +1,23 @@
-<a
-  href="{{ block.settings.link }}"
-  class="shopify-block--link
-  {{ block.settings.button_style }} 
-  spacing-bottom-{{ block.settings.spacing_bottom }}
-  {% if block.settings.small %}btn--small{% endif %} 
-   {% if block.settings.full_width %}btn--full{% endif %}"
-  {%- if block.settings.open_in_new_tab -%}
-    target="_blank" rel="noopener noreferrer"
-  {%- endif -%}
-  {{ block.shopify_attributes }}>
-  {% if block.settings.icon != blank %}
-    {% render 'icon', icon: block.settings.icon %}
-  {% endif %}
-  {% if block.settings.label != blank %}
-    <span>
-      {{ block.settings.label }}
-    </span>  
-  {% endif %}
-  
-</a>
+<div class="shopify-block--link spacing-bottom-{{ block.settings.spacing_bottom }}" {{ block.shopify_attributes }}>
+  <a
+    href="{{ block.settings.link }}"
+    class="{{ block.settings.button_style }} 
+    {% if block.settings.small %}btn--small{% endif %} 
+     {% if block.settings.full_width %}btn--full{% endif %}"
+    {%- if block.settings.open_in_new_tab -%}
+      target="_blank" rel="noopener noreferrer"
+    {%- endif -%}>
+    {% if block.settings.icon != blank %}
+      {% render 'icon', icon: block.settings.icon %}
+    {% endif %}
+    {% if block.settings.label != blank %}
+      <span>
+        {{ block.settings.label }}
+      </span>  
+    {% endif %}
+  </a>
+</div>
+
 
 
 {% schema %}
