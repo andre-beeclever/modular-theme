@@ -62,20 +62,7 @@
                 "type": "modal-button",
                 "settings": {
                   "id": "cart-drawer"
-                },
-                "blocks": {
-                  "icon_r8WRrq": {
-                    "type": "icon",
-                    "settings": {
-                      "icon": "close",
-                      "size": {
-                      }
-                    }
-                  }
-                },
-                "block_order": [
-                  "icon_r8WRrq"
-                ]
+                }
               }
             },
             "block_order": [
@@ -158,25 +145,7 @@
                         "type": "modal-button",
                         "settings": {
                           "id": "cart-drawer"
-                        },
-                        "blocks": {
-                          "link_DywhVK": {
-                            "type": "link",
-                            "settings": {
-                              "link": "",
-                              "icon": "",
-                              "label": "Continue Shopping",
-                              "button_style": "link",
-                              "small": false,
-                              "full_width": false,
-                              "open_in_new_tab": false,
-                              "spacing_bottom": "none"
-                            }
-                          }
-                        },
-                        "block_order": [
-                          "link_DywhVK"
-                        ]
+                        }
                       }
                     },
                     "block_order": [
