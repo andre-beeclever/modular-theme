@@ -126,6 +126,7 @@ class ThemeModal extends HTMLElement {
     if (oldValue === newValue) return;
     if (property === "open") {
       if (!this.isOpen()) {
+        console.log("open")
         if(!this.isScrollingEnabled){
           window.theme.scroll.disable();
           console.warn(`[${this.tagName}] Disabled scroll.`);
@@ -133,6 +134,7 @@ class ThemeModal extends HTMLElement {
         this.dispatchEvent(new CustomEvent("opened"));
       } 
       else {
+        console.log("close")
         if(!this.isScrollingEnabled){
           window.theme.scroll.enable();
           console.warn(`[${this.tagName}] Enabled scroll.`);
