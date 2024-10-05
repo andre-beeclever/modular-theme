@@ -171,7 +171,7 @@
             "link": "/cart",
             "icon": "cart",
             "label": "",
-            "button_style": "link",
+            "button_style": "",
             "small": false,
             "full_width": false,
             "open_in_new_tab": false,
