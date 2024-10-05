@@ -18,7 +18,7 @@
       "type": "container",
       "blocks": {
         "popup_button_DqE9eE": {
-          "type": "popup-button",
+          "type": "modal-button",
           "settings": {
             "id": "cart-notification",
             "spacing": {

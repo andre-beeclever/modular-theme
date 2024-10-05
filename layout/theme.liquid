@@ -103,11 +103,15 @@
   <body>
     {% sections "header-group" %}
 
+    {% sections "global-group" %}
+
     {% if settings.cart_mode == "drawer" %}
       {% section "cart-drawer" %}
     {% endif %}
     {% if settings.cart_add == "notification" %}
         {% section 'cart-notification' %}
+    {% elsif settings.cart_add == "modal" %}
+        {% section 'cart-modal' %}
     {% endif %}
 
     <main

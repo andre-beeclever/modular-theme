@@ -26,7 +26,7 @@ Shopify.theme.cart = {
           window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-notification'}}))
           break;
         case "modal":
-          // Todo: show a cart modal with success message and upselling
+          window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-modal'}}))
           break;
         case "redirect":
         default:
