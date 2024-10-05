@@ -40,7 +40,7 @@
                 "padding-inline-end": "20px"
               },
               "layout": {
-                "justify-content": "between"
+                "justify-content": "space-between"
               },
               "color_scheme": "",
               "title": "Header"
@@ -311,16 +311,16 @@
       },
       "scheme-attention": {
         "settings": {
-          "background": "#FCEC89",
+          "background": "#fcec89",
           "background_gradient": "",
-          "text": "#4E4712"
+          "text": "#4e4712"
         }
       },
       "scheme-warning": {
         "settings": {
-          "background": "#F8D8AA",
+          "background": "#f8d8aa",
           "background_gradient": "",
-          "text": "#5E4716"
+          "text": "#5e4716"
         }
       },
       "scheme-error": {
