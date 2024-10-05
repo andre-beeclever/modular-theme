@@ -311,9 +311,9 @@
       },
       "scheme-error": {
         "settings": {
-          "background": "#FFFFFF",
+          "background": "#f7d3d7",
           "background_gradient": "",
-          "text": "#d02e2e"
+          "text": "#821d25"
         }
       },
       "scheme-overlay": {
