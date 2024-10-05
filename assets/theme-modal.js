@@ -207,26 +207,3 @@ class ThemeNotification extends ThemeModal {
   }
 }
 customElements.define("theme-notification", ThemeNotification);
-
-
-// window.Shopify.theme.notify = (
-//   template
-// ) => {
-//   const notificationElement = document.createElement("theme-notification");
-//   notificationElement.setAttribute("id", `notification-${crypto.randomUUID()}`)
-//   const clone = template.content.cloneNode(true);
-//   notificationElement.appendChild(clone);
-//   document.body.appendChild(notificationElement);
-//   console.log(notificationElement.cloneNode(true))
-//   notificationElement.addEventListener("closed", () => {
-//     setTimeout(() => {
-//       notificationElement.remove();
-//     }, 1000)
-//   });
-//   setTimeout(() => {
-//     notificationElement.close();
-//   }, 10000)
-//   setTimeout(() => {
-//     notificationElement.open();
-//   }, 300)
-// };
