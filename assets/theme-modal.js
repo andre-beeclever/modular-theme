@@ -43,15 +43,15 @@ window.theme.scroll = window.theme.scroll || (function () {
   };
 })();
 
-class PopupButton extends HTMLElement {
-  static TAGS = ['pop-up','theme-alert','theme-notification', 'theme-drawer']
-  static TAG_NAMES = PopupButton.TAGS.map(tag => tag.toUpperCase())
+class ThemeModalButton extends HTMLElement {
+  static TAGS = ['theme-modal','theme-alert','theme-notification', 'theme-drawer']
+  static TAG_NAMES = ThemeModalButton.TAGS.map(tag => tag.toUpperCase())
   constructor() {
     super();
   }
   connectedCallback() {
     this.addEventListener("click", (e) => {
-      const id = this.getAttribute("for") || this.closest(PopupButton.TAGS.join(',')).id
+      const id = this.getAttribute("for") || this.closest(ThemeModalButton.TAGS.join(',')).id
       if(!id){
         console.warn(`[${this.tagName}] Target not found.`);
         return;
@@ -61,7 +61,7 @@ class PopupButton extends HTMLElement {
         console.warn(`[${this.tagName}] Target not found.`);
         return;
       }
-      if (!PopupButton.TAG_NAMES.includes(target.tagName)) {
+      if (!ThemeModalButton.TAG_NAMES.includes(target.tagName)) {
         console.warn(`[${this.tagName}] Invalid target.`);
         return;
       }
@@ -79,9 +79,9 @@ class PopupButton extends HTMLElement {
   }
 }
 
-customElements.define("pop-up-button", PopupButton);
+customElements.define("theme-modal-button", ThemeModalButton);
   
-class Popup extends HTMLElement {
+class ThemeModal extends HTMLElement {
   constructor() {
     super();
   }
@@ -89,16 +89,16 @@ class Popup extends HTMLElement {
     document.addEventListener("click", (e) => {
       if (!this.contains(e.target)) this.close();
     });
-    window.addEventListener('popup:open', (e) => {
-      // console.log("popup:open", e.detail.id, this.id)
+    window.addEventListener('ThemeModal:open', (e) => {
+      // console.log("ThemeModal:open", e.detail.id, this.id)
       if(e.detail.id == this.id) this.open();
     })
-    window.addEventListener('popup:close', (e) => {
-      // console.log("popup:close", e.detail.id, this.id)
+    window.addEventListener('ThemeModal:close', (e) => {
+      // console.log("ThemeModal:close", e.detail.id, this.id)
       if(e.detail.id == this.id) this.close();
     })
-    window.addEventListener('popup:toggle', (e) => {
-      // console.log("popup:toggle", e.detail.id, this.id)
+    window.addEventListener('ThemeModal:toggle', (e) => {
+      // console.log("ThemeModal:toggle", e.detail.id, this.id)
       if(e.detail.id == this.id) this.toggle();
     })
   }
@@ -146,9 +146,9 @@ class Popup extends HTMLElement {
     this[property] = newValue;
   }
 }
-customElements.define("pop-up", Popup);
+customElements.define("theme-modal", ThemeModal);
 
-class ThemeAlert extends Popup {
+class ThemeAlert extends ThemeModal {
   constructor() {
     super();
   }
@@ -169,7 +169,7 @@ window.Shopify.theme.alert = (
     alertElement.innerHTML = `
       <div class="${options.container.class}">
         <p>${message}</p>
-        <pop-up-button class="${options.button.class}">${options.button.label}</pop-up-button>
+        <theme-modal-button class="${options.button.class}">${options.button.label}</theme-modal-button>
       </div>
     `;
     document.body.appendChild(alertElement);
@@ -182,13 +182,13 @@ window.Shopify.theme.alert = (
   
 };
 
-class ThemeDrawer extends Popup {
+class ThemeDrawer extends ThemeModal {
   constructor() {
     super();
   }
 }
 customElements.define("theme-drawer", ThemeDrawer);
-class ThemeNotification extends Popup {
+class ThemeNotification extends ThemeModal {
   constructor() {
     super();
   }

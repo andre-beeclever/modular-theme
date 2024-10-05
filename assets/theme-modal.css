@@ -1,6 +1,6 @@
 
 theme-alert,
-pop-up{
+theme-modal{
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@ pop-up{
   max-width: 80%;
   max-height: 90dvh;
 }
-pop-up {
+theme-modal {
   justify-content: center;
 }
 theme-alert {
@@ -45,7 +45,7 @@ body::after{
   z-index: 9000;
 }
 body:has(theme-alert[open]),
-body:has(pop-up[open]),
+body:has(theme-modal[open]),
 body:has(theme-drawer[open]){
   &::after{
     pointer-events: none;
@@ -69,7 +69,7 @@ theme-notification{
   }
 }
 /* Popup Button */
-pop-up-button {
+theme-modal-button {
   display: block;
   cursor: pointer;
 }

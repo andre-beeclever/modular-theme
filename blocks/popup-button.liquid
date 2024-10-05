@@ -1,10 +1,10 @@
 <div class="shopify-block--popup-button">
-  <pop-up-button
+  <theme-modal-button
     for="{{ block.settings.id }}"
     class="{{ block.settings | class_list }}"
     {{ block.shopify_attributes }}>
     {% content_for "blocks" %}
-  </pop-up-button>
+  </theme-modal-button>
 </div>
 
 {% schema %}
