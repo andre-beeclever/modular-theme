@@ -137,12 +137,12 @@ class ThemeModal extends HTMLElement {
   attributeChangedCallback(property, oldValue, newValue) {
     if (oldValue === newValue) return;
     if (property === "open") {
-      if(newValue == "open"){
-        this.open()
-      }
-      else{
-        this.close()
-      }
+      // if(newValue == "open"){
+      //   this.open()
+      // }
+      // else{
+      //   this.close()
+      // }
       return;
     } // do not sync open as it is used as a function
     this[property] = newValue;
