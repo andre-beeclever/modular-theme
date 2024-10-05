@@ -58,8 +58,8 @@
                   "font_size": ""
                 }
               },
-              "popup_button_hmxbNY": {
-                "type": "popup-button",
+              "modal_button_hmxbNY": {
+                "type": "modal-button",
                 "settings": {
                   "id": "cart-drawer",
                   "spacing": {
@@ -82,7 +82,7 @@
             },
             "block_order": [
               "heading_gqJrFL",
-              "popup_button_hmxbNY"
+              "modal_button_hmxbNY"
             ]
           },
           "container_eDGURP": {
@@ -147,8 +147,8 @@
                           "font_size": ""
                         }
                       },
-                      "popup_button_w7AFNc": {
-                        "type": "popup-button",
+                      "modal_button_w7AFNc": {
+                        "type": "modal-button",
                         "settings": {
                           "id": "cart-drawer",
                           "spacing": {
@@ -176,7 +176,7 @@
                     },
                     "block_order": [
                       "heading_YB3dXd",
-                      "popup_button_w7AFNc"
+                      "modal_button_w7AFNc"
                     ]
                   }
                 },

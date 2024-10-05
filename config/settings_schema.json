@@ -941,7 +941,7 @@
           { "label": "Redirect", "value": "redirect" },
           { "label": "Open drawer", "value": "drawer" },
           { "label": "Show notification", "value": "notification" },
-          { "label": "Show popup", "value": "popup" }
+          { "label": "Show modal", "value": "modal" }
         ],
         "default": "redirect",
         "info": "Decide what happens when a customer adds a product to the cart."

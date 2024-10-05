@@ -182,10 +182,10 @@ As with a normal setting, it is accessed via its ID.
 #### Cart
 - cart:add      fired when an item is added to cart through cart.js functions or product form component
 - cart:changed  fired when the cart is changed through cart.js functions.
-#### Popup
-- popup:open    opens a popup specified by detail.id
-- popup:close   closes a popup specified by detail.id
-- popup:toggle  toggles a popup specified by detail.id
-### On popups
-- opened        fired when the popup is opened
-- closed        fired when the popup is closed
+#### Modal
+- modal:open    opens a modal specified by detail.id
+- modal:close   closes a modal specified by detail.id
+- modal:toggle  toggles a modal specified by detail.id
+### On modals
+- opened        fired when the modal is opened
+- closed        fired when the modal is closed

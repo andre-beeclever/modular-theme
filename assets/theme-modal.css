@@ -68,7 +68,7 @@ theme-notification{
     transform: translateX(100%);
   }
 }
-/* Popup Button */
+/* Modal Button */
 theme-modal-button {
   display: block;
   cursor: pointer;

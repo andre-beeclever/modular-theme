@@ -1,12 +1,12 @@
 <theme-modal
   id="{{ section.settings.id }}"
-  class="shopify-block--popup {{ section.settings | class_list }} {{ section.settings.overflow }} color-{{ section.settings.color_scheme }}">
+  class="shopify-block--modal {{ section.settings | class_list }} {{ section.settings.overflow }} color-{{ section.settings.color_scheme }}">
   {% content_for "blocks" %}
 </theme-modal>
 
 {% schema %}
 {
-  "name": "Popup",
+  "name": "Modal",
   "tag": "section",
   "blocks": [{ "type": "@theme" }, { "type": "@app" }],
   "settings": [
@@ -14,7 +14,7 @@
       "type": "text",
       "id": "id",
       "label": "ID",
-      "info": "The id to use in popup buttons to open this popup."
+      "info": "The id to use in modal buttons to open this modal."
     },
     {
       "type": "header",
@@ -89,13 +89,13 @@
       "type": "text",
       "id": "title",
       "label": "Name",
-      "default": "Popup",
+      "default": "Modal",
       "info": "Name the container to identify it in the theme editor."
     }
   ],
   "presets": [
     {
-      "name": "Popup"
+      "name": "Modal"
     }
   ]
 }

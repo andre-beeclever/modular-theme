@@ -20,7 +20,7 @@ Shopify.theme.cart = {
       e.preventDefault()
       switch (this.onAdd) {
         case "drawer":
-          window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
+          window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer'}}))
           break;
         case "notification":
           const cartNotification = document.getElementById("cart-notification");
@@ -29,8 +29,8 @@ Shopify.theme.cart = {
             cartNotification.close()
           }, 10000)
           break;
-        case "popup":
-          // Todo: show a cart popup with success message and upselling
+        case "modal":
+          // Todo: show a cart modal with success message and upselling
           break;
         case "redirect":
         default:
@@ -46,14 +46,14 @@ Shopify.theme.cart = {
           // console.log("Link clicked: ", target)  
           if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
               e.preventDefault(); 
-              window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
+              window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer'}}))
           }
         }
       });
       const url = new URL(location)
       const shouldOpen = url.searchParams.get('cart') == "open"
       if(shouldOpen){
-        window.dispatchEvent(new CustomEvent("popup:open", { detail: { id: 'cart-drawer'}}))
+        window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer'}}))
         url.searchParams.delete('cart')
         history.replaceState({}, "", url.href)
       }

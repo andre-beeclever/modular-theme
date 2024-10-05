@@ -1,4 +1,4 @@
-<div class="shopify-block--popup-button">
+<div class="shopify-block--modal-button">
   <theme-modal-button
     for="{{ block.settings.id }}"
     class="{{ block.settings | class_list }}"
@@ -9,7 +9,7 @@
 
 {% schema %}
 {
-  "name": "Popup button",
+  "name": "Modal button",
   "tag": null,
   "blocks": [{ "type": "@theme" }],
   "settings": [
@@ -18,7 +18,7 @@
       "id": "id",
       "label": "ID",
       "default": "cart-drawer",
-      "info": "The ID of this popup. Enter this into any popup button to toggle this popup."
+      "info": "The ID of this modal. Enter this into any modal button to toggle this modal."
     },
     {
       "type": "style.spacing_panel",
@@ -28,7 +28,7 @@
   ],
   "presets": [
     {
-      "name": "Popup button"
+      "name": "Modal button"
     }
   ]
 }
