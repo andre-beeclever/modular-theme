@@ -1,0 +1,164 @@
+
+<style>
+  .collection-grid {
+    padding: 30px;
+  }
+  .swatches {
+    padding-top: 15px;
+  }
+  .grid-item-swatch {
+    height: 40px;
+    width: 40px;
+    min-width: max-content;
+    border: 2px solid black;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .grid-item-swatch p{
+    padding: 10px;
+  }
+</style>
+
+<div class="color-{{ section.settings.color_scheme }} full-width {{ section.settings.overflow }} {{ section.settings.position }}">
+  {%- paginate collection.products by 24 -%}
+    <div class="grid collection-grid" style="--columns: 4; --gap: 30px;">
+      {%- for product in collection.products -%}
+        <div class="flex col product-grid-item">
+          {%- assign first_matched_variant = product.variants | where: 'matched', true | first -%}
+          {%- assign first_variant = product.first_available_variant | default: product.variants.first -%}
+          {%- assign product_image = first_matched_variant.image | default: product.featured_image -%}
+          <h5>{{ product.title }}</h5>
+          <a href="{{ first_variant.url | within: collection }}" class="flex col full-width">
+            {%- render 'image-element', image: product_image, aspect_ratio: 1, fit: 'cover', sizes: '25vw' -%}
+          </a>
+          {%- unless product.has_only_default_variant or product.variants.size < 2 -%}
+            <div class="flex row wrap swatches" style="--gap: 15px;">
+              {%- for option in product.options_with_values limit: 1 -%}
+                {%- for option_value in option.values -%}
+                  {%- if option_value.swatch != blank -%}
+                    <a href="{{ option_value.variant.url | within: collection }}" class="flex col grid-item-swatch" style="--background-color: {{ option_value.swatch.color }}">
+                      {%- if option_value.swatch.image != blank -%}
+                        {%- render 'image-element', image: option_value.swatch.image, sizes: '40px', aspect_ratio: 1, fit: 'cover' -%}
+                      {%- endif -%}
+                    </a>
+                    {%- else -%}
+                    <a href="{{ option_value.variant.url | within: collection }}" class="flex col grid-item-swatch">
+                      <p>{{ option_value.name }}</p>
+                    </a>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          {%- endunless -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    {{- paginate | default_pagination -}}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collection Main",
+  "tag": "section",
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page width"
+    },
+    {
+      "type": "select",
+      "id": "page_width",
+      "label": "Page width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full width"
+        },
+        {
+          "value": "page-width",
+          "label": "Page width"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "Position"
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "Position",
+      "options": [
+        {
+          "value": "",
+          "label": "static"
+        },
+        {
+          "value": "is-relative",
+          "label": "relative"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Overflow"
+    },
+    {
+      "type": "select",
+      "id": "overflow",
+      "label": "Overflow",
+      "options": [
+        {
+          "value": "",
+          "label": "visible"
+        },
+        {
+          "value": "overflow-hidden",
+          "label": "hidden"
+        },
+        {
+          "value": "overflow-scroll",
+          "label": "scroll"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "style.spacing_panel",
+      "id": "spacing",
+      "label": "Spacing"
+    },
+    {
+      "type": "style.layout_panel",
+      "id": "layout",
+      "label": "Layout",
+      "default": {
+        "flex-direction": "row",
+        "gap": "20px",
+        "justify-content": "center",
+        "align-items": "center",
+        "@media (--mobile)": {
+          "flex-wrap": "wrap"
+        }
+      }
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

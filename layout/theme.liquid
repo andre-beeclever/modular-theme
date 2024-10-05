@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="{{ 'layout-small.css' | asset_url }}" media="(max-width: 750px)">
 
     <script defer src="{{ 'utils.js' | asset_url }}"></script>
+    
     <script defer src="{{ 'embla-carousel.umd.js' | asset_url }}"></script>
     <script defer src="{{ 'embla-slider-component.js' | asset_url }}"></script>
     <link rel="stylesheet" href="{{ 'embla-slider-component.css' | asset_url }}">
@@ -59,6 +60,7 @@
 
     <script type="module" src="{{ 'quantity-rocker.js' | asset_url }}"></script>
     <link rel="stylesheet" href="{{ 'quantity-rocker.css' | asset_url }}">
+
     <script type="module" src="{{ 'theme-modal.js' | asset_url }}"></script>
     <link rel="stylesheet" href="{{ 'theme-modal.css' | asset_url }}">
 
@@ -74,6 +76,10 @@
       {% when "minimal" %}
         {{ "minimal-skin.css" | asset_url | stylesheet_tag }}
     {% endcase %}
+
+    {%- if template.name == 'product' -%}
+      <script type="module" src="{{ 'product-form.js' | asset_url }}"></script>
+    {%- endif -%}
   </head>
 
   <body>

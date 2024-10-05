@@ -120,4 +120,52 @@ class ThemeSelect extends HTMLElement {
     this[property] = newValue;
   }
 }
-customElements.define("theme-select", ThemeSelect);
+customElements.define('theme-select', ThemeSelect);
+
+class SortBySelect extends ThemeSelect {
+  constructor() {
+    super();
+  }
+  updateDeepLinking() {
+    const newUrl = new URL(location.href);
+    newUrl.searchParams.set('sort_by', this.sort_by);
+    history.replaceState(null, '', newUrl.href);
+  }
+  updateDOM(){
+    this.sort_by = this.getAttribute('value');
+    const newUrl = new URL(location.href);
+    newUrl.searchParams.set('sort_by', this.sort_by);
+    this.updateDeepLinking();
+    const section = this.closest('[data-section-id]');
+    if(!!section) {
+      const section_id = section.dataset.sectionId;
+      if(!!section_id){
+        section.classList.add('loading');
+        newUrl.searchParams.set('section_id', section_id);
+        fetch(newUrl.href, {
+          credentials: 'same-origin',
+          headers: {'X-Requested-With': 'XMLHttpRequest'},
+          method: 'GET'
+        })
+        .then(response => response.text())
+        .then(data => {
+          const template = document.createElement('template');
+          template.innerHTML = data.trim();
+          console.log('handle response TODO', template.content);
+          // TODO
+          // handle response and update
+          section.classList.remove('loading');
+        }).catch(function(err) {
+          section.classList.remove('loading');
+          console.error(err);
+        });
+      }
+    }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    const that = this;
+    super.addEventListener('change', that.updateDOM.bind(that));
+  }
+}
+customElements.define('sort-by-select', SortBySelect);
