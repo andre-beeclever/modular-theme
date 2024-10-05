@@ -8,7 +8,7 @@
 * ------------------------------------------------------------
 */
 {
-  "type": "section",
+  "type": "custom.gobal",
   "name": "Global group",
   "sections": {
     
