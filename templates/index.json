@@ -332,6 +332,9 @@
             },
             "columns": 4,
             "rows": 1,
+            "small_columns": 2,
+            "small_rows": 2,
+            "gap": "m",
             "color_scheme": ""
           }
         }
