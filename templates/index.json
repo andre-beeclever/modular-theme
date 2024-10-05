@@ -834,7 +834,9 @@
       ],
       "settings": {
         "size": {
-          "max-width": "1200px"
+          "max-width": "1200px",
+          "width": "100%",
+          "flex-grow": "1"
         },
         "spacing": {
           "padding-block-start": "0px",
