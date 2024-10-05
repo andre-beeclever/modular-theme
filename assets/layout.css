@@ -80,6 +80,78 @@
   gap: var(--gap);
   grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
   grid-template-rows: repeat(var(--rows), minmax(0, 1fr));
+  &.col-1{
+    --columns: 1;
+  }
+  &.col-2{
+    --columns: 2;
+  }
+  &.col-3{
+    --columns: 3;
+  }
+  &.col-4{
+    --columns: 4;
+  }
+  &.col-5{
+    --columns: 5;
+  }
+  &.col-6{
+    --columns: 6;
+  }
+  &.col-7{
+    --columns: 7;
+  }
+  &.col-8{
+    --columns: 8;
+  }
+  &.col-9{
+    --columns: 9;
+  }
+  &.col-10{
+    --columns: 10;
+  }
+  &.col-11{
+    --columns: 11;
+  }
+  &.col-12{
+    --columns: 12;
+  }
+  &.row-1{
+    --rows: 1;
+  }
+  &.row-2{
+    --rows: 2;
+  }
+  &.row-3{
+    --rows: 3;
+  }
+  &.row-4{
+    --rows: 4;
+  }
+  &.row-5{
+    --rows: 5;
+  }
+  &.row-6{
+    --rows: 6;
+  }
+  &.row-7{
+    --rows: 7;
+  }
+  &.row-8{
+    --rows: 8;
+  }
+  &.row-9{
+    --rows: 9;
+  }
+  &.row-10{
+    --rows: 10;
+  }
+  &.row-11{
+    --rows: 11;
+  }
+  &.row-12{
+    --rows: 12;
+  }
 }
 /* Gap */
 .gap-none{
