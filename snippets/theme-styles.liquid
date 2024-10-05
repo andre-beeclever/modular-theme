@@ -5,8 +5,16 @@
     --screen-width-span: calc(var(--screen-width-desktop) - var(--screen-width-mobile));
     --font-family-primary: {{settings.font_family_primary.family}}, {{settings.font_family_primary.fallback_families}};
     --font-family-secondary: {{settings.font_family_primary.family}}, {{settings.font_family_primary.fallback_families}};
-    --layout-gap: 15px;
     --media-background: {{ settings.media_background }};
+    --spacing-none: 0px;
+    --spacing-2xs: 4px;
+    --spacing-xs: 8px;
+    --spacing-s: 12px;
+    --spacing-m: 16px;
+    --spacing-l: 20px;
+    --spacing-xl: 28px;
+    --spacing-2xl: 40px;
+    --spacing-3xl: 60px;
   }
   {% comment %} color schemes {% endcomment %}
   {% assign scheme_classes = 'body' %}

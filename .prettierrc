@@ -7,7 +7,7 @@
   "liquidSingleQuote": false,
   "embeddedSingleQuote": false,
   "embeddedLanguageFormatting": "auto",
-  "singleAttributePerLine": true,
+  "singleAttributePerLine": false,
   "htmlWhitespaceSensitivity": "css",
   "singleLineLinkTags": true,
   "indentSchema": false,
