@@ -125,7 +125,7 @@ class ThemeModal extends HTMLElement {
   attributeChangedCallback(property, oldValue, newValue) {
     if (oldValue === newValue) return;
     if (property === "open") {
-      if (!this.isOpen()) {
+      if (newValue == "true") {
         console.log("open")
         if(!this.isScrollingEnabled){
           window.theme.scroll.disable();
