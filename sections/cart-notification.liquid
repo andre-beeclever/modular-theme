@@ -1,4 +1,4 @@
-<template id="cart-notification-template">
+<theme-notification id="cart-notification">
   <div class="flex row middle gap-xs spacing-m">
     <p>Das Produkt wurde zu deinem Warenkorb hinzugefügt.</p>
     <a href="{{ routes.cart_url }}" class="link">anzeigen</a>
@@ -6,4 +6,13 @@
       {% render 'icon', icon: 'close' %}
     </pop-up-button>
   </div>
-</template>
+</theme-notification>
+
+{% schema %}
+  {
+    "name": "Cart notification",
+    "settings": [
+    
+    ]
+  }
+{% endschema %}
