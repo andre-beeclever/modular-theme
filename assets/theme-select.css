@@ -19,7 +19,7 @@ theme-select::part(selected-value) {
   --icon-diagonal: calc(sqrt(var(--icon-diagonal-sq)) * 1px);
   display: flex;
   flex-direction: row;
-  justify-content: between;
+  justify-content: space-between;
   align-items: center;
   border: var(--border-width) solid var(--border-color);
   padding: var(--padding);

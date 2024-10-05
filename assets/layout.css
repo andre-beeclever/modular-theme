@@ -34,7 +34,7 @@
       align-items: stretch;
     }
     &.between {
-      justify-content: between;
+      justify-content: space-between;
     }
   }
   &.row {
@@ -64,7 +64,7 @@
       align-items: stretch;
     }
     &.between {
-      justify-content: between;
+      justify-content: space-between;
     }
   }
 }
