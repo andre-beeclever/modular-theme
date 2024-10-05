@@ -1,6 +1,7 @@
 
 /* Flex System */
 .flex {
+  --gap: 0px;
   display: flex;
   gap: var(--gap);
   &.wrap{
