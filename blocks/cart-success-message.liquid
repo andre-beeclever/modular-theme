@@ -1,5 +1,5 @@
 
-<div class="shopify-block--cart-success-message flex row gap-xs middle center spacing-2xs" {{ block.shopify_attributes }}>
+<div class="shopify-block--cart-success-message flex row gap-xs middle center spacing-2xs color-{{ block.settings.color_scheme }}" {{ block.shopify_attributes }}>
   {% render 'icon', icon: 'check' %}
   <p class="small">{{ block.settings.message }}</p>
 </div>
