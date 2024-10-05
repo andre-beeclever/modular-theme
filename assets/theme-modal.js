@@ -89,16 +89,16 @@ class ThemeModal extends HTMLElement {
     document.addEventListener("click", (e) => {
       if (!this.contains(e.target)) this.close();
     });
-    window.addEventListener('ThemeModal:open', (e) => {
-      // console.log("ThemeModal:open", e.detail.id, this.id)
+    window.addEventListener('modal:open', (e) => {
+      // console.log("modal:open", e.detail.id, this.id)
       if(e.detail.id == this.id) this.open();
     })
-    window.addEventListener('ThemeModal:close', (e) => {
-      // console.log("ThemeModal:close", e.detail.id, this.id)
+    window.addEventListener('modal:close', (e) => {
+      // console.log("modal:close", e.detail.id, this.id)
       if(e.detail.id == this.id) this.close();
     })
-    window.addEventListener('ThemeModal:toggle', (e) => {
-      // console.log("ThemeModal:toggle", e.detail.id, this.id)
+    window.addEventListener('modal:toggle', (e) => {
+      // console.log("modal:toggle", e.detail.id, this.id)
       if(e.detail.id == this.id) this.toggle();
     })
   }
