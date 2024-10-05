@@ -84,7 +84,8 @@ theme-notification{
     left:0;
     width: 0;
     height: 2px;
-    animation: attr(hide-after ms) progress linear;
+    background: #000;
+    animation: var(--hide-after) progress linear;
   }
 }
 /* Modal Button */
