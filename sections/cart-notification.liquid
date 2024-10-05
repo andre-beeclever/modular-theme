@@ -1,6 +1,6 @@
 <theme-notification id="cart-notification" 
-  {% unless request.design_mode %}
-    hide-after="10000"
+  {% unless request.design_mode or section.settings.hide_after == 0 %}
+    hide-after="{{ section.settings.hide_after | times: 1000 }}"
   {% endunless %}>
   <div class="flex row middle gap-xs spacing-m">
     <p>{{ section.settings.message }}</p>
@@ -36,6 +36,16 @@
         "label": "Message",
         "default": "Das Produkt wurde zu deinem Warenkorb hinzugefügt.",
         "info": "The message shown to the customer."
+      },
+      {
+        "type": "range",
+        "id": "hide_after",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "s",
+        "label": "Hide after",
+        "default": 10
       }
     ]
   }
