@@ -17,6 +17,27 @@
     "main": {
       "type": "container",
       "blocks": {
+        "popup_button_DqE9eE": {
+          "type": "popup-button",
+          "settings": {
+            "id": "cart-drawer",
+            "spacing": {
+            }
+          },
+          "blocks": {
+            "icon_FqBWfH": {
+              "type": "icon",
+              "settings": {
+                "icon": "cart",
+                "size": {
+                }
+              }
+            }
+          },
+          "block_order": [
+            "icon_FqBWfH"
+          ]
+        },
         "quantity_rocker_qNCwMm": {
           "type": "quantity-rocker",
           "settings": {
@@ -34,7 +55,8 @@
             "name": "",
             "title": "Singleline Text field",
             "pattern": "",
-            "placeholder": "Placeholder"
+            "placeholder": "Placeholder",
+            "spacing_bottom": "none"
           }
         },
         "text_field_TmqNgV": {
@@ -46,7 +68,8 @@
             "name": "",
             "title": "Multiline Text field",
             "pattern": "",
-            "placeholder": "Placeholder"
+            "placeholder": "Placeholder",
+            "spacing_bottom": "none"
           }
         },
         "select_Bcdyg8": {
@@ -95,6 +118,7 @@
         }
       },
       "block_order": [
+        "popup_button_DqE9eE",
         "quantity_rocker_qNCwMm",
         "text_field_ANxHgG",
         "text_field_TmqNgV",
