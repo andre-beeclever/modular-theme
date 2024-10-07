@@ -131,7 +131,9 @@
                       "spacing": {
                       },
                       "layout": {
-                        "flex-direction": "column"
+                        "flex-direction": "column",
+                        "row-gap": "0px",
+                        "column-gap": "0px"
                       },
                       "color_scheme": "",
                       "title": "Container"
@@ -144,7 +146,7 @@
                           "html_tag": "p",
                           "heading_style": "h6",
                           "alignment": "center",
-                          "spacing_bottom": "none",
+                          "spacing_bottom": "s",
                           "text_color": "",
                           "font_size": ""
                         }
