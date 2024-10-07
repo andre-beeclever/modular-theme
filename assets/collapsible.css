@@ -1,2 +1,0 @@
-collapsible-outer,collapsible-content,collapsible-label{display:block}collapsible-label{cursor:pointer;z-index:1;background-color:#fff;position:relative}collapsible-outer{width:100%;height:auto;transition:height .3s;position:relative;overflow:hidden}collapsible-content{z-index:0;background-color:#fff;width:100%;position:absolute;bottom:0;left:0}collapsible-outer[open] .collapsible-icon .collapsible-icon--open,collapsible-outer:not([open]) .collapsible-icon .collapsible-icon--close{display:none}
-/*# sourceMappingURL=collapsible.css.map */
