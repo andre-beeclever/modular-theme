@@ -13,7 +13,7 @@
     "build:css": "parcel build src/css/* --dist-dir=./assets --no-source-maps",
     "build:js": "parcel build src/js/* --dist-dir=./assets",
     "build:icons": "parcel build src/icons/* --dist-dir=./assets --no-source-maps",
-    "build": "npm run build:css && npm run build:js && npm run build:icons && npm run copy:fonts && npm run copy:thirdparty" 
+    "build": "npm run build:css && npm run build:js && npm run build:icons && npm run copy:thirdparty && npm run copy:fonts" 
   },
   "author": "",
   "license": "ISC",
