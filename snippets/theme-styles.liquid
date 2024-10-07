@@ -15,22 +15,22 @@
     --spacing-none-max: 0;
     --spacing-2xs-max: 4;
     --spacing-xs-max: 8;
-    --spacing-s-max: 15;
-    --spacing-m-max: 19;
-    --spacing-l-max: 28;
-    --spacing-xl-max: 53;
-    --spacing-2xl-max: 63;
-    --spacing-3xl-max: 127;
+    --spacing-s-max: 12;
+    --spacing-m-max: 16;
+    --spacing-l-max: 20;
+    --spacing-xl-max: 32;
+    --spacing-2xl-max: 40;
+    --spacing-3xl-max: 60;
 
     --spacing-none-min: 0;
     --spacing-2xs-min: 4;
     --spacing-xs-min: 8;
-    --spacing-s-min: 15;
-    --spacing-m-min: 19;
-    --spacing-l-min: 22;
-    --spacing-xl-min: 22;
-    --spacing-2xl-min: 22;
-    --spacing-3xl-min: 59;
+    --spacing-s-min: 12;
+    --spacing-m-min: 16;
+    --spacing-l-min: 20;
+    --spacing-xl-min: 32;
+    --spacing-2xl-min: 40;
+    --spacing-3xl-min: 60;
     
     --spacing-none: calc(calc(var(--spacing-none-min) * 1px) + (var(--spacing-none-max) - var(--spacing-none-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
     --spacing-2xs: calc(calc(var(--spacing-2xs-min) * 1px) + (var(--spacing-2xs-max) - var(--spacing-2xs-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
@@ -110,10 +110,14 @@
       --font-size-max: {{ settings[font_size] }};
       --font-size-optimal: calc(calc(var(--font-size-min) * 1px) + (var(--font-size-max) - var(--font-size-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
 
+      --line-height-min: {{settings[line_height]}};/* Todo: Add setting for mobile */
+      --line-height-max: {{settings[line_height]}};
+      --line-height-optimal: calc(calc(var(--line-height-min) * 1px) + (var(--line-height-max) - var(--line-height-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+      
       font-family: var({{settings[font_family]}});
       font-size: clamp(calc(var(--font-size-min) * 1px), var(--font-size-optimal), calc(var(--font-size-max) * 1px));
       font-weight: {{settings[font_weight]}};
-      line-height: {{settings[line_height]}};
+      line-height: clamp(calc(var(--line-height-min) * 1px), var(--line-height-optimal), calc(var(--line-height-max) * 1px));
       letter-spacing: 1.05px;
       margin: 0;
       color: currentColor;
@@ -121,18 +125,22 @@
   {% endfor %}
 
   {% comment %} buttons {% endcomment %}
-  {% assign button_styles = "primary,secondary,tertiary" | split: ',' %}
-  {% assign shopify_buttons = ".shopify-payment-button__button.shopify-payment-button__button--unbranded" %}
   .btn{
-    {% for button_style in button_styles %}
-      {% assign background_color = "button_" | append: button_style | append: "_background_color" %}
-      {% assign color = "button_" | append: button_style | append: "_color" %}
-      {% assign border_color = "button_" | append: button_style | append: "_border_color" %}
-      &.btn--{{button_style}}{% if button_style == "secondary" %}, {{ shopify_buttons }}{% endif %}{
-        --background-color: {{ settings[background_color] | default: "transparent" }};
-        --color: {{ settings[color] | default: "transparent" }};
-        --border-color: {{ settings[border_color] | default: "transparent" }};
-      }
-    {% endfor %}
+    &.btn--primary{
+      --background-color: {{ settings.button_primary_background_color | default: "transparent" }};
+      --color: {{ settings.button_primary_color | default: "transparent" }};
+      --border-color: {{ settings.button_primary_border_color | default: "transparent" }};
+    }
+    &.btn--secondary,
+    &.shopify-payment-button__button.shopify-payment-button__button--unbranded{
+      --background-color: {{ settings.button_secondary_background_color | default: "transparent" }};
+      --color: {{ settings.button_secondary_color | default: "transparent" }};
+      --border-color: {{ settings.button_secondary_border_color | default: "transparent" }};
+    }
+    &.btn--tertiary{
+      --background-color: {{ settings.button_tertiary_background_color | default: "transparent" }};
+      --color: {{ settings.button_tertiary_color | default: "transparent" }};
+      --border-color: {{ settings.button_tertiary_border_color | default: "transparent" }};
+    }
   }
 </style>
