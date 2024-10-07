@@ -1,6 +1,13 @@
 package.json
 package-lock.json
+
 .gitignore
+
 .DS_Store
+
 .prettierignore
 .prettierrc
+
+/src
+/node_modules
+/.husky
