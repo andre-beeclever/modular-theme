@@ -152,7 +152,6 @@ Shopify.theme.cart = {
     await fetch(prepareUrl, {
       method: "post",
     })
-    .catch(console.error);
 
     const getUrl = new URL(`${window.Shopify.routes.cartUrl}/async_shipping_rates.json`) 
     Object.entries(address).forEach(([key, value]) => getUrl.searchParams.set(`shipping_address[${key}]`, value))
@@ -160,7 +159,6 @@ Shopify.theme.cart = {
       method: "get",
     })
     .then((response) => response.json())
-    .catch(console.error);
   }
 };
 
