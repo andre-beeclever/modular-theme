@@ -6,7 +6,7 @@
 {% endcase %}
 <style>
   #shopify-block-{{ block.id }}{
-    --gap: {{ block.settings.gap | append: 'px' }}
+    --gap: {{ block.settings.gap | append: 'px' }};
     --slides-per-page: {{ block.settings.slides_per_page }};
     @media (max-width: 576px){
       --slides-per-page: {{ block.settings.slides_per_page_small }} 
