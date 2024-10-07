@@ -76,7 +76,6 @@
       font-weight: {{ font_weight }}
       src:
         local("{{ font_family }}"),
-        local("{{ font_family }}"),
         url("{{ font | font_url }}") format("woff2"),
         url("{{ font | font_url: "woff" }}") format("woff");
     }
@@ -86,7 +85,6 @@
       font-family: {{ font_family }};
       font-weight: {{ font_weight }}
       src:
-        local("{{ font_family }}"),
         local("{{ font_family }}"),
         url("{{ font | font_url }}") format("woff2"),
         url("{{ font | font_url: "woff" }}") format("woff");
@@ -109,15 +107,18 @@
       --font-size-min: {{ settings[font_size_mobile] }};
       --font-size-max: {{ settings[font_size] }};
       --font-size-optimal: calc(calc(var(--font-size-min) * 1px) + (var(--font-size-max) - var(--font-size-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
-
-      --line-height-min: {{settings[line_height]}};/* Todo: Add setting for mobile */
+      /*
+      --line-height-min: {{settings[line_height]}};
       --line-height-max: {{settings[line_height]}};
       --line-height-optimal: calc(calc(var(--line-height-min) * 1px) + (var(--line-height-max) - var(--line-height-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
-      
+      */
       font-family: var({{settings[font_family]}});
       font-size: clamp(calc(var(--font-size-min) * 1px), var(--font-size-optimal), calc(var(--font-size-max) * 1px));
       font-weight: {{settings[font_weight]}};
+      line-height: {{settings[line_height]}}; 
+      /*
       line-height: clamp(calc(var(--line-height-min) * 1px), var(--line-height-optimal), calc(var(--line-height-max) * 1px));
+      */
       letter-spacing: 1.05px;
       margin: 0;
       color: currentColor;
