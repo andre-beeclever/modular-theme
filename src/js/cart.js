@@ -90,13 +90,12 @@ Shopify.theme.cart = {
         options.callback(response);
       }
       if (options.events || true) {
-        window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: { ...response } }));
+        window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: { ...response, added_count: itemsToAdd.reduce((acc, i) => acc + Number(i.quantity), 0) } }));
         return response
       }
     })
     .catch(console.error);
   },
-  
   update: async (itemsToUpdate, options = DEFAULT_OPTIONS) => {
     const url = window.Shopify.routes.cartUpdateUrl + "?sections=" + [...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq().join(",");
     return await fetch(url, {
@@ -147,6 +146,20 @@ Shopify.theme.cart = {
     })
     .catch(console.error);
   },
-
+  prepareShippingRates: async (address) => {
+    const url = `${window.Shopify.routes.cartUrl}/cart/prepare_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
+    return await fetch(url, {
+      method: "post"
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      if(response.status){
+        throw new Error(`${response.message}: ${response.description}`)
+      }
+      return response;
+    })
+    .catch(console.error);
+  }
 };
+
 Shopify.theme.cart.init();

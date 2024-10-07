@@ -1,0 +1,2 @@
+!function(){class t extends HTMLElement{constructor(){super()}connectedCallback(){window.addEventListener("cart:changed",this.update.bind(this)),window.addEventListener("cart:add",this.increment.bind(this))}update(t){t.detail.item_count&&(this.innerHTML=`${t.detail.item_count}`)}increment(t){t.detail.added_count&&(this.innerHTML=`${parseInt(this.innerHTML)+t.detail.added_count}`)}}customElements.define("cart-count",t)}();
+//# sourceMappingURL=cart-count.js.map
