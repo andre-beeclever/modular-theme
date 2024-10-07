@@ -1,0 +1,175 @@
+{% case block.settings.source_type %}
+  {% when "product_list" %}
+    {% assign products = block.settings.product_list %}
+  {% when "collection" %}
+    {% assign products = block.settings.collection.products %}
+{% endcase %}
+<style>
+  #shopify-block-{{ block.id }}{
+    --slides-per-page: {{ block.settings.columns }};
+    @media (max-width: 576px){
+      --slides-per-page: {{ block.settings.small_columns }} 
+    }
+  }
+</style>
+<embla-slider
+  id="shopify-block-{{ block.id }}"
+  class="shopify-block--product-slider {{ block.settings.spacing | class_list }} color-{{ block.settings.color_scheme }}"
+  options="loop: {{ block.settings.loop }}, containScroll: trimSnaps, align: start"
+  auto-height
+  {% if block.settings.autoplay_speed != 0 %}
+    autoplay="{{ block.settings.autoplay_speed | times: 1000 }}"
+  {% endif %}
+  {% if block.settings.effect contains "fade" %}
+    fade
+  {% endif %}>
+  <embla-viewport>
+    <embla-slides>
+      {% if products.count > 0 %}
+        {% for product in products limit: 4 %}
+          {% render "product-card", product: product %}
+        {% endfor %}
+      {% else %}
+        {% for i in (1..4) %}
+          {% render "product-card" %}
+        {% endfor %}
+      {% endif %}
+    </embla-slides>
+  </embla-viewport>
+
+  {% if block.blocks.size > 1 %}
+    {% content_for "block", type: "slideshow-controls", id: "slideshow-controls" %}
+  {% endif %}
+
+  {% if block.blocks.size > 1 %}
+    {% content_for "block", type: "slideshow-navigation", id: "slideshow-navigation" %}
+  {% endif %}
+</embla-slider>
+
+<div
+  class="shopify-block--product-grid {{ block.settings.spacing | class_list }} color-{{ block.settings.color_scheme }}">
+  <div
+    class="grid 
+    col-{{ block.settings.columns }} 
+    row-{{ block.settings.rows }} 
+    small_col-{{ block.settings.small_columns }} 
+    small_row-{{ block.settings.small_rows }} 
+    gap-{{ block.settings.gap }}">
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product grid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Source"
+    },
+    {
+      "type": "select",
+      "id": "source_type",
+      "label": "Source type",
+      "options": [
+        {
+          "value": "product_list",
+          "label": "Product list"
+        },
+        {
+          "value": "collection",
+          "label": "Collection"
+        }
+      ],
+      "default": "product_list"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "style.size_panel",
+      "id": "size",
+      "label": "Size",
+      "default": {
+        "width": "100%",
+        "flex-grow": "1"
+      }
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "range",
+      "id": "slides_per_page",
+      "label": "Slides per page",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "number",
+      "id": "gap",
+      "label": "Gap (px)",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "effect",
+      "label": "Effect",
+      "options": [
+        {
+          "value": "fade",
+          "label": "Fade"
+        },
+        {
+          "value": "slide",
+          "label": "Slide"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay speed",
+      "min": 0,
+      "max": 7,
+      "step": 1,
+      "unit": "s",
+      "default": 0,
+      "info": "0 = off"
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product grid"
+    }
+  ]
+}
+{% endschema %}
