@@ -147,11 +147,13 @@ Shopify.theme.cart = {
     .catch(console.error);
   },
   getShippingRates: async (address) => {
-    const prepareUrl = `${window.Shopify.routes.cartUrl}/prepare_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
+    const prepareUrl = new URL(`${window.Shopify.routes.cartUrl}/prepare_shipping_rates.json`) 
+    Object.entries(address).forEach(([key, value]) => prepareUrl.searchParams.set(`shipping_address[${key}]`, value))
     await fetch(prepareUrl, {
       method: "post",
     })
-    const getUrl = `${window.Shopify.routes.cartUrl}/async_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
+    const getUrl = new URL(`${window.Shopify.routes.cartUrl}/async_shipping_rates.json`) 
+    Object.entries(address).forEach(([key, value]) => prepareUrl.searchParams.set(`shipping_address[${key}]`, value))
     return await fetch(getUrl, {
       method: "get",
     })
