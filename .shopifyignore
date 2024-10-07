@@ -8,6 +8,9 @@ package-lock.json
 .prettierignore
 .prettierrc
 
+.parcelrc
+tsconfig.json
+
 /src
 /node_modules
 /.husky
