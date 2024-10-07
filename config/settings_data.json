@@ -112,7 +112,7 @@
                 "type": "line-items",
                 "settings": {
                   "size": {
-                    "height": "auto"
+                    "height": "100%"
                   },
                   "spacing": {
                   },
