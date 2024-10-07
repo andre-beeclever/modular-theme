@@ -469,13 +469,6 @@
           "text": "#1e4a40"
         }
       },
-      "scheme-attention": {
-        "settings": {
-          "background": "#fcec89",
-          "background_gradient": "",
-          "text": "#4e4712"
-        }
-      },
       "scheme-warning": {
         "settings": {
           "background": "#f8d8aa",
