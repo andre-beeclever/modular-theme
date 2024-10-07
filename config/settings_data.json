@@ -320,6 +320,7 @@
               "size": {
               },
               "slides_per_page": 1,
+              "slides_per_page_small": 2,
               "gap": 10,
               "loop": false,
               "autoplay_speed": 0,
@@ -362,6 +363,11 @@
         "settings": {
           "overflow": "",
           "size": {
+            "width": "100%",
+            "flex-grow": "1",
+            "height": "100%",
+            "max-width": "80%",
+            "max-height": "80%"
           },
           "spacing": {
             "padding-block-start": "20px",
