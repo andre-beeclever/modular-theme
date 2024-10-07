@@ -149,7 +149,11 @@ Shopify.theme.cart = {
   prepareShippingRates: async (address) => {
     const url = `${window.Shopify.routes.cartUrl}/cart/prepare_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
     return await fetch(url, {
-      method: "post"
+      method: "post",
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
     })
     .then((response) => response.json())
     .then((response) => {
