@@ -343,6 +343,18 @@
               "modal_button_J4Fp3c"
             ]
           },
+          "heading_JNt6Nh": {
+            "type": "heading",
+            "settings": {
+              "heading": "You may also like",
+              "html_tag": "p",
+              "heading_style": "h5",
+              "alignment": "left",
+              "spacing_bottom": "none",
+              "text_color": "",
+              "font_size": ""
+            }
+          },
           "product_slider_C9wfwH": {
             "type": "product-slider",
             "settings": {
@@ -393,6 +405,7 @@
           "container_JQiq6i",
           "cart_success_message_LFkjVh",
           "container_qf8ywb",
+          "heading_JNt6Nh",
           "product_slider_C9wfwH"
         ],
         "settings": {
