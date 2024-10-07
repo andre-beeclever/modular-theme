@@ -9,10 +9,11 @@
     "disable:precommit": "rm -rf ./.husky",
     "prepare": "husky install",
     "copy:fonts": "cp src/fonts/* ./assets",
+    "copy:thirdparty": "cp src/thirdparty/* ./assets",
     "build:css": "parcel build src/css/* --dist-dir=./assets --no-source-maps",
     "build:js": "parcel build src/js/* --dist-dir=./assets",
     "build:icons": "parcel build src/icons/* --dist-dir=./assets --no-source-maps",
-    "build": "npm run build:css && npm run build:js && npm run build:icons && npm run copy:fonts"
+    "build": "npm run build:css && npm run build:js && npm run build:icons && npm run copy:fonts && npm run copy:thirdparty" 
   },
   "author": "",
   "license": "ISC",
