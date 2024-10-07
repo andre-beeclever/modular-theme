@@ -301,14 +301,6 @@
               "modal_button_jBfMta"
             ]
           },
-          "cart_success_message_LFkjVh": {
-            "type": "cart-success-message",
-            "settings": {
-              "message": "The Product was added.",
-              "color_scheme": "",
-              "hidden": false
-            }
-          },
           "container_qf8ywb": {
             "type": "container",
             "settings": {
@@ -362,7 +354,6 @@
         },
         "block_order": [
           "container_JQiq6i",
-          "cart_success_message_LFkjVh",
           "container_qf8ywb"
         ],
         "settings": {
