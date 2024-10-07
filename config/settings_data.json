@@ -308,11 +308,56 @@
               "link_QqeK7L",
               "modal_button_J4Fp3c"
             ]
+          },
+          "product_slider_C9wfwH": {
+            "type": "product-slider",
+            "settings": {
+              "source_type": "product_list",
+              "product_list": [
+
+              ],
+              "collection": "",
+              "size": {
+              },
+              "slides_per_page": 1,
+              "gap": 10,
+              "loop": false,
+              "autoplay_speed": 0,
+              "color_scheme": ""
+            },
+            "blocks": {
+              "slideshow-controls": {
+                "type": "slideshow-controls",
+                "static": true,
+                "settings": {
+                  "control_style": "embla-simple",
+                  "spacing": {
+                  },
+                  "layout": {
+                  },
+                  "color_scheme": ""
+                }
+              },
+              "slideshow-navigation": {
+                "type": "slideshow-navigation",
+                "static": true,
+                "settings": {
+                  "navigation_style": "embla-bars",
+                  "spacing": {
+                  },
+                  "color_scheme": ""
+                }
+              }
+            },
+            "block_order": [
+
+            ]
           }
         },
         "block_order": [
           "cart_success_message_LFkjVh",
-          "container_qf8ywb"
+          "container_qf8ywb",
+          "product_slider_C9wfwH"
         ],
         "settings": {
           "overflow": "",
@@ -328,8 +373,7 @@
             "flex-direction": "column",
             "align-items": "stretch"
           },
-          "color_scheme": "",
-          "title": "Modal"
+          "color_scheme": ""
         }
       }
     },
