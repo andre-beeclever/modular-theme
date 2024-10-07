@@ -43,7 +43,11 @@
     
     <link rel="stylesheet" href="{{ 'critical.css' | asset_url }}">
     <link rel="stylesheet" href="{{ 'layout.css' | asset_url }}" >
-    <link rel="stylesheet" href="{{ 'layout-small.css' | asset_url }}" media="(max-width: 750px)">
+    <link rel="stylesheet" href="{{ 'layout-small.css' | asset_url }}" media="(max-width: 576px)">
+    <link rel="stylesheet" href="{{ 'layout-medium-down.css' | asset_url }}" media="(max-width: 992px)">
+    <link rel="stylesheet" href="{{ 'layout-medium.css' | asset_url }}" media="(min-width: 577px) and (max-width: 992px)">
+    <link rel="stylesheet" href="{{ 'layout-medium-up.css' | asset_url }}" media="(min-width: 577px)">
+
 
     <script defer src="{{ 'utils.js' | asset_url }}"></script>
     

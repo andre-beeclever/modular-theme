@@ -104,8 +104,9 @@ class EmblaProgress extends HTMLElement {
 customElements.define(EMBLA_PROGRESS_NAME, EmblaProgress);
 class EmblaSlider extends HTMLElement {
   static VERSION = "1.0.0";
-  static BREAKPOINT_SMALL = "(max-width: 750px)";
-  static OPTIONS_PROPERTIES = ["options", "options-small"];
+  static BREAKPOINT_SMALL = "(max-width: 576px)";
+  static BREAKPOINT_MEDIUM = "(max-width: 992px)";
+  static OPTIONS_PROPERTIES = ["options", "options-medium", "options-small"];
 
   constructor() {
     super();
@@ -195,6 +196,10 @@ class EmblaSlider extends HTMLElement {
       ...this.options,
       container: EMBLA_CONTAINER_NAME,
       breakpoints: {
+        [EmblaSlider.BREAKPOINT_MEDIUM]: {
+          ...this.options,
+          ...this.optionsMedium,
+        },
         [EmblaSlider.BREAKPOINT_SMALL]: {
           ...this.options,
           ...this.optionsSmall,

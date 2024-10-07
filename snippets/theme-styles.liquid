@@ -6,15 +6,42 @@
     --font-family-primary: {{settings.font_family_primary.family}}, {{settings.font_family_primary.fallback_families}};
     --font-family-secondary: {{settings.font_family_primary.family}}, {{settings.font_family_primary.fallback_families}};
     --media-background: {{ settings.media_background }};
-    --spacing-none: 0px;
-    --spacing-2xs: 4px;
-    --spacing-xs: 8px;
-    --spacing-s: 12px;
-    --spacing-m: 16px;
-    --spacing-l: 20px;
-    --spacing-xl: 28px;
-    --spacing-2xl: 40px;
-    --spacing-3xl: 60px;
+    
+    --site-width: calc(var(--screen-width-desktop) * 1px);
+    --site-gutter-max: 53;
+    --site-gutter-min: 22;
+    --site-gutter: calc(calc(var(--site-gutter-min) * 1px) + (var(--site-gutter-max) - var(--site-gutter-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+
+    --spacing-none-max: 0;
+    --spacing-2xs-max: 4;
+    --spacing-xs-max: 8;
+    --spacing-s-max: 15;
+    --spacing-m-max: 19;
+    --spacing-l-max: 28;
+    --spacing-xl-max: 53;
+    --spacing-2xl-max: 63;
+    --spacing-3xl-max: 127;
+
+    --spacing-none-min: 0;
+    --spacing-2xs-min: 4;
+    --spacing-xs-min: 8;
+    --spacing-s-min: 15;
+    --spacing-m-min: 19;
+    --spacing-l-min: 22;
+    --spacing-xl-min: 22;
+    --spacing-2xl-min: 22;
+    --spacing-3xl-min: 59;
+    
+    --spacing-none: calc(calc(var(--spacing-none-min) * 1px) + (var(--spacing-none-max) - var(--spacing-none-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-2xs: calc(calc(var(--spacing-2xs-min) * 1px) + (var(--spacing-2xs-max) - var(--spacing-2xs-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-xs: calc(calc(var(--spacing-xs-min) * 1px) + (var(--spacing-xs-max) - var(--spacing-xs-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-s: calc(calc(var(--spacing-s-min) * 1px) + (var(--spacing-s-max) - var(--spacing-s-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-m: calc(calc(var(--spacing-m-min) * 1px) + (var(--spacing-m-max) - var(--spacing-m-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-l: calc(calc(var(--spacing-l-min) * 1px) + (var(--spacing-l-max) - var(--spacing-l-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-xl: calc(calc(var(--spacing-xl-min) * 1px) + (var(--spacing-xl-max) - var(--spacing-xl-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-2xl: calc(calc(var(--spacing-2xl-min) * 1px) + (var(--spacing-2xl-max) - var(--spacing-2xl-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    --spacing-3xl: calc(calc(var(--spacing-3xl-min) * 1px) + (var(--spacing-3xl-max) - var(--spacing-3xl-min)) * (100vw - calc(var(--screen-width-mobile) * 1px)) / var(--screen-width-span));
+    
   }
   {% comment %} color schemes {% endcomment %}
   {% assign scheme_classes = 'body' %}

@@ -25,7 +25,7 @@ window.theme.scroll = window.theme.scroll || (function () {
       scrollEnabled = false;
       lastScrollPosition = window.scrollY;
       document.body.style.top = -window.scrollY + "px";
-      if (window.innerWidth > 750) {
+      if (window.innerWidth > 576) {
         document.body.style.paddingRight = `${getScrollbarWidth()}px`;
       }
       document.body.style.position = "fixed";
