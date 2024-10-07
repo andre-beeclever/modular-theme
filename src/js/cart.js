@@ -158,6 +158,7 @@ Shopify.theme.cart = {
       method: "get",
     })
     .then((response) => response.json())
+    .catch(console.error);
   }
 };
 
