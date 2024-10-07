@@ -421,9 +421,9 @@
       },
       "scheme-success": {
         "settings": {
-          "background": "#c0fcc4",
+          "background": "rgba(0,0,0,0)",
           "background_gradient": "",
-          "text": "#1e4a40"
+          "text": "#04b34f"
         }
       },
       "scheme-attention": {
@@ -435,16 +435,16 @@
       },
       "scheme-warning": {
         "settings": {
-          "background": "#f8d8aa",
+          "background": "rgba(0,0,0,0)",
           "background_gradient": "",
-          "text": "#5e4716"
+          "text": "#ff9900"
         }
       },
       "scheme-error": {
         "settings": {
           "background": "rgba(0,0,0,0)",
           "background_gradient": "",
-          "text": "#d02e2e"
+          "text": "#a6192e"
         }
       },
       "scheme-overlay": {
