@@ -147,11 +147,11 @@ Shopify.theme.cart = {
     .catch(console.error);
   },
   getShippingRates: async (address) => {
-    const prepareUrl = `${window.Shopify.routes.cartUrl}/cart/prepare_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
+    const prepareUrl = `${window.Shopify.routes.cartUrl}/prepare_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
     await fetch(prepareUrl, {
       method: "post",
     })
-    const getUrl = `/{locale}/cart/async_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
+    const getUrl = `${window.Shopify.routes.cartUrl}/async_shipping_rates.json?shipping_address[zip]=${address.zip}&shipping_address[country]=${address.country}&shipping_address[province]=${address.province}`
     return await fetch(getUrl, {
       method: "get",
     })
