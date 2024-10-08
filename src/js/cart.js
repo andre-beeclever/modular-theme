@@ -145,20 +145,6 @@ Shopify.theme.cart = {
       }
     })
     .catch(console.error);
-  },
-  getShippingRates: async (address) => {
-    const prepareUrl = new URL(`${location.origin}${window.Shopify.routes.cartUrl}/prepare_shipping_rates.json`) 
-    Object.entries(address).forEach(([key, value]) => prepareUrl.searchParams.set(`shipping_address[${key}]`, value))
-    await fetch(prepareUrl, {
-      method: "post",
-    })
-    
-    const getUrl = new URL(`${location.origin}${window.Shopify.routes.cartUrl}/async_shipping_rates.json`) 
-    Object.entries(address).forEach(([key, value]) => getUrl.searchParams.set(`shipping_address[${key}]`, value))
-    return await fetch(getUrl, {
-      method: "get",
-    })
-    .then((response) => response.json())
   }
 };
 

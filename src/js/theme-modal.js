@@ -3,19 +3,7 @@ window.theme.scroll = window.theme.scroll || (function () {
   let lastScrollPosition = 0;
   let scrollEnabled = true;
 
-  const getScrollbarWidth = () => {
-    let scrollDiv = document.createElement("div");
-    scrollDiv.className = "scrollbar-measure";
-    document.body.appendChild(scrollDiv);
-  
-    // Get the scrollbar width
-    const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-  
-    // Delete the div
-    document.body.removeChild(scrollDiv);
-
-    return scrollbarWidth;
-  }
+  const getScrollbarWidth = () => window.innerWidth - document.documentElement.clientWidth;
 
   return {
     isEnabled() {
