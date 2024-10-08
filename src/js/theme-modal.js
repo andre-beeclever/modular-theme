@@ -10,11 +10,12 @@ window.theme.scroll = window.theme.scroll || (function () {
       return scrollEnabled;
     },
     disable: () => {
+      const scrollbarWidth = getScrollbarWidth()
       scrollEnabled = false;
       lastScrollPosition = window.scrollY;
       document.body.style.top = -window.scrollY + "px";
       if (window.innerWidth > 576) {
-        document.body.style.paddingRight = `${getScrollbarWidth()}px`;
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
       }
       document.body.style.position = "fixed";
     },
