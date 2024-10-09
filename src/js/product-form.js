@@ -27,19 +27,22 @@ class ProductForm extends HTMLElement {
   get section() {
     return this.getAttribute("section") || "product-main";
   }
-  updateView() {
-    const productUrlInput = this.querySelector(`form [name="url"]`);
-    const variantIdInput = this.querySelector(`form [name="id"]`);
-    const sellingPlanInput = this.querySelector(`form [name="selling_plan"]`);
-    const fetchUrl = new URL(location);
-    fetchUrl.pathname = productUrlInput.value;
-    if(!!variantIdInput?.value) {
-      fetchUrl.searchParams.set('variant', variantIdInput.value);
+  updateURL() {
+    const newUrl = new URL(location);
+    if(!!this.productUrlInput){
+      newUrl.pathname = this.productUrlInput.value;
     }
-    if(!!sellingPlanInput?.value) {
-      fetchUrl.searchParams.set('selling_plan', sellingPlanInput.value);
+    if(!!this.variantIdInput && this.variantIdInput.value && !this.variantIdInput.disabled) {
+      newUrl.searchParams.set('variant', this.variantIdInput.value);
     }
-    history.replaceState(null, "", fetchUrl.href);
+    if(!!this.sellingPlanInput && this.sellingPlanInput.value && !this.sellingPlanInput.disabled) {
+      newUrl.searchParams.set('selling_plan', this.sellingPlanInput.value);
+    }
+    history.replaceState(null, "", newUrl.href);
+    return newUrl;
+  }
+  updateDOM(callback) {
+    const fetchUrl = this.updateURL();
     fetchUrl.searchParams.set('sections', this.section);
     this.loading = true;
     fetch(fetchUrl.href)
@@ -48,8 +51,8 @@ class ProductForm extends HTMLElement {
       const data = res[this.section];
       const template = document.createElement("template");
       template.innerHTML = data.trim();
-      const new_form = template.content.querySelector('product-form');
-      this.replaceWith(new_form);
+      const newDOM = template.content.querySelector('product-form');
+      callback(this, newDOM)
       this.loading = false;
     })
     .catch((err) => {
@@ -57,11 +60,22 @@ class ProductForm extends HTMLElement {
       this.loading = false;
     });
   }
+  updateVariant() {
+    this.updateDOM((oldDOM, newDOM) => {
+      oldDOM.replaceWith(newDOM);
+    });
+  }
+  updateSellingplan() {
+    this.updateDOM((oldDOM, newDOM) => {
+      oldDOM.replaceWith(newDOM);
+    });
+  }
   connectedCallback() {
-    const variantIdInput = this.querySelector(`form [name="id"]`);
-    const sellingPlanInput = this.querySelector(`form [name="selling_plan"]`);
-    variantIdInput?.addEventListener('input', this.updateView.bind(this));
-    sellingPlanInput?.addEventListener('input', this.updateView.bind(this));
+    this.productUrlInput = this.querySelector(`form [name="url"]`);
+    this.variantIdInput = this.querySelector(`form [name="id"]`);
+    this.sellingPlanInput = this.querySelector(`form [name="selling_plan"]`);
+    this.variantIdInput?.addEventListener('input', this.updateVariant.bind(this));
+    this.sellingPlanInput?.addEventListener('input', this.updateSellingplan.bind(this));
   }
 }
 customElements.define("product-form", ProductForm);
