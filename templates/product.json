@@ -79,21 +79,21 @@
                 "font_size": ""
               }
             },
-            "product_sellingplans_NxRBmP": {
-              "type": "product-sellingplans",
+            "product_variants_UcdALU": {
+              "type": "product-variants",
               "settings": {
               }
             },
-            "product_variants_UcdALU": {
-              "type": "product-variants",
+            "product_sellingplans_NxRBmP": {
+              "type": "product-sellingplans",
               "settings": {
               }
             }
           },
           "block_order": [
             "heading_NhJqMg",
-            "product_sellingplans_NxRBmP",
-            "product_variants_UcdALU"
+            "product_variants_UcdALU",
+            "product_sellingplans_NxRBmP"
           ]
         }
       },
