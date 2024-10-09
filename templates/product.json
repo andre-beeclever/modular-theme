@@ -25,7 +25,8 @@
             },
             "layout": {
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "image_aHdeep": {
@@ -62,7 +63,8 @@
               "flex-direction": "column",
               "align-items": "flex-start"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "heading_NhJqMg": {
@@ -77,6 +79,11 @@
                 "font_size": ""
               }
             },
+            "product_sellingplans_NxRBmP": {
+              "type": "product-sellingplans",
+              "settings": {
+              }
+            },
             "product_variants_UcdALU": {
               "type": "product-variants",
               "settings": {
@@ -85,6 +92,7 @@
           },
           "block_order": [
             "heading_NhJqMg",
+            "product_sellingplans_NxRBmP",
             "product_variants_UcdALU"
           ]
         }
