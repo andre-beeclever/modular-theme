@@ -3,13 +3,16 @@
 {% if product.requires_selling_plan and selected_selling_plan_allocation == blank %}
   {% assign selected_selling_plan_allocation = current_variant.selling_plan_allocations.first %}
 {% endif %}
-<h1>{{ current_variant.selected_selling_plan_allocation }}</h1>
-<h1>{{ current_variant.selling_plan_allocations.first }}</h1>
+
+<style>
+  
+</style>
+
 <selling-plan-picker selected_plan="{{ selected_selling_plan_allocation.selling_plan.id }}" class="flex col full-width selling_plan-picker{% if current_variant.selling_plan_allocations.size < 1 %} hide-block{%- endif -%}">
   <input type="text" hidden name="selling_plan"{% if selected_selling_plan_allocation != blank %} value="{{ selected_selling_plan_allocation.selling_plan.id }}"{% else %} disabled{% endif %}>
   {% if current_variant.selling_plan_allocations.size > 0 %}
     <div class="purchase_options flex col full-width">
-      {% unless product.requires_selling_plan %}
+      {% unless current_variant.requires_selling_plan %}
         <input hidden id="purchase-onetime" type="radio" name="purchase-option" {% unless selected_selling_plan_allocation != blank %} checked{% endunless %} value="onetime">
         <label for="purchase-onetime" class="purchase_option-button purchase_option-button-onetime flex row middle full-width">
           One Time Purchase
