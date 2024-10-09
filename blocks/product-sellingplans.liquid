@@ -19,7 +19,7 @@
         {% assign selling_plan_group = product.selling_plan_groups | where: "id", selling_plan_group_id | first %}
         {% assign selling_plan_allocations = current_variant.selling_plan_allocations | where: "selling_plan_group_id", selling_plan_group.id %}
         <input hidden id="purchase-group-{{ forloop.index }}" type="radio" name="purchase-option" {% if selected_selling_plan_allocation.selling_plan_group_id == selling_plan_group_id %} checked{% endif %} value="{{ selling_plan_group.name }}">
-        <label for="purchase-group-{{ forloop.index }}}" class="purchase_option-button purchase_option-button-sellingplan-group flex col full-width">
+        <label for="purchase-group-{{ forloop.index }}" class="purchase_option-button purchase_option-button-sellingplan-group flex col full-width">
           Sellingplan Group: {{ selling_plan_group.name }}
         </label>
         <div class="flex col purchase_option-content">
