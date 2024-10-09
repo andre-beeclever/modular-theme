@@ -1,0 +1,103 @@
+<theme-modal
+  id="{{ section.settings.id }}"
+  class="shopify-block--modal {{ section.settings | class_list }} {{ section.settings.overflow }} color-{{ section.settings.color_scheme }}">
+  {% content_for "blocks" %}
+</theme-modal>
+
+
+{% schema %}
+{
+  "name": "Modal",
+  "tag": "section",
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "ID",
+      "info": "The id to use in modal buttons to open this modal."
+    },
+    {
+      "type": "header",
+      "content": "Overflow"
+    },
+    {
+      "type": "select",
+      "id": "overflow",
+      "label": "Overflow",
+      "options": [
+        {
+          "value": "",
+          "label": "visible"
+        },
+        {
+          "value": "overflow-hidden",
+          "label": "hidden"
+        },
+        {
+          "value": "overflow-scroll",
+          "label": "scroll"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "style.size_panel",
+      "id": "size",
+      "label": "Size",
+      "default": {
+        "width": "auto",
+
+        "@media (--mobile)": {
+          "width": "100%"
+        }
+      }
+    },
+    {
+      "type": "style.spacing_panel",
+      "id": "spacing",
+      "label": "Spacing"
+    },
+    {
+      "type": "style.layout_panel",
+      "id": "layout",
+      "label": "Layout",
+      "default": {
+        "flex-direction": "row",
+        "gap": "20px",
+        "justify-content": "center",
+        "align-items": "center",
+        "@media (--mobile)": {
+          "flex-wrap": "wrap"
+        }
+      }
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Advanced"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Name",
+      "default": "Modal",
+      "info": "Name the container to identify it in the theme editor."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Modal"
+    }
+  ]
+}
+{% endschema %}

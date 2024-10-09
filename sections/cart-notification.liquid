@@ -1,0 +1,52 @@
+<theme-notification id="cart-notification" 
+  {% unless request.design_mode or section.settings.hide_after == 0 %}
+    hide-after="{{ section.settings.hide_after | times: 1000 }}"
+  {% endunless %}>
+  <div class="flex row middle gap-xs spacing-m">
+    <p>{{ section.settings.message }}</p>
+    <a href="{{ routes.cart_url }}" class="link">anzeigen</a>
+    <theme-modal-button class="">
+      {% render 'icon', icon: 'close' %}
+    </theme-modal-button>
+  </div>
+</theme-notification>
+
+{% if request.design_mode %}
+  <script>
+    window.addEventListener("shopify:section:select", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-notification' } }))
+      }
+    })
+    window.addEventListener("shopify:section:deselect", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:close", { detail: { id: 'cart-notification' } }))
+      }
+    })
+  </script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Cart notification",
+    "settings": [
+      {
+        "type": "text",
+        "id": "message",
+        "label": "Message",
+        "default": "Das Produkt wurde zu deinem Warenkorb hinzugefügt.",
+        "info": "The message shown to the customer."
+      },
+      {
+        "type": "range",
+        "id": "hide_after",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "s",
+        "label": "Hide after",
+        "default": 10
+      }
+    ]
+  }
+{% endschema %}

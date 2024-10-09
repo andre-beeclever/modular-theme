@@ -1,0 +1,42 @@
+<div class="shopify-block--theme-icon">
+  {% render 'icon', icon: block.settings.icon %}
+</div>
+
+{% schema %}
+{
+  "name": "Icon",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "options": [
+        {
+          "value": "",
+          "label": "Select an icon"
+        },
+        {
+          "value": "close",
+          "label": "Close"
+        },
+        {
+          "value": "cart",
+          "label": "Cart"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "style.size_panel",
+      "id": "size",
+      "label": "Size"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon"
+    }
+  ]
+}
+{% endschema %}

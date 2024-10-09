@@ -64,7 +64,8 @@
                       "row-gap": "0px",
                       "column-gap": "0px"
                     },
-                    "color_scheme": "scheme-d64ff18b-05a6-4c0f-85a3-edcd6de19b8c"
+                    "color_scheme": "scheme-overlay",
+                    "title": "Container"
                   },
                   "blocks": {
                     "heading_LGHbcm": {
@@ -92,6 +93,7 @@
                       "type": "link",
                       "settings": {
                         "link": "",
+                        "icon": "",
                         "label": "Primary button label",
                         "button_style": "btn btn--primary",
                         "small": false,
@@ -171,7 +173,8 @@
                     "layout": {
                       "flex-direction": "column"
                     },
-                    "color_scheme": "scheme-d64ff18b-05a6-4c0f-85a3-edcd6de19b8c"
+                    "color_scheme": "scheme-overlay",
+                    "title": "Container"
                   },
                   "blocks": {
                     "heading_7iJ6Fw": {
@@ -199,6 +202,7 @@
                       "type": "link",
                       "settings": {
                         "link": "",
+                        "icon": "",
                         "label": "Primary button label",
                         "button_style": "btn btn--primary",
                         "small": false,
@@ -231,6 +235,8 @@
           "settings": {
             "control_style": "embla-simple",
             "spacing": {
+              "padding-inline-start": "40px",
+              "padding-inline-end": "40px"
             },
             "layout": {
             },
@@ -278,10 +284,11 @@
             "spacing": {
             },
             "layout": {
-              "justify-content": "space-between",
-              "align-items": "baseline"
+              "align-items": "baseline",
+              "justify-content": "space-between"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "heading_EiHThL": {
@@ -300,6 +307,7 @@
               "type": "link",
               "settings": {
                 "link": "",
+                "icon": "",
                 "label": "View All",
                 "button_style": "btn btn--tertiary",
                 "small": true,
@@ -326,7 +334,9 @@
             },
             "columns": 4,
             "rows": 1,
-            "gap": 20,
+            "small_columns": 2,
+            "small_rows": 2,
+            "gap": "m",
             "color_scheme": ""
           }
         }
@@ -340,7 +350,6 @@
         "overflow": "",
         "size": {
           "width": "auto",
-          "flex-grow": "",
           "max-width": "1200px"
         },
         "spacing": {
@@ -379,7 +388,8 @@
               "row-gap": "0px",
               "column-gap": "0px"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "heading_HVURpU": {
@@ -419,6 +429,7 @@
               "type": "link",
               "settings": {
                 "link": "",
+                "icon": "",
                 "label": "Secondary button label",
                 "button_style": "btn btn--primary",
                 "small": false,
@@ -533,7 +544,8 @@
                   "row-gap": "0px",
                   "column-gap": "0px"
                 },
-                "color_scheme": "scheme-1"
+                "color_scheme": "scheme-1",
+                "title": "Container"
               },
               "blocks": {
                 "heading_68NnnY": {
@@ -573,6 +585,7 @@
                   "type": "link",
                   "settings": {
                     "link": "",
+                    "icon": "",
                     "label": "Primary button label",
                     "button_style": "btn btn--primary",
                     "small": false,
@@ -603,7 +616,6 @@
         "position": "is-relative",
         "overflow": "overflow-hidden",
         "size": {
-          "max-width": ""
         },
         "spacing": {
         },
@@ -651,7 +663,8 @@
               "row-gap": "0px",
               "column-gap": "0px"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "heading_N3jWWg": {
@@ -691,6 +704,7 @@
               "type": "link",
               "settings": {
                 "link": "",
+                "icon": "",
                 "label": "Secondary button label",
                 "button_style": "btn btn--primary",
                 "small": false,
@@ -820,7 +834,9 @@
       ],
       "settings": {
         "size": {
-          "max-width": "1200px"
+          "max-width": "1200px",
+          "width": "100%",
+          "flex-grow": "1"
         },
         "spacing": {
           "padding-block-start": "0px",
@@ -850,7 +866,8 @@
             },
             "layout": {
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "image_PAgyVb": {
@@ -902,7 +919,8 @@
                       "column-gap": "0px",
                       "align-items": "flex-start"
                     },
-                    "color_scheme": "scheme-1"
+                    "color_scheme": "scheme-1",
+                    "title": "Container"
                   },
                   "blocks": {
                     "text_DpeeMz": {
@@ -943,7 +961,8 @@
             },
             "layout": {
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "image_APQMJa": {
@@ -991,7 +1010,8 @@
                       "column-gap": "0px",
                       "align-items": "flex-start"
                     },
-                    "color_scheme": "scheme-4"
+                    "color_scheme": "scheme-4",
+                    "title": "Container"
                   },
                   "blocks": {
                     "heading_qY6iLK": {
@@ -1019,6 +1039,7 @@
                       "type": "link",
                       "settings": {
                         "link": "",
+                        "icon": "",
                         "label": "Primary button label",
                         "button_style": "btn btn--primary",
                         "small": false,
@@ -1179,7 +1200,8 @@
               "row-gap": "0px",
               "column-gap": "0px"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "image_JkgpGY": {
@@ -1221,6 +1243,7 @@
               "type": "link",
               "settings": {
                 "link": "",
+                "icon": "",
                 "label": "Tertiary button label",
                 "button_style": "btn btn--tertiary",
                 "small": true,
@@ -1253,7 +1276,8 @@
               "row-gap": "0px",
               "column-gap": "0px"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "image_eRwJRW": {
@@ -1295,6 +1319,7 @@
               "type": "link",
               "settings": {
                 "link": "",
+                "icon": "",
                 "label": "Tertiary button label",
                 "button_style": "btn btn--tertiary",
                 "small": true,
@@ -1327,7 +1352,8 @@
               "row-gap": "0px",
               "column-gap": "0px"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "image_4FzUk4": {
@@ -1369,6 +1395,7 @@
               "type": "link",
               "settings": {
                 "link": "",
+                "icon": "",
                 "label": "Tertiary button label",
                 "button_style": "btn btn--tertiary",
                 "small": true,
@@ -1400,7 +1427,8 @@
         "spacing": {
           "padding-block-start": "0px",
           "padding-block-end": "60px",
-          "padding-inline-end": "40px"
+          "padding-inline-end": "40px",
+          "padding-inline-start": "40px"
         },
         "layout": {
         },

@@ -1,0 +1,42 @@
+
+<div {% if block.settings.hidden %}hidden{% endif %} data-cart-success class="shopify-block--cart-success-message flex row gap-xs middle center spacing-2xs color-{{ block.settings.color_scheme }}" {{ block.shopify_attributes }}>
+  {% render 'icon', icon: 'check' %}
+  <p class="small">{{ block.settings.message }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Cart success message",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Message",
+      "default": "The Product was added."
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-success"
+    },
+    {
+      "type": "checkbox",
+      "id": "hidden",
+      "label": "Hidden",
+      "default": true,
+      "info": "If this option is checked the message will only be shown when triggered by theme's code."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cart success message"
+    }
+  ]
+}
+{% endschema %}

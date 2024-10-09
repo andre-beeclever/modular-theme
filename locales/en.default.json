@@ -27,8 +27,7 @@
     "total": "Total",
     "incl_vat": "incl. VAT",
     "excl_vat": "excl. VAT",
-    "shipping": "Shipping",
-    "calculated_at_checkout": "calculated at checkout",
+    "shipping_and_vat": "Shipping, taxes, and discount codes calculated at checkout.",
     "line_item": {
       "hide_items": "Hide {{ count }} items",
       "show_items": "Hide {{ count }} items"

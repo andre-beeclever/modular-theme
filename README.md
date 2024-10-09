@@ -175,3 +175,17 @@ As with a normal setting, it is accessed via its ID.
 - variables & functions should be formatted as `camelCase`
 - do not use `var` use `const` where ever possible and `let` when necessary
 - use arrow functions `() => {}` where possible
+
+
+## Theme events
+### On window
+#### Cart
+- cart:add      fired when an item is added to cart through cart.js functions or product form component
+- cart:changed  fired when the cart is changed through cart.js functions.
+#### Modal
+- modal:open    opens a modal specified by detail.id
+- modal:close   closes a modal specified by detail.id
+- modal:toggle  toggles a modal specified by detail.id
+### On modals
+- opened        fired when the modal is opened
+- closed        fired when the modal is closed

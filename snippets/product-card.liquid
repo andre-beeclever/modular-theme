@@ -7,7 +7,7 @@
 {% assign fit = "cover" %}
 {% capture placeholder %}product-{% cycle '1', '2', '3', '4', '5', '6' %}{% endcapture %}
 <div class="flex col">
-
+  <div class="spacing-bottom-xs">
     {% assign product_image = product.featured_image | default: blank %}
     {% render "image-element",
       image: product_image,
@@ -17,13 +17,13 @@
       sizes: "25vw",
       placeholder: placeholder
     %}
-    
+  </div>
   {% assign product_title = product.title | default: "Product placeholder" %}
   {% comment %} {% assign product_url = product.url | default: "#" %} {% endcomment %}
   {% comment %} <a href="{{ product_url }}"> {% endcomment %}
-    <p class="h5 spacing-top-8">{{ product_title }}</p>
+    <p class="h5 spacing-top-2xs">{{ product_title }}</p>
   {% comment %} </a> {% endcomment %}
-  <p class="small spacing-top-4">
+  <p class="small">
     {% render "product-price" with product %}
   </p>
 </div>

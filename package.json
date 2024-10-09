@@ -5,13 +5,30 @@
   "scripts": {
     "prettier": "prettier",
     "format": "prettier --write .",
-    "check": "shopify theme check"
+    "enable:precommit": "npx mrm@2 lint-staged",
+    "disable:precommit": "rm -rf ./.husky",
+    "prepare": "husky install",
+    "parcel:cache:clear": "rm -rf .parcel-cache",
+    "copy:fonts": "cp src/fonts/* ./assets",
+    "copy:thirdparty": "cp src/thirdparty/* ./assets",
+    "build:css": "parcel build src/css/* --dist-dir=./assets --no-source-maps",
+    "build:js": "parcel build src/js/* --dist-dir=./assets",
+    "build:icons": "parcel build src/icons/* --dist-dir=./assets --no-source-maps",
+    "build": "npm run parcel:cache:clear && npm run build:css && npm run build:js && npm run build:icons && npm run copy:thirdparty && npm run copy:fonts" 
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.5.0",
+    "buffer": "^6.0.3",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
+    "parcel": "^2.12.0",
     "prettier": "^3.3.3"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "lint-staged": {
+    "*.{liquid}": "prettier --write",
+    "*.{js,css,md}": "prettier --write"
+  }
 }

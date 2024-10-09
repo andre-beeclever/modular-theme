@@ -1,6 +1,16 @@
 package.json
 package-lock.json
+
 .gitignore
+
 .DS_Store
+
 .prettierignore
 .prettierrc
+
+.parcelrc
+tsconfig.json
+
+/src
+/node_modules
+/.husky

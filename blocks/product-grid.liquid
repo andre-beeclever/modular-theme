@@ -7,12 +7,12 @@
 <div
   class="shopify-block--product-grid {{ block.settings.spacing | class_list }} color-{{ block.settings.color_scheme }}">
   <div
-    class="grid"
-    style="
-      --columns: {{ block.settings.columns }};
-      --rows: {{ block.settings.rows }};
-      --gap: {{ block.settings.gap | append: 'px' }};
-    ">
+    class="grid 
+    col-{{ block.settings.columns }} 
+    row-{{ block.settings.rows }} 
+    small_col-{{ block.settings.small_columns }} 
+    small_row-{{ block.settings.small_rows }} 
+    gap-{{ block.settings.gap }}">
     {% if products.count > 0 %}
       {% for product in products limit: 4 %}
         {% render "product-card", product: product %}
@@ -88,11 +88,39 @@
       "default": 1
     },
     {
-      "type": "number",
+      "type": "range",
+      "id": "small_columns",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "label": "Columns",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "small_rows",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "label": "Rows",
+      "default": 2
+    },
+    {
+      "type": "select",
       "id": "gap",
       "label": "Gap",
-      "default": 5,
-      "info": "px (Todo: Replace with input settings once available)"
+      "options": [
+        { "value": "none", "label": "none" },
+        { "value": "2xs", "label": "2xs" },
+        { "value": "xs", "label": "xs" },
+        { "value": "s", "label": "s" },
+        { "value": "m", "label": "m" },
+        { "value": "l", "label": "l" },
+        { "value": "xl", "label": "xl" },
+        { "value": "2xl", "label": "2xl" },
+        { "value": "3xl", "label": "3xl" }
+      ],
+      "default": "none"
     },
     {
       "type": "header",

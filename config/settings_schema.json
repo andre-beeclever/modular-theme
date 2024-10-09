@@ -920,6 +920,35 @@
     ]
   },
   {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_mode",
+        "label": "Mode",
+        "options": [
+          { "label": "Page", "value": "page" },
+          { "label": "Drawer", "value": "drawer" }
+        ],
+        "default": "page",
+        "info": "Decide wether your store uses a drawer style cart or a dedicated cart page."
+      },
+      {
+        "type": "select",
+        "id": "cart_add",
+        "label": "On cart add",
+        "options": [
+          { "label": "Redirect", "value": "redirect" },
+          { "label": "Open drawer", "value": "drawer" },
+          { "label": "Show notification", "value": "notification" },
+          { "label": "Show modal", "value": "modal" }
+        ],
+        "default": "redirect",
+        "info": "Decide what happens when a customer adds a product to the cart."
+      }
+    ]
+  },
+  {
     "name": "Color scheme",
     "settings": [
       {
@@ -942,24 +971,6 @@
             "id": "text",
             "label": "Text",
             "default": "#121212"
-          },
-          {
-            "type": "color",
-            "id": "button",
-            "label": "Button",
-            "default": "#121212"
-          },
-          {
-            "type": "color",
-            "id": "button_label",
-            "label": "Button label",
-            "default": "#FFFFFF"
-          },
-          {
-            "type": "color",
-            "id": "secondary_button_label",
-            "label": "Secondary button label",
-            "default": "#121212"
           }
         ],
         "role": {
@@ -968,14 +979,14 @@
             "solid": "background",
             "gradient": "background_gradient"
           },
-          "links": "secondary_button_label",
+          "links": "text",
           "icons": "text",
-          "primary_button": "button",
-          "on_primary_button": "button_label",
-          "primary_button_border": "button",
+          "primary_button": "background",
+          "on_primary_button": "background",
+          "primary_button_border": "background",
           "secondary_button": "background",
-          "on_secondary_button": "secondary_button_label",
-          "secondary_button_border": "secondary_button_label"
+          "on_secondary_button": "background",
+          "secondary_button_border": "background"
         }
       }
     ]

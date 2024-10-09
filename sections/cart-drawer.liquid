@@ -1,0 +1,63 @@
+<style>
+  #cart-drawer{
+    & cart-form{
+      height: 100%;
+      & form{
+        height: 100%;
+        & .cart-drawer-inner{
+          height: 100%;
+        }
+      }
+    }
+  }
+</style>
+
+<theme-drawer id="cart-drawer" hide-on-blur scrolling="disabled" class="color-{{ section.settings.color_scheme }} cart-drawer">
+  <cart-form section="{{section.id}}">
+    {% form "cart", cart %}
+      <div class="cart-drawer-inner flex col between stretch {{ section.settings | class_list }} ">
+        {% content_for "blocks" %}
+      </div>
+    {% endform %}
+  </cart-form>
+</theme-drawer>
+
+{% if request.design_mode %}
+  <script>
+    window.addEventListener("shopify:section:select", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer' } }))
+      }
+    })
+    window.addEventListener("shopify:section:deselect", (e) => {
+      if(e.detail.sectionId == "{{ section.id }}"){
+        window.dispatchEvent(new CustomEvent("modal:close", { detail: { id: 'cart-drawer' } }))
+      }
+    })
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Cart drawer",
+  "tag": "aside",
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [
+    {
+      "type": "style.spacing_panel",
+      "id": "spacing",
+      "label": "Spacing"
+    },
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

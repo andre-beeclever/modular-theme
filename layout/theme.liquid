@@ -4,22 +4,24 @@
   lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
-    <meta
-      http-equiv="X-UA-Compatible"
-      content="IE=edge">
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1">
-    <meta
-      name="theme-color"
-      content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://cdn.shopify.com">
+
+    {% if settings.cart_mode == "drawer" and request.path == routes.cart_url %}
+      <script>
+        const url = new URL(location);
+        url.searchParams.set('cart', 'open');
+        url.pathname = "{{ routes.root_url }}";
+        location.href = url.href;
+      </script>
+    {% endif %}
 
     <title>
       {{ page_title }}
@@ -29,9 +31,7 @@
     </title>
 
     {% if page_description %}
-      <meta
-        name="description"
-        content="{{ page_description | escape }}">
+      <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
     {{ content_for_header }}
@@ -40,16 +40,17 @@
 
     {% render "theme-styles" %}
     {% render "theme-js" %}
-    {{ "critical.css" | asset_url | stylesheet_tag }}
+    
+    <link rel="stylesheet" href="{{ 'critical.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'layout.css' | asset_url }}" >
+    <link rel="stylesheet" href="{{ 'layout-small.css' | asset_url }}" media="(max-width: 576px)">
+    <link rel="stylesheet" href="{{ 'layout-medium-down.css' | asset_url }}" media="(max-width: 992px)">
+    <link rel="stylesheet" href="{{ 'layout-medium.css' | asset_url }}" media="(min-width: 577px) and (max-width: 992px)">
+    <link rel="stylesheet" href="{{ 'layout-medium-up.css' | asset_url }}" media="(min-width: 577px)">
 
-    {% assign skin = "modern" %}
-    {% case skin %}
-      {% when "modern" %}
-        {{ "modern-skin.css" | asset_url | stylesheet_tag }}
-      {% when "minimal" %}
-        {{ "minimal-skin.css" | asset_url | stylesheet_tag }}
-    {% endcase %}
 
+    <script defer src="{{ 'utils.js' | asset_url }}"></script>
+    
     <script defer src="{{ 'embla-carousel.umd.js' | asset_url }}"></script>
     <script defer src="{{ 'embla-slider-component.js' | asset_url }}"></script>
     <link rel="stylesheet" href="{{ 'embla-slider-component.css' | asset_url }}">
@@ -64,9 +65,22 @@
     <script type="module" src="{{ 'quantity-rocker.js' | asset_url }}"></script>
     <link rel="stylesheet" href="{{ 'quantity-rocker.css' | asset_url }}">
 
+    <script type="module" src="{{ 'theme-modal.js' | asset_url }}"></script>
+    <link rel="stylesheet" href="{{ 'theme-modal.css' | asset_url }}">
+
     <script type="module" src="{{ 'cart.js' | asset_url }}"></script>
     <script type="module" src="{{ 'cart-form.js' | asset_url }}"></script>
     <link rel="stylesheet" href="{{ 'cart-form.css' | asset_url }}">
+    <script type="module" src="{{ 'cart-count.js' | asset_url }}"></script>
+    <link rel="stylesheet" href="{{ 'cart-count.css' | asset_url }}">
+
+    {% assign skin = "modern" %}
+    {% case skin %}
+      {% when "modern" %}
+        {{ "modern-skin.css" | asset_url | stylesheet_tag }}
+      {% when "minimal" %}
+        {{ "minimal-skin.css" | asset_url | stylesheet_tag }}
+    {% endcase %}
 
     {%- if template.name == 'product' -%}
       <script type="module" src="{{ 'product-form.js' | asset_url }}"></script>
@@ -75,6 +89,17 @@
 
   <body>
     {% sections "header-group" %}
+
+    {% sections "global-group" %}
+
+    {% if settings.cart_mode == "drawer" %}
+      {% section "cart-drawer" %}
+    {% endif %}
+    {% if settings.cart_add == "notification" %}
+        {% section 'cart-notification' %}
+    {% elsif settings.cart_add == "modal" %}
+        {% section 'cart-modal' %}
+    {% endif %}
 
     <main
       id="MainContent"

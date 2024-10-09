@@ -58,63 +58,119 @@
             "color_scheme": ""
           },
           "blocks": {
-            "line_items_rzaDfi": {
-              "type": "line-items",
+            "container_BQddbB": {
+              "type": "container",
               "settings": {
+                "position": "",
+                "overflow": "",
                 "size": {
                   "flex-basis": "66%",
                   "@media (--mobile)": {
-                    "width": "auto"
+                    "flex-basis": "100%"
                   }
                 },
                 "spacing": {
+                  "@media (--mobile)": {
+                    "padding-inline-start": "20px",
+                    "padding-inline-end": "20px"
+                  }
                 },
-                "color_scheme": "scheme-1"
+                "layout": {
+                  "flex-direction": "column",
+                  "row-gap": "60px",
+                  "column-gap": "60px"
+                },
+                "color_scheme": ""
               },
               "blocks": {
-                "cart-empty": {
-                  "type": "container",
-                  "static": true,
+                "line_items_Be94fm": {
+                  "type": "line-items",
                   "settings": {
-                    "position": "",
-                    "overflow": "",
                     "size": {
-                      "@media (--mobile)": {
-                        "width": "auto"
-                      }
+                      "width": "100%",
+                      "flex-grow": "1"
                     },
                     "spacing": {
-                      "padding-block-start": "20px",
-                      "padding-block-end": "20px",
-                      "padding-inline-start": "20px",
-                      "padding-inline-end": "20px"
-                    },
-                    "layout": {
-                      "flex-direction": "column"
                     },
                     "color_scheme": ""
                   },
                   "blocks": {
-                    "heading_9tfEiD": {
-                      "type": "heading",
+                    "cart-empty": {
+                      "type": "container",
+                      "static": true,
                       "settings": {
-                        "heading": "Your cart is currently empty.",
+                        "position": "",
+                        "overflow": "",
+                        "size": {
+                        },
+                        "spacing": {
+                        },
+                        "layout": {
+                        },
+                        "color_scheme": ""
+                      },
+                      "blocks": {
+                        "text_aeLPJB": {
+                          "type": "text",
+                          "settings": {
+                            "text": "<p>Your cart is currently empty.</p>",
+                            "text_style": "small",
+                            "alignment": "center",
+                            "spacing_bottom": "none"
+                          }
+                        }
+                      },
+                      "block_order": [
+                        "text_aeLPJB"
+                      ]
+                    }
+                  },
+                  "block_order": [
+
+                  ]
+                },
+                "collapsible_9KBmTw": {
+                  "type": "collapsible",
+                  "settings": {
+                    "open": false
+                  },
+                  "blocks": {
+                    "text_field_imJFMX": {
+                      "type": "text-field",
+                      "settings": {
+                        "required": false,
+                        "multiline": true,
+                        "label_hidden": true,
+                        "name": "note",
+                        "title": "Order notes",
+                        "pattern": "",
+                        "placeholder": "",
+                        "max_length": 3000,
+                        "spacing_bottom": "none"
+                      }
+                    },
+                    "collapsible-label": {
+                      "type": "heading",
+                      "static": true,
+                      "settings": {
+                        "heading": "Order notes",
                         "html_tag": "p",
                         "heading_style": "h6",
-                        "alignment": "center",
-                        "spacing_bottom": "none",
+                        "alignment": "left",
+                        "spacing_bottom": "xs",
                         "text_color": "",
                         "font_size": ""
                       }
                     }
                   },
                   "block_order": [
-                    "heading_9tfEiD"
+                    "text_field_imJFMX"
                   ]
                 }
               },
               "block_order": [
-
+                "line_items_Be94fm",
+                "collapsible_9KBmTw"
               ]
             },
             "container_AKG3JD": {
@@ -158,29 +214,34 @@
                 "cart_summary_6JcHTj": {
                   "type": "cart-summary",
                   "settings": {
-                  }
-                },
-                "button_NNKn6H": {
-                  "type": "button",
-                  "settings": {
-                    "label": "Check out",
-                    "name": "checkout",
-                    "button_style": "btn btn--primary",
-                    "small": false,
-                    "full_width": true,
-                    "spacing_bottom": "none"
-                  }
+                  },
+                  "blocks": {
+                    "checkout-button": {
+                      "type": "button",
+                      "static": true,
+                      "settings": {
+                        "label": "Check out",
+                        "name": "checkout",
+                        "button_style": "btn btn--primary",
+                        "small": false,
+                        "full_width": true,
+                        "spacing_bottom": "none"
+                      }
+                    }
+                  },
+                  "block_order": [
+
+                  ]
                 }
               },
               "block_order": [
                 "text_field_yaBYXL",
-                "cart_summary_6JcHTj",
-                "button_NNKn6H"
+                "cart_summary_6JcHTj"
               ]
             }
           },
           "block_order": [
-            "line_items_rzaDfi",
+            "container_BQddbB",
             "container_AKG3JD"
           ]
         }

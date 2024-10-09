@@ -34,7 +34,8 @@
             "name": "",
             "title": "Singleline Text field",
             "pattern": "",
-            "placeholder": "Placeholder"
+            "placeholder": "Placeholder",
+            "spacing_bottom": "none"
           }
         },
         "text_field_TmqNgV": {
@@ -46,7 +47,8 @@
             "name": "",
             "title": "Multiline Text field",
             "pattern": "",
-            "placeholder": "Placeholder"
+            "placeholder": "Placeholder",
+            "spacing_bottom": "none"
           }
         },
         "select_Bcdyg8": {
