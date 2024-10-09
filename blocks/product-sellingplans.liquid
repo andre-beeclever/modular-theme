@@ -5,7 +5,12 @@
 {% endif %}
 
 <style>
-  
+  input[name="purchase-option"] + .purchase_option-button {
+    border: 2px solid black;
+  }
+  input[type="radio"] + .sellingplan {
+    background-color: red;
+  }
 </style>
 
 <selling-plan-picker selected_plan="{{ selected_selling_plan_allocation.selling_plan.id }}" class="flex col full-width selling_plan-picker{% if current_variant.selling_plan_allocations.size < 1 %} hide-block{%- endif -%}">
@@ -30,7 +35,7 @@
           {% for selling_plan_allocation in selling_plan_allocations %}
             {% assign selling_plan = selling_plan_allocation.selling_plan %}
             <input hidden type="radio" id="sellingplan-{{ selling_plan.id }}" name="sellingplans-{{ selling_plan_group_id }}" value="{{ selling_plan.id }}"{% if selected_selling_plan_allocation.selling_plan.id == selling_plan.id %} checked{% endif %}>
-            <label for="sellingplan-{{ selling_plan.id }}">
+            <label for="sellingplan-{{ selling_plan.id }}" class="sellingplan">
               {{ selling_plan.name }}
             </label>
           {% endfor %}
