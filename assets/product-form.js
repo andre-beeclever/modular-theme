@@ -75,7 +75,7 @@ class ProductForm extends HTMLElement {
     // const sectionId = formData.get('section-id');
     formData.append("sections", "cart-drawer");
     this.submitButton.classList.add("loading");
-    fetch(window.Shopify.routes.root + "cart/add.js", {
+    fetch(window.Shopify.routes.cartAddUrl + ".js", {
       method: "POST",
       credentials: "same-origin",
       body: formData
