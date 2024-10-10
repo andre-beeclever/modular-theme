@@ -2,14 +2,16 @@
   product-option-value {
     border: 2px solid black;
     cursor: pointer;
-    border-radius: 50%
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
   }
   product-option-value[sold-out] {
     opacity: 0.5;
   }
   product-option-value .product-option-name {
     padding: 10px;
-    height: 40px;
+    height: 30px;
     width: auto;
     min-width: 40px;
     white-space: nowrap;
@@ -29,7 +31,7 @@
   }
   product-option-value .product-swatch {
     background-color: var(--swatch-color, transparent);
-    width: 44px;
+    width: 31px;
     aspect-ratio: 1;
     position: relative;
     border-radius: 50%;
@@ -44,11 +46,11 @@
     display: flex;
   }
   product-option-value[selected] .product-swatch {
-    margin: 3px;
+    margin: 2px;
     border: 2px solid black;
   }
   product-option-value:not([selected]) .product-swatch {
-    width: 50px;
+    width: 35px;
   }
   product-option-value:has(img),
   product-option-value:has(.product-option-name),

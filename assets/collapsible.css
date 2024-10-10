@@ -1,1 +1,33 @@
-collapsible-outer,collapsible-content,collapsible-label{display:block}collapsible-label{cursor:pointer;z-index:1;background-color:#fff;position:relative}collapsible-outer{width:100%;height:auto;transition:height .3s;position:relative;overflow:hidden}collapsible-content{z-index:0;background-color:#fff;width:100%;position:absolute;bottom:0;left:0}collapsible-outer[open] .collapsible-icon .collapsible-icon--open,collapsible-outer:not([open]) .collapsible-icon .collapsible-icon--close{display:none}
+
+collapsible-outer,
+collapsible-content,
+collapsible-label {
+  display: block;
+}
+collapsible-label {
+  cursor: pointer;
+  background-color: #fff;
+  z-index: 1;
+  position: relative;
+}
+collapsible-outer {
+  overflow: hidden;
+  height: auto;
+  position: relative;
+  width:100%;
+  transition: height 0.3s ease;
+}
+collapsible-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 0;
+}
+collapsible-outer[open] .collapsible-icon .collapsible-icon--open{
+  display: none;
+}
+collapsible-outer:not([open]) .collapsible-icon .collapsible-icon--close{
+  display: none;
+}

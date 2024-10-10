@@ -1,0 +1,109 @@
+{% assign current_variant = product.selected_or_first_available_variant | default: product.variants.first %}
+{% assign selected_selling_plan_allocation = current_variant.selected_selling_plan_allocation %}
+{% if product.requires_selling_plan and selected_selling_plan_allocation == blank %}
+  {% assign selected_selling_plan_allocation = current_variant.selling_plan_allocations.first %}
+{% endif %}
+
+<style>
+  .purchase-option {
+    border: 2px solid black;
+  }
+  .purchase-option-button {
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  .sellingplan-button {
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  .purchase-option-content {
+    display: none;
+  }
+  .radio-dot {
+    width: 18px;
+    height: 18px;
+    aspect-ratio: 1;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .purchase-option:has(input[name="purchase-option"]:checked) {
+    & .purchase-option-button {
+      background: black;
+      color: white;
+    }
+    & .purchase-option-content {
+      border-top: 1px solid grey;
+      display: flex;
+    }
+  }
+  .sellingplan:has(input.sellingplan-input:checked) {
+    & .radio-dot:before {
+      content: '';
+      display: flex;
+      width: 9px;
+      height: 9px;
+      aspect-ratio: 1;
+      background: black;
+      border-radius: 50%;
+    }
+  }
+</style>
+
+<selling-plan-picker class="flex col full-width selling_plan-picker">
+  <input type="text" hidden name="selling_plan"{% if selected_selling_plan_allocation != blank %} value="{{ selected_selling_plan_allocation.selling_plan.id }}"{% else %} disabled{% endif %}>
+  {% if current_variant.selling_plan_allocations.size > 0 %}
+    <div class="purchase_options flex col gap-s full-width">
+      {% unless current_variant.requires_selling_plan %}
+        <div class="purchase-option flex col">
+          <input hidden id="purchase-onetime" type="radio" name="purchase-option" {% unless selected_selling_plan_allocation != blank %} checked{% endunless %} value="onetime">
+          <label for="purchase-onetime" class="purchase-option-button purchase-option-button-onetime flex row middle full-width">
+            One Time Purchase
+          </label>
+        </div>
+      {% endunless %}
+      {% assign selling_plan_group_ids = current_variant.selling_plan_allocations | map: "selling_plan_group_id" | uniq %}
+      {% for selling_plan_group_id in selling_plan_group_ids %}
+        <div class="purchase-option flex col">
+          {% assign selling_plan_group = product.selling_plan_groups | where: "id", selling_plan_group_id | first %}
+          {% assign selling_plan_allocations = current_variant.selling_plan_allocations | where: "selling_plan_group_id", selling_plan_group.id %}
+          <input hidden id="purchase-group-{{ forloop.index }}" type="radio" name="purchase-option" {% if selected_selling_plan_allocation.selling_plan_group_id == selling_plan_group_id %} checked{% endif %} value="{{ selling_plan_group.name }}">
+          <label for="purchase-group-{{ forloop.index }}" class="purchase-option-button purchase-option-button-sellingplan-group flex col full-width">
+            Sellingplan Group: {{ selling_plan_group.name }}
+          </label>
+          <div class="flex col purchase-option-content">
+            {% for selling_plan_allocation in selling_plan_allocations %}
+              {% assign selling_plan = selling_plan_allocation.selling_plan %}
+              <div class="sellingplan flex col">
+                <input hidden type="radio" id="sellingplan-{{ selling_plan.id }}" class="sellingplan-input" name="sellingplans-{{ selling_plan_group_id }}" value="{{ selling_plan.id }}"{% if selected_selling_plan_allocation.selling_plan.id == selling_plan.id %} checked{% endif %}>
+                <label for="sellingplan-{{ selling_plan.id }}" class="sellingplan-button flex row middle gap-xs">
+                  <div class="radio-dot"></div>
+                  <p>{{ selling_plan.name }}</p>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</selling-plan-picker>
+
+
+{% schema %}
+  {
+    "name": "Product Sellingplans",
+    "tag": null,
+    "settings": [
+
+    ],
+    "presets": [
+      {
+        "name": "Product Sellingplans"
+      }
+    ]
+  }
+{% endschema %}

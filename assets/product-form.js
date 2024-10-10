@@ -1,2 +1,164 @@
-!function(){class e extends HTMLElement{constructor(){super()}connectedCallback(){let e=this.closest("form"),t=this.getAttribute("variant-id"),n=this.getAttribute("product-url");if(e){let i=e.querySelector('[name="id"]'),r=e.querySelector('[name="url"]');this.addEventListener("click",()=>{r.value=n,i.value=t,r.dispatchEvent(new Event("input")),i.dispatchEvent(new Event("input"))})}}}customElements.define("product-option-value",e);class t extends HTMLElement{constructor(){super()}get section(){return this.getAttribute("section")||"product-main"}updateView(){let e=this.querySelector('form [name="url"]'),t=this.querySelector('form [name="id"]'),n=this.querySelector('form [name="selling_plan"]'),i=new URL(location);i.pathname=e.value,t?.value&&i.searchParams.set("variant",t.value),n?.value&&i.searchParams.set("selling_plan",n.value),history.replaceState(null,"",i.href),i.searchParams.set("sections",this.section),this.loading=!0,fetch(i.href).then(e=>e.json()).then(e=>{let t=e[this.section],n=document.createElement("template");n.innerHTML=t.trim();let i=n.content.querySelector("product-form");this.replaceWith(i),this.loading=!1}).catch(e=>{console.error(e),this.loading=!1})}connectedCallback(){let e=this.querySelector('form [name="id"]'),t=this.querySelector('form [name="selling_plan"]');e?.addEventListener("input",this.updateView.bind(this)),t?.addEventListener("input",this.updateView.bind(this))}}customElements.define("product-form",t)}();
-//# sourceMappingURL=product-form.js.map
+class ProductOptionValue extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    const form = this.closest('form');
+    const variantId = this.getAttribute('variant-id');
+    const productUrl = this.getAttribute('product-url');
+    if(!!form){
+      const variantIdInput = form.querySelector(`[name="id"]`);
+      const productUrlInput = form.querySelector(`[name="url"]`);
+      this.addEventListener('click', () => {
+        productUrlInput.value = productUrl;
+        variantIdInput.value = variantId;
+        productUrlInput.dispatchEvent(new Event('input'));
+        variantIdInput.dispatchEvent(new Event('input'));
+      });
+    }
+  }
+}
+customElements.define("product-option-value", ProductOptionValue);
+
+class SellingPlanPicker extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback(){
+    this.sellinplanInput = this.querySelector('input[name="selling_plan"]');
+    const purchseOptions = this.querySelectorAll('.purchase-option');
+    const sellingplanOptions = this.querySelectorAll('.sellingplan-input');
+    for(const purchseOption of purchseOptions) {
+      const input = purchseOption.querySelector('input[name="purchase-option"]');
+      const content = purchseOption.querySelector('.purchase-option-content');
+      input.addEventListener('input', () => {
+        if(!!content) {
+          let selected_plan = content.querySelector('input.sellingplan-input:checked') || content.querySelector('input.sellingplan-input');
+          if(!!selected_plan) {
+            selected_plan.checked = true;
+            selected_plan.dispatchEvent(new Event('input'));
+          }
+        } else {
+          this.sellinplanInput.removeAttribute('value');
+          this.sellinplanInput.setAttribute('disabled', '');
+          this.sellinplanInput.dispatchEvent(new Event('input'));
+        }
+      });
+    }
+    for(const sellingplanOption of sellingplanOptions) {
+      sellingplanOption.addEventListener('input', () => {
+        if(this.sellinplanInput.value !== sellingplanOption.value){
+          this.sellinplanInput.removeAttribute('disabled');
+          this.sellinplanInput.value = sellingplanOption.value;
+          this.sellinplanInput.dispatchEvent(new Event('input'));
+        }
+      });
+    }
+  }
+}
+customElements.define('selling-plan-picker', SellingPlanPicker);
+
+class ProductForm extends HTMLElement {
+  constructor() {
+    super();
+  }
+  get section() {
+    return this.getAttribute("section") || "product-main";
+  }
+  updateURL() {
+    const newUrl = new URL(location);
+    if(!!this.productUrlInput){
+      newUrl.pathname = this.productUrlInput.value;
+    }
+    if(!!this.variantIdInput) {
+      if(!!this.variantIdInput.value && !this.variantIdInput.disabled){
+        newUrl.searchParams.set('variant', this.variantIdInput.value);
+      } else {
+        newUrl.searchParams.delete('variant');
+      }
+    }
+    if(!!this.sellingPlanInput) {
+      if(!!this.sellingPlanInput.value && !this.sellingPlanInput.disabled) {
+        newUrl.searchParams.set('selling_plan', this.sellingPlanInput.value);
+      } else {
+        newUrl.searchParams.delete('selling_plan');
+      }
+    }
+    history.replaceState(null, "", newUrl.href);
+    return newUrl;
+  }
+  updateDOM(callback) {
+    const fetchUrl = this.updateURL();
+    fetchUrl.searchParams.set('sections', this.section);
+    this.loading = true;
+    fetch(fetchUrl.href)
+    .then((res) => res.json())
+    .then((res) => {
+      const data = res[this.section];
+      const template = document.createElement("template");
+      template.innerHTML = data.trim();
+      const newDOM = template.content.querySelector('product-form');
+      callback(this, newDOM)
+      this.loading = false;
+    })
+    .catch((err) => {
+      console.error(err);
+      this.loading = false;
+    });
+  }
+  updateVariant() {
+    this.updateDOM((oldDOM, newDOM) => {
+      oldDOM.replaceWith(newDOM);
+    });
+  }
+  updateSellingplan() {
+    this.updateDOM((oldDOM, newDOM) => {
+      oldDOM.replaceWith(newDOM);
+    });
+  }
+  submit(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    const formData = new FormData(this.form);
+    // const sectionId = formData.get('section-id');
+    formData.append("sections", "cart-drawer");
+    this.submitButton.classList.add("loading");
+    fetch(window.Shopify.routes.cartAddUrl + ".js", {
+      method: "POST",
+      credentials: "same-origin",
+      body: formData
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      if (response.status) {
+        const error_string = `\nCART GET FAILED \nStatus: ${response.status} \nMessage: ${response.message} \nDescription: ${response.description}`;
+        throw new Error(error_string, { cause: "Cart Error" });
+      } else {
+        this.submitButton.classList.remove("loading");
+        window.dispatchEvent(
+          new CustomEvent("cart:add", {
+            detail: {...response, added_count: Number(formData.get("quantity")) || 1 } 
+          })
+        );
+      }
+    })
+    .catch((error) => {
+      this.submitButton.classList.remove("loading");
+      console.error(error);
+    });
+  }
+  connectedCallback() {
+    this.form = this.querySelector(`form`);
+    this.productUrlInput = this.form.querySelector(`[name="url"]`);
+    this.variantIdInput = this.form.querySelector(`[name="id"]`);
+    this.sellingPlanInput = this.form.querySelector(`[name="selling_plan"]`);
+    this.submitButton = this.form.querySelector(`button[type="submit"]`);
+    this.variantIdInput?.addEventListener('input', this.updateVariant.bind(this));
+    this.sellingPlanInput?.addEventListener('input', this.updateSellingplan.bind(this));
+    this.submitButton?.addEventListener('click', this.submit.bind(this));
+    this.updateURL();
+  }
+}
+customElements.define("product-form", ProductForm);

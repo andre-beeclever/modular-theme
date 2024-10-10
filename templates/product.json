@@ -25,7 +25,8 @@
             },
             "layout": {
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "image_aHdeep": {
@@ -62,7 +63,8 @@
               "flex-direction": "column",
               "align-items": "flex-start"
             },
-            "color_scheme": ""
+            "color_scheme": "",
+            "title": "Container"
           },
           "blocks": {
             "heading_NhJqMg": {
@@ -81,11 +83,23 @@
               "type": "product-variants",
               "settings": {
               }
+            },
+            "product_sellingplans_NxRBmP": {
+              "type": "product-sellingplans",
+              "settings": {
+              }
+            },
+            "product_add_to_cart_e7rkjd": {
+              "type": "product-add-to-cart",
+              "settings": {
+              }
             }
           },
           "block_order": [
             "heading_NhJqMg",
-            "product_variants_UcdALU"
+            "product_variants_UcdALU",
+            "product_sellingplans_NxRBmP",
+            "product_add_to_cart_e7rkjd"
           ]
         }
       },
