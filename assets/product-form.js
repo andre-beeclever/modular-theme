@@ -69,11 +69,19 @@ class ProductForm extends HTMLElement {
     if(!!this.productUrlInput){
       newUrl.pathname = this.productUrlInput.value;
     }
-    if(!!this.variantIdInput && this.variantIdInput.value && !this.variantIdInput.disabled) {
-      newUrl.searchParams.set('variant', this.variantIdInput.value);
+    if(!!this.variantIdInput) {
+      if(!!this.variantIdInput.value && !this.variantIdInput.disabled){
+        newUrl.searchParams.set('variant', this.variantIdInput.value);
+      } else {
+        newUrl.searchParams.delete('variant');
+      }
     }
-    if(!!this.sellingPlanInput && this.sellingPlanInput.value && !this.sellingPlanInput.disabled) {
-      newUrl.searchParams.set('selling_plan', this.sellingPlanInput.value);
+    if(!!this.sellingPlanInput) {
+      if(!!this.sellingPlanInput.value && !this.sellingPlanInput.disabled) {
+        newUrl.searchParams.set('selling_plan', this.sellingPlanInput.value);
+      } else {
+        newUrl.searchParams.delete('selling_plan');
+      }
     }
     history.replaceState(null, "", newUrl.href);
     return newUrl;
