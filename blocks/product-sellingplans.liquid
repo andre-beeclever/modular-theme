@@ -11,7 +11,7 @@
   .sellingplan-button {
     padding: 10px 15px;
   }
-  input[name="purchase-option"]:checked + .purchase-option-button {
+  .purchase-option:has(input[name="purchase-option"]:checked) {
     border: 2px solid black;
   }
   input.sellingplan-input:checked + .sellingplan-button {
