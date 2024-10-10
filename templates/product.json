@@ -88,12 +88,18 @@
               "type": "product-sellingplans",
               "settings": {
               }
+            },
+            "product_add_to_cart_e7rkjd": {
+              "type": "product-add-to-cart",
+              "settings": {
+              }
             }
           },
           "block_order": [
             "heading_NhJqMg",
             "product_variants_UcdALU",
-            "product_sellingplans_NxRBmP"
+            "product_sellingplans_NxRBmP",
+            "product_add_to_cart_e7rkjd"
           ]
         }
       },
