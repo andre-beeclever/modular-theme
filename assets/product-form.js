@@ -156,6 +156,7 @@ class ProductForm extends HTMLElement {
     this.variantIdInput?.addEventListener('input', this.updateVariant.bind(this));
     this.sellingPlanInput?.addEventListener('input', this.updateSellingplan.bind(this));
     this.submitButton?.addEventListener('click', this.submit.bind(this));
+    this.updateURL();
   }
 }
 customElements.define("product-form", ProductForm);
