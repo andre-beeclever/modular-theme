@@ -70,7 +70,9 @@ class ProductForm extends HTMLElement {
       oldDOM.replaceWith(newDOM);
     });
   }
-  submit() {
+  submit(e) {
+    e.stopPropagation();
+    e.preventDefault();
     const formData = new FormData(this.form);
     // const sectionId = formData.get('section-id');
     formData.append("sections", "cart-drawer");
