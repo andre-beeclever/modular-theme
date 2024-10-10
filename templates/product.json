@@ -84,13 +84,13 @@
               "settings": {
               }
             },
-            "product_sellingplans_NxRBmP": {
-              "type": "product-sellingplans",
+            "product_add_to_cart_e7rkjd": {
+              "type": "product-add-to-cart",
               "settings": {
               }
             },
-            "product_add_to_cart_e7rkjd": {
-              "type": "product-add-to-cart",
+            "product_sellingplans_NxRBmP": {
+              "type": "product-sellingplans",
               "settings": {
               }
             }
@@ -98,8 +98,8 @@
           "block_order": [
             "heading_NhJqMg",
             "product_variants_UcdALU",
-            "product_sellingplans_NxRBmP",
-            "product_add_to_cart_e7rkjd"
+            "product_add_to_cart_e7rkjd",
+            "product_sellingplans_NxRBmP"
           ]
         }
       },
