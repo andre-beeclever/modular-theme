@@ -49,7 +49,7 @@
           <div class="flex col purchase-option-content">
             {% for selling_plan_allocation in selling_plan_allocations %}
               {% assign selling_plan = selling_plan_allocation.selling_plan %}
-              <input hidden type="radio" id="sellingplan-{{ selling_plan.id }}" name="sellingplans-{{ selling_plan_group_id }}" value="{{ selling_plan.id }}"{% if selected_selling_plan_allocation.selling_plan.id == selling_plan.id %} checked{% endif %}>
+              <input hidden type="radio" id="sellingplan-{{ selling_plan.id }}" class="sellingplan-input" name="sellingplans-{{ selling_plan_group_id }}" value="{{ selling_plan.id }}"{% if selected_selling_plan_allocation.selling_plan.id == selling_plan.id %} checked{% endif %}>
               <label for="sellingplan-{{ selling_plan.id }}" class="sellingplan-button">
                 {{ selling_plan.name }}
               </label>
