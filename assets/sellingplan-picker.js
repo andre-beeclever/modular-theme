@@ -4,7 +4,6 @@ class SellingPlanPicker extends HTMLElement {
   }
   connectedCallback(){
     const purchseOptions = this.querySelectorAll('[name="purchase-option"]');
-    const sellingPlanSelects = this.querySelectorAll('theme-select.selling-plan-select');
     for(const purchseOption of purchseOptions) {
       purchseOption.addEventListener('input', event => {
         if(purchseOption.value == 'subscription') {
@@ -16,14 +15,6 @@ class SellingPlanPicker extends HTMLElement {
         }
         if(purchseOption.value == 'onetime') {
           this.removeSellingPlan();
-        }
-      });
-    }
-    for(const sellingPlanSelect of sellingPlanSelects) {
-      sellingPlanSelect.addEventListener('change', event => {
-        const sellingPlan = sellingPlanSelect.value;
-        if(!!sellingPlan){
-          this.setSellingPlan(sellingPlan);
         }
       });
     }
