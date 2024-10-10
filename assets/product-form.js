@@ -39,6 +39,10 @@ class SellingPlanPicker extends HTMLElement {
             selected_plan.checked = true;
             selected_plan.dispatchEvent(new Event('input'));
           }
+        } else {
+          this.sellinplanInput.removeAttribute('value');
+          this.sellinplanInput.setAttribute('disabled', '');
+          this.sellinplanInput.dispatchEvent(new Event('input'));
         }
       });
     }
@@ -46,7 +50,7 @@ class SellingPlanPicker extends HTMLElement {
       sellingplanOption.addEventListener('input', () => {
         this.sellinplanInput.value = sellingplanOption.value;
         console.log('set selling plan main input to: '+sellingplanOption.value);
-        //this.sellinplanInput.dispatchEvent(new Event('input'));
+        this.sellinplanInput.dispatchEvent(new Event('input'));
       });
     }
   }
