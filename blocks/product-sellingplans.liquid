@@ -5,6 +5,9 @@
 {% endif %}
 
 <style>
+  .purchase-option {
+    border: 2px solid black;
+  }
   .purchase-option-button {
     padding: 10px 15px;
     cursor: pointer;
@@ -28,11 +31,12 @@
     border-radius: 50%;
   }
   .purchase-option:has(input[name="purchase-option"]:checked) {
-    border: 2px solid black;
-    & .purchase-option-content {
-      border-top: 1px solid grey;
+    & .purchase-option-button {
+      background: black;
+      color: white;
     }
     & .purchase-option-content {
+      border-top: 1px solid grey;
       display: flex;
     }
   }
