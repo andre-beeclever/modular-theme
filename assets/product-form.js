@@ -35,7 +35,6 @@ class SellingPlanPicker extends HTMLElement {
         if(!!content) {
           let selected_plan = content.querySelector('input.sellingplan-input:checked') || content.querySelector('input.sellingplan-input');
           if(!!selected_plan) {
-            console.log('set purchase option selected plan: '+selected_plan.value);
             selected_plan.checked = true;
             selected_plan.dispatchEvent(new Event('input'));
           }
@@ -48,8 +47,8 @@ class SellingPlanPicker extends HTMLElement {
     }
     for(const sellingplanOption of sellingplanOptions) {
       sellingplanOption.addEventListener('input', () => {
+        this.sellinplanInput.removeAttribute('disabled');
         this.sellinplanInput.value = sellingplanOption.value;
-        console.log('set selling plan main input to: '+sellingplanOption.value);
         this.sellinplanInput.dispatchEvent(new Event('input'));
       });
     }
