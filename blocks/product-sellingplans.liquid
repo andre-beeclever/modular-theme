@@ -25,7 +25,7 @@
   }
 </style>
 
-<selling-plan-picker selected_plan="{{ selected_selling_plan_allocation.selling_plan.id }}" class="flex col full-width selling_plan-picker{% if current_variant.selling_plan_allocations.size < 1 %} hide-block{%- endif -%}">
+<selling-plan-picker class="flex col full-width selling_plan-picker">
   <input type="text" hidden name="selling_plan"{% if selected_selling_plan_allocation != blank %} value="{{ selected_selling_plan_allocation.selling_plan.id }}"{% else %} disabled{% endif %}>
   {% if current_variant.selling_plan_allocations.size > 0 %}
     <div class="purchase_options flex col full-width">
