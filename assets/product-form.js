@@ -47,9 +47,11 @@ class SellingPlanPicker extends HTMLElement {
     }
     for(const sellingplanOption of sellingplanOptions) {
       sellingplanOption.addEventListener('input', () => {
-        this.sellinplanInput.removeAttribute('disabled');
-        this.sellinplanInput.value = sellingplanOption.value;
-        this.sellinplanInput.dispatchEvent(new Event('input'));
+        if(this.sellinplanInput.value !== sellingplanOption.value){
+          this.sellinplanInput.removeAttribute('disabled');
+          this.sellinplanInput.value = sellingplanOption.value;
+          this.sellinplanInput.dispatchEvent(new Event('input'));
+        }
       });
     }
   }

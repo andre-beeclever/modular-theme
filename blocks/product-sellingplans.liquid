@@ -7,25 +7,53 @@
 <style>
   .purchase-option-button {
     padding: 10px 15px;
+    cursor: pointer;
   }
   .sellingplan-button {
     padding: 10px 15px;
-  }
-  .purchase-option:has(input[name="purchase-option"]:checked) {
-    border: 2px solid black;
-  }
-  .purchase-option:has(input[name="purchase-option"]:checked) .purchase-option-content {
-    border-top: 1px solid grey;
-  }
-  input.sellingplan-input:checked + .sellingplan-button {
-    background-color: black;
-    color: white; 
+    cursor: pointer;
   }
   .purchase-option-content {
     display: none;
   }
-  input[type="radio"]:checked ~ .purchase-option-content {
+  .radio-dot {
+    width: 15px;
+    height: 15px;
+    aspect-ratio: 1;
+    border: 2px solid black;
+    background-color: white;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .purchase-option:has(input[name="purchase-option"]:checked) {
+    border: 2px solid black;
+    & .purchase-option-content {
+      border-top: 1px solid grey;
+    }
+    & .purchase-option-content {
+      display: flex;
+    }
+  }
+  .sellingplan:has(input.sellingplan-input:checked) {
+    & .sellingplan-button {
+      background-color: black;
+      color: white;
+    }
+    & .radio-dot:before {
+      content: '';
+      width: 15px;
+      height: 15px;
+      border: 2px solid black;
+      background-color: white;
+      display: flex;
+      width: 8px;
+      height: 8px;
+      aspect-ratio: 1;
+      background: blacK;
+      border-radius: 50%;
+    }
   }
 </style>
 
@@ -53,10 +81,13 @@
           <div class="flex col purchase-option-content">
             {% for selling_plan_allocation in selling_plan_allocations %}
               {% assign selling_plan = selling_plan_allocation.selling_plan %}
-              <input hidden type="radio" id="sellingplan-{{ selling_plan.id }}" class="sellingplan-input" name="sellingplans-{{ selling_plan_group_id }}" value="{{ selling_plan.id }}"{% if selected_selling_plan_allocation.selling_plan.id == selling_plan.id %} checked{% endif %}>
-              <label for="sellingplan-{{ selling_plan.id }}" class="sellingplan-button">
-                {{ selling_plan.name }}
-              </label>
+              <div class="sellingplan flex col">
+                <input hidden type="radio" id="sellingplan-{{ selling_plan.id }}" class="sellingplan-input" name="sellingplans-{{ selling_plan_group_id }}" value="{{ selling_plan.id }}"{% if selected_selling_plan_allocation.selling_plan.id == selling_plan.id %} checked{% endif %}>
+                <label for="sellingplan-{{ selling_plan.id }}" class="sellingplan-button flex row middle gap-xs">
+                  <div class="radio-dot"></div>
+                  <p>{{ selling_plan.name }}</p>
+                </label>
+              </div>
             {% endfor %}
           </div>
         </div>
