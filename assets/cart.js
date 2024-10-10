@@ -1,2 +1,151 @@
-!function(){Shopify.theme=Shopify.theme||{},Shopify.theme.cart=Shopify.theme.cart||{},Shopify.theme.cart.mode=Shopify.theme.cart.mode||"page",Shopify.theme.cart.onAdd=Shopify.theme.cart.onAdd||"redirect",Shopify.theme.cart.sections=Shopify.theme.cart.sections||[];let e={events:!0,sections:[],callback:e=>{}},t="cart:add",o="cart:changed";Shopify.theme.cart={...Shopify.theme.cart,init:function(){if(window.addEventListener(t,e=>{switch(e.preventDefault(),this.onAdd){case"drawer":window.dispatchEvent(new CustomEvent("modal:open",{detail:{id:"cart-drawer"}}));break;case"notification":window.dispatchEvent(new CustomEvent("modal:open",{detail:{id:"cart-notification"}}));break;case"modal":window.dispatchEvent(new CustomEvent("modal:open",{detail:{id:"cart-modal"}}));break;default:window.location.href=window.Shopify.routes.cartUrl}}),"drawer"==this.mode){console.log("Cart mode: Drawer"),document.addEventListener("click",e=>{let t=e.target.closest("a");t&&t.getAttribute("href")==window.Shopify.routes.cartUrl&&(e.preventDefault(),window.dispatchEvent(new CustomEvent("modal:open",{detail:{id:"cart-drawer"}})))});let e=new URL(location);"open"==e.searchParams.get("cart")&&(window.dispatchEvent(new CustomEvent("modal:open",{detail:{id:"cart-drawer"}})),e.searchParams.delete("cart"),history.replaceState({},"",e.href))}else console.log("Cart mode: Page")},get:async(t=e)=>{let o=window.Shopify.routes.cartUrl+"?sections="+[...Shopify.theme.cart.sections,...t?.sections??[]].uniq().join(",");return await fetch(o,{headers:{"Content-Type":"application/json",Accept:"application/json"},method:"GET"}).then(e=>e.json()).catch(console.error)},add:async(o,n=e)=>{let a=window.Shopify.routes.cartAddUrl+"?sections="+[...Shopify.theme.cart.sections,...n?.sections??[]].uniq().join(",");return await fetch(a,{body:JSON.stringify(o),headers:{"Content-Type":"application/json",Accept:"application/json"},method:"POST"}).then(e=>e.json()).then(e=>{if(e.status)throw Error(`${e.message}: ${e.description}`);return n.callback&&n.callback(e),n.events,window.dispatchEvent(new CustomEvent(t,{detail:{...e,added_count:o.reduce((e,t)=>e+Number(t.quantity),0)}})),e}).catch(console.error)},update:async(t,n=e)=>{let a=window.Shopify.routes.cartUpdateUrl+"?sections="+[...Shopify.theme.cart.sections,...n?.sections??[]].uniq().join(",");return await fetch(a,{body:JSON.stringify(t),headers:{"Content-Type":"application/json",Accept:"application/json"},method:"POST"}).then(e=>e.json()).then(e=>{if(e.status)throw Error(`${e.message}: ${e.description}`);return n.callback&&n.callback(e),n.events,window.dispatchEvent(new CustomEvent(o,{detail:{...e}})),e}).catch(console.error)},clear:async(t=e)=>{let n=window.Shopify.routes.cartClearUrl+"?sections="+[...Shopify.theme.cart.sections,...t?.sections??[]].uniq().join(",");return await fetch(n,{body:"",headers:{"Content-Type":"application/json",Accept:"application/json"},method:"POST"}).then(e=>e.json()).then(e=>{if(e.status)throw Error(`${e.message}: ${e.description}`);return t.callback&&t.callback(e),t.events,window.dispatchEvent(new CustomEvent(o,{detail:{...e}})),e}).catch(console.error)}},Shopify.theme.cart.init()}();
-//# sourceMappingURL=cart.js.map
+Shopify.theme = Shopify.theme || {};
+Shopify.theme.cart = Shopify.theme.cart || {};
+Shopify.theme.cart.mode = Shopify.theme.cart.mode || "page"; 
+Shopify.theme.cart.onAdd = Shopify.theme.cart.onAdd || "redirect"; 
+Shopify.theme.cart.sections = Shopify.theme.cart.sections || []
+
+const DEFAULT_OPTIONS = {
+  events: true, 
+  sections: [],
+  callback: (cart) => {}
+}
+
+const ADD_EVENT_NAME = "cart:add"
+const CHANGE_EVENT_NAME = "cart:changed"
+
+Shopify.theme.cart = {
+  ...Shopify.theme.cart,
+  init: function () {
+    window.addEventListener(ADD_EVENT_NAME, (e) => {
+      e.preventDefault()
+      switch (this.onAdd) {
+        case "drawer":
+          window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer'}}))
+          break;
+        case "notification":
+          window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-notification'}}))
+          break;
+        case "modal":
+          window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-modal'}}))
+          break;
+        case "redirect":
+        default:
+          window.location.href = window.Shopify.routes.cartUrl
+          break;
+      }
+    })
+    if(this.mode == "drawer"){
+      console.log("Cart mode: Drawer")
+      document.addEventListener('click', (e) => {    
+        const target = e.target.closest('a');  
+        if (target) {
+          // console.log("Link clicked: ", target)  
+          if (target.getAttribute("href") == window.Shopify.routes.cartUrl) {
+              e.preventDefault(); 
+              window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer'}}))
+          }
+        }
+      });
+      const url = new URL(location)
+      const shouldOpen = url.searchParams.get('cart') == "open"
+      if(shouldOpen){
+        window.dispatchEvent(new CustomEvent("modal:open", { detail: { id: 'cart-drawer'}}))
+        url.searchParams.delete('cart')
+        history.replaceState({}, "", url.href)
+      }
+
+    }
+    else{
+      console.log("Cart mode: Page")
+    }
+  },
+  get: async (options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartUrl + "?sections=" + [...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq().join(",");
+    return await fetch(url, {
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
+      method: "GET",
+    })
+    .then((response) => response.json())
+    .catch(console.error);
+  },
+  add: async (itemsToAdd, options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartAddUrl + "?sections=" + ([...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq()).join(",");
+    return await fetch(url, {
+      body: JSON.stringify(itemsToAdd),
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
+      method: "POST",
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      if(response.status){
+        throw new Error(`${response.message}: ${response.description}`)
+      }
+      if(!!options.callback){
+        options.callback(response);
+      }
+      if (options.events || true) {
+        window.dispatchEvent(new CustomEvent(ADD_EVENT_NAME, { detail: { ...response, added_count: itemsToAdd.reduce((acc, i) => acc + Number(i.quantity), 0) } }));
+        return response
+      }
+    })
+    .catch(console.error);
+  },
+  update: async (itemsToUpdate, options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartUpdateUrl + "?sections=" + [...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq().join(",");
+    return await fetch(url, {
+      body: JSON.stringify(itemsToUpdate),
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
+      method: "POST",
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      if(response.status){
+        throw new Error(`${response.message}: ${response.description}`)
+      }
+      if(!!options.callback){
+        options.callback(response);
+      }
+      if (options.events || true) {
+        window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
+        return response
+      }
+    })
+    .catch(console.error);
+  },
+  clear: async (options = DEFAULT_OPTIONS) => {
+    const url = window.Shopify.routes.cartClearUrl + "?sections=" + [...Shopify.theme.cart.sections, ...(options?.sections ?? [])].uniq().join(",");
+    return await fetch(url, {
+      body: "",
+      headers: { 
+        "Content-Type": "application/json", 
+        "Accept": "application/json"
+      },
+      method: "POST",
+    })
+    .then((response) => response.json())
+    .then((response) => {
+      if(response.status){
+        throw new Error(`${response.message}: ${response.description}`)
+      }
+      if(!!options.callback){
+        options.callback(response);
+      }
+      if (options.events || true) {
+        window.dispatchEvent(new CustomEvent(CHANGE_EVENT_NAME, { detail: { ...response } }));
+        return response
+      }
+    })
+    .catch(console.error);
+  }
+};
+
+Shopify.theme.cart.init();

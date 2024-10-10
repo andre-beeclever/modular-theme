@@ -1,2 +1,95 @@
-!function(){class e extends HTMLElement{constructor(){super()}connectedCallback(){let e=this.querySelectorAll('[name="purchase-option"]'),t=this.querySelectorAll("theme-select.selling-plan-select");for(let t of e)t.addEventListener("input",e=>{if("subscription"==t.value){let e=this.querySelector(`label[for="${t.id}"]`).querySelector('[name="current-selling-plan"]');e&&this.setSellingPlan(e.value)}"onetime"==t.value&&this.removeSellingPlan()});for(let e of t)e.addEventListener("change",t=>{let l=e.value;l&&this.setSellingPlan(l)})}updateDOM(e,t){let l=this;l.dataset.sectionId,l.classList.remove("loading"),fetch(e,{credentials:"same-origin",headers:{"X-Requested-With":"XMLHttpRequest"},method:"GET"}).then(e=>e.text()).then(e=>{let s=document.createElement("template");s.innerHTML=e.trim(),console.log("handle response TODO",s.content),window.dispatchEvent(new CustomEvent("sellingplan:changed",{bubbles:!0,cancelable:!1,detail:t})),l.classList.remove("loading")}).catch(function(e){l.classList.remove("loading"),console.error(e)})}updateURL(e,t){let l=new URL(document.location);e?l.searchParams.set("variant",e):l.searchParams.delete("variant"),t?l.searchParams.set("selling_plan",t):l.searchParams.delete("selling_plan"),history.replaceState(null,"",l.href)}setSellingPlan(e){let t=this.closest("form.shopify-product-form").querySelector('input[name="id"]').value;this.updateURL(t,e);let l=this.dataset.sectionId,s=this.dataset.productUrl,n=`${s}?variant=${t}&selling_plan=${e}&section_id=${l}`;this.updateDOM(n,e)}removeSellingPlan(){let e=this.closest("form.shopify-product-form").querySelector('input[name="id"]').value;this.updateURL(e,null);let t=this.dataset.sectionId;t||(t=this.closest("form")?.querySelector('input[name="section-id"]')?.value);let l=this.dataset.productUrl,s=`${l}?variant=${e}&section_id=${t}`;this.updateDOM(s,null)}}customElements.define("selling-plan-picker",e)}();
-//# sourceMappingURL=sellingplan-picker.js.map
+class SellingPlanPicker extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback(){
+    const purchseOptions = this.querySelectorAll('[name="purchase-option"]');
+    const sellingPlanSelects = this.querySelectorAll('theme-select.selling-plan-select');
+    for(const purchseOption of purchseOptions) {
+      purchseOption.addEventListener('input', event => {
+        if(purchseOption.value == 'subscription') {
+          const label = this.querySelector(`label[for="${purchseOption.id}"]`);
+          const sellingPlan = label.querySelector('[name="current-selling-plan"]');
+          if(!!sellingPlan){
+            this.setSellingPlan(sellingPlan.value);
+          }
+        }
+        if(purchseOption.value == 'onetime') {
+          this.removeSellingPlan();
+        }
+      });
+    }
+    for(const sellingPlanSelect of sellingPlanSelects) {
+      sellingPlanSelect.addEventListener('change', event => {
+        const sellingPlan = sellingPlanSelect.value;
+        if(!!sellingPlan){
+          this.setSellingPlan(sellingPlan);
+        }
+      });
+    }
+  }
+  updateDOM(newURL, sellingPlanId){
+    const that = this;
+    const sectionId = that.dataset.sectionId;
+    that.classList.remove('loading');
+    fetch(newURL, {
+      credentials: 'same-origin',
+      headers: {'X-Requested-With': 'XMLHttpRequest'},
+      method: 'GET'
+    })
+    .then(response => response.text())
+    .then(data => {
+      const template = document.createElement('template');
+      template.innerHTML = data.trim();
+      console.log('handle response TODO', template.content);
+      // TODO
+      // handle response and update
+      window.dispatchEvent(new CustomEvent('sellingplan:changed', {bubbles: true, cancelable: false, detail: sellingPlanId}));
+      that.classList.remove('loading');
+    })
+    .catch(function(err) {
+      that.classList.remove('loading');
+      console.error(err);
+    });
+  }
+  updateURL(variantId, sellingPlanId){
+    const newURL = new URL(document.location);
+    if(!!variantId){
+      newURL.searchParams.set('variant', variantId);
+    } else {
+      newURL.searchParams.delete('variant');
+    }
+    if(!!sellingPlanId){
+      newURL.searchParams.set('selling_plan', sellingPlanId);
+    } else {
+      newURL.searchParams.delete('selling_plan');
+    }
+    history.replaceState(null, '', newURL.href);
+  }
+  setSellingPlan(sellingPlanId) {
+    const form = this.closest('form.shopify-product-form');
+    const current_variant_input = form.querySelector('input[name="id"]');
+    const variantId = current_variant_input.value;
+    this.updateURL(variantId, sellingPlanId);
+
+    const sectionId = this.dataset.sectionId;
+    const productUrl = this.dataset.productUrl;
+    const newURL = `${productUrl}?variant=${variantId}&selling_plan=${sellingPlanId}&section_id=${sectionId}`;
+    this.updateDOM(newURL, sellingPlanId);
+  }
+  removeSellingPlan() {
+    const form = this.closest('form.shopify-product-form');
+    const current_variant_input = form.querySelector('input[name="id"]');
+    const variantId = current_variant_input.value;
+    this.updateURL(variantId, null);
+
+    let sectionId = this.dataset.sectionId;
+    if(!sectionId) {
+      sectionId = this.closest('form')?.querySelector('input[name="section-id"]')?.value;
+    }
+    const productUrl = this.dataset.productUrl;
+    const newURL = `${productUrl}?variant=${variantId}&section_id=${sectionId}`;
+    this.updateDOM(newURL, null);
+  }
+}
+customElements.define('selling-plan-picker', SellingPlanPicker);

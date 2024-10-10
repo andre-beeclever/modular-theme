@@ -1,1 +1,39 @@
-@layer quanity-rocker{quantity-rocker{--border-color:#e1e1e1;font-size:inherit;width:fit-content;display:block}quantity-rocker::part(wrapper){width:inherit;font-size:inherit;font-family:inherit;font-weight:inherit;display:inline-flex}quantity-rocker::part(decrement),quantity-rocker::part(increment),quantity-rocker::part(input){background-color:unset;color:currentColor;border:1px solid var(--border-color);font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;border-radius:0;padding:2px 7px}quantity-rocker::part(decrement),quantity-rocker::part(increment){cursor:pointer}quantity-rocker::part(input){width:inherit;text-align:center;appearance:textfield;border-inline:none}}
+@layer quanity-rocker {
+  quantity-rocker {
+    --border-color: #e1e1e1;
+    display: block;
+    width: fit-content;
+    font-size: inherit;
+    &::part(wrapper) {
+      width: inherit;
+      display: inline-flex;
+      font-size: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+    }
+    &::part(decrement),
+    &::part(increment),
+    &::part(input) {
+      background-color: unset;
+      padding: 2px 7px;
+      border-radius: 0;
+      color: currentColor;
+      border: 1px solid var(--border-color);
+      font-size: inherit;
+      font-family: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+    &::part(decrement),
+    &::part(increment) {
+      cursor: pointer;
+    }
+    &::part(input) {
+      border-inline: none;
+      width: inherit;
+      text-align: center;
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+  }
+}

@@ -74,7 +74,6 @@ class ProductForm extends HTMLElement {
     this.productUrlInput = this.querySelector(`form [name="url"]`);
     this.variantIdInput = this.querySelector(`form [name="id"]`);
     this.sellingPlanInput = this.querySelector(`form [name="selling_plan"]`);
-    this.updateURL();
     this.variantIdInput?.addEventListener('input', this.updateVariant.bind(this));
     this.sellingPlanInput?.addEventListener('input', this.updateSellingplan.bind(this));
   }

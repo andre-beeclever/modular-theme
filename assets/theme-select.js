@@ -1,9 +1,171 @@
-!function(){class e extends HTMLElement{static OPEN_ATTRIBUTE="open";#e=!1;#t=[];#s;#i;#n;#o;constructor(){super()}connectedCallback(){this.#t=this.querySelectorAll("option"),this.updateSelectedOption(),this.value=this.selectedOption?.value??"",this.#i=this.attachShadow({mode:"open"}),this.render(),document.body.addEventListener("click",e=>{if(this.isOpen()){let t=this.getBoundingClientRect();e.clientX>t.x&&e.clientX<t.x+t.width&&e.clientY>t.y&&e.clientY<t.y+t.height||this.close()}}),this.#e=!0}updateSelectedOption(){let e=Array.from(this.#t).find(e=>e.hasAttribute("selected")),t=Array.from(this.#t).find(e=>e.value==this.value),s=this.#t.length>0?this.#t[0]:null;this.selectedOption=e||t||s,null==this.selectedOption&&console.warn(`[${this.tagName}] Could not identify selected option.`)}render(){this.#i.innerHTML=`
+class ThemeSelect extends HTMLElement {
+  static OPEN_ATTRIBUTE = "open";
+  #initialized = false;
+  #options = [];
+  #value;
+  #shadow;
+  #shadowOptions;
+  #shadowSelectedValue;
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.#options = this.querySelectorAll("option");
+    this.updateSelectedOption();
+    this.value = this.selectedOption?.value ?? "";
+    this.#shadow = this.attachShadow({ mode: "open" });
+
+    this.render();
+
+    document.body.addEventListener("click", (e) => {
+      if (this.isOpen()) {
+        const boundingBox = this.getBoundingClientRect();
+        const clickInside =
+          e.clientX > boundingBox.x &&
+          e.clientX < boundingBox.x + boundingBox.width &&
+          e.clientY > boundingBox.y &&
+          e.clientY < boundingBox.y + boundingBox.height;
+        if (!clickInside) {
+          this.close();
+        }
+      }
+    });
+
+    this.#initialized = true;
+  }
+  updateSelectedOption() {
+    const selectedOption = Array.from(this.#options).find((o) => o.hasAttribute("selected"));
+    const optionFromValue = Array.from(this.#options).find((o) => o.value == this.value);
+    const firstOption = this.#options.length > 0 ? this.#options[0] : null;
+    this.selectedOption = selectedOption || optionFromValue || firstOption;
+    if (this.selectedOption == null) {
+      console.warn(`[${this.tagName}] Could not identify selected option.`);
+    }
+  }
+  render() {
+    this.#shadow.innerHTML = `
       <div part="selected-value">
-        <span>${this.selectedOption?.innerHTML??""}</span>
+        <span>${this.selectedOption?.innerHTML ?? ""}</span>
       </div>
       <div part="dropdown">
-        ${Array.from(this.#t).map(e=>`<option part="option ${this.selectedOption==e?"selected":""} ${e.disabled?"disabled":""}" value="${e.value}" ${this.selectedOption==e?"selected":""} ${e.disabled?"disabled":""}>${e.innerHTML}</option>`).join("")}
+        ${Array.from(this.#options)
+          .map(
+            (o) =>
+              `<option part="option ${this.selectedOption == o ? "selected" : ""} ${o.disabled ? "disabled" : ""}" value="${o.value}" ${this.selectedOption == o ? "selected" : ""} ${o.disabled ? "disabled" : ""}>${o.innerHTML}</option>`,
+          )
+          .join("")}
       </div>
-    `,this.#n=this.#i.querySelectorAll("option"),this.#n.forEach(e=>{e.addEventListener("click",()=>{this.value=e.value,this.selectOptionByValue(e.value),this.updateSelectedOption(),this.update(),this.close()})}),this.#o=this.#i.querySelector('div[part="selected-value"]'),this.#o.addEventListener("click",()=>{this.toggle()})}selectOptionByValue(e){this.#t.forEach(t=>t.value==e?t.setAttribute("selected",!0):t.removeAttribute("selected"))}update(){this.dispatchEvent(new Event("change")),this.render()}close(){this.removeAttribute(e.OPEN_ATTRIBUTE)}open(){this.setAttribute(e.OPEN_ATTRIBUTE,!0)}isOpen(){return this.hasAttribute(e.OPEN_ATTRIBUTE)}toggle(){this.isOpen()?this.close():this.open()}set value(e){this.#s=e,this.setAttribute("value",e)}get value(){return this.#s}static get observedAttributes(){return["name","value","id","open"]}attributeChangedCallback(t,s,i){if(s!==i){if("value"===t){this.selectOptionByValue(i),this.updateSelectedOption(),this.#e&&this.render();return}if(t===e.OPEN_ATTRIBUTE){this.hasAttribute(e.OPEN_ATTRIBUTE)?this.open():this.close();return}this[t]=i}}}customElements.define("theme-select",e),customElements.define("sort-by-select",class extends e{constructor(){super()}updateDeepLinking(){let e=new URL(location.href);e.searchParams.set("sort_by",this.sort_by),history.replaceState(null,"",e.href)}updateDOM(){this.sort_by=this.getAttribute("value");let e=new URL(location.href);e.searchParams.set("sort_by",this.sort_by),this.updateDeepLinking();let t=this.closest("[data-section-id]");if(t){let s=t.dataset.sectionId;s&&(t.classList.add("loading"),e.searchParams.set("section_id",s),fetch(e.href,{credentials:"same-origin",headers:{"X-Requested-With":"XMLHttpRequest"},method:"GET"}).then(e=>e.text()).then(e=>{let s=document.createElement("template");s.innerHTML=e.trim(),console.log("handle response TODO",s.content),t.classList.remove("loading")}).catch(function(e){t.classList.remove("loading"),console.error(e)}))}}connectedCallback(){super.connectedCallback(),super.addEventListener("change",this.updateDOM.bind(this))}})}();
-//# sourceMappingURL=theme-select.js.map
+    `;
+    this.#shadowOptions = this.#shadow.querySelectorAll("option");
+    this.#shadowOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        this.value = option.value;
+        this.selectOptionByValue(option.value);
+        this.updateSelectedOption();
+        this.update();
+        this.close();
+      });
+    });
+
+    this.#shadowSelectedValue = this.#shadow.querySelector('div[part="selected-value"]');
+    this.#shadowSelectedValue.addEventListener("click", () => {
+      this.toggle();
+    });
+  }
+  selectOptionByValue(value) {
+    this.#options.forEach((o) => (o.value == value ? o.setAttribute("selected", true) : o.removeAttribute("selected")));
+  }
+
+  update() {
+    this.dispatchEvent(new Event("change"));
+    this.render();
+  }
+  close() {
+    this.removeAttribute(ThemeSelect.OPEN_ATTRIBUTE);
+  }
+  open() {
+    this.setAttribute(ThemeSelect.OPEN_ATTRIBUTE, true);
+  }
+  isOpen() {
+    return this.hasAttribute(ThemeSelect.OPEN_ATTRIBUTE);
+  }
+  toggle() {
+    this.isOpen() ? this.close() : this.open();
+  }
+  set value(v) {
+    this.#value = v;
+    this.setAttribute("value", v);
+  }
+  get value() {
+    return this.#value;
+  }
+
+  static get observedAttributes() {
+    return ["name", "value", "id", "open"];
+  }
+  attributeChangedCallback(property, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    if (property === "value") {
+      this.selectOptionByValue(newValue);
+      this.updateSelectedOption();
+      if (this.#initialized) {
+        this.render();
+      }
+      return;
+    }
+    if (property === ThemeSelect.OPEN_ATTRIBUTE) {
+      this.hasAttribute(ThemeSelect.OPEN_ATTRIBUTE) ? this.open() : this.close();
+      return;
+    }
+    this[property] = newValue;
+  }
+}
+customElements.define('theme-select', ThemeSelect);
+
+class SortBySelect extends ThemeSelect {
+  constructor() {
+    super();
+  }
+  updateDeepLinking() {
+    const newUrl = new URL(location.href);
+    newUrl.searchParams.set('sort_by', this.sort_by);
+    history.replaceState(null, '', newUrl.href);
+  }
+  updateDOM(){
+    this.sort_by = this.getAttribute('value');
+    const newUrl = new URL(location.href);
+    newUrl.searchParams.set('sort_by', this.sort_by);
+    this.updateDeepLinking();
+    const section = this.closest('[data-section-id]');
+    if(!!section) {
+      const section_id = section.dataset.sectionId;
+      if(!!section_id){
+        section.classList.add('loading');
+        newUrl.searchParams.set('section_id', section_id);
+        fetch(newUrl.href, {
+          credentials: 'same-origin',
+          headers: {'X-Requested-With': 'XMLHttpRequest'},
+          method: 'GET'
+        })
+        .then(response => response.text())
+        .then(data => {
+          const template = document.createElement('template');
+          template.innerHTML = data.trim();
+          console.log('handle response TODO', template.content);
+          // TODO
+          // handle response and update
+          section.classList.remove('loading');
+        }).catch(function(err) {
+          section.classList.remove('loading');
+          console.error(err);
+        });
+      }
+    }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    const that = this;
+    super.addEventListener('change', that.updateDOM.bind(that));
+  }
+}
+customElements.define('sort-by-select', SortBySelect);

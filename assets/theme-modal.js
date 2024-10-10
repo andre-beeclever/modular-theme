@@ -1,7 +1,198 @@
-!function(){window.theme=window.theme||{},window.theme.scroll=window.theme.scroll||function(){let e=0,t=!0,n=()=>window.innerWidth-document.documentElement.clientWidth;return{isEnabled:()=>t,disable:()=>{let o=n();t=!1,e=window.scrollY,document.body.style.top=-window.scrollY+"px",window.innerWidth>576&&(document.body.style.paddingRight=`${o}px`),document.body.style.position="fixed"},enable:()=>{t=!0,document.body.style.position="",document.body.style.top="",document.body.style.paddingRight="",window.scrollTo({top:e,behavior:"instant"})}}}();class e extends HTMLElement{static TAGS=["theme-modal","theme-alert","theme-notification","theme-drawer"];static TAG_NAMES=e.TAGS.map(e=>e.toUpperCase());constructor(){super()}connectedCallback(){this.addEventListener("click",t=>{let n=this.getAttribute("for"),o=document.getElementById(n)||this.closest(e.TAGS.join(","));if(console.log("target",o),!o){console.warn(`[${this.tagName}] Target not found.`);return}if(!e.TAG_NAMES.includes(o.tagName)){console.warn(`[${this.tagName}] Invalid target.`);return}o.toggle()})}static get observedAttributes(){return[]}attributeChangedCallback(e,t,n){t!==n&&(this[e]=n)}}customElements.define("theme-modal-button",e);class t extends HTMLElement{constructor(){super()}connectedCallback(){let e=this.hasAttribute("hide-on-blur");if(this.hasAttribute("hide-after")){let e=Number(this.getAttribute("hide-after")||1e4);this.addEventListener("opened",()=>{setTimeout(()=>{this.close()},e)})}e&&document.addEventListener("click",e=>{this.contains(e.target)||this.close()}),window.addEventListener("modal:open",e=>{e.detail.id==this.id&&this.open()}),window.addEventListener("modal:close",e=>{e.detail.id==this.id&&this.close()}),window.addEventListener("modal:toggle",e=>{e.detail.id==this.id&&this.toggle()})}get isScrollingEnabled(){return"disabled"!=this.getAttribute("scrolling")}isOpen(){return this.hasAttribute("open")}open(){this.setAttribute("open",!0)}close(){this.removeAttribute("open")}toggle(){console.log("toggle"),this.isOpen()?this.close():this.open()}static get observedAttributes(){return["open"]}attributeChangedCallback(e,t,n){if(t!==n){if("open"===e){"true"==n?(console.log("open"),this.isScrollingEnabled||(window.theme.scroll.disable(),console.warn(`[${this.tagName}] Disabled scroll.`)),this.dispatchEvent(new CustomEvent("opened"))):(console.log("close"),this.isScrollingEnabled||(window.theme.scroll.enable(),console.warn(`[${this.tagName}] Enabled scroll.`)),this.dispatchEvent(new CustomEvent("closed")));return}this[e]=n}}}customElements.define("theme-modal",t),customElements.define("theme-alert",class extends t{constructor(){super()}}),window.Shopify.theme.alert=(e,t={button:{label:"Close",class:"btn btn--primary"},container:{class:"flex col gap-small spacing-m"}})=>new Promise(n=>{let o=document.createElement("theme-alert");o.setAttribute("scrolling","disabled"),o.setAttribute("id",`alert-${crypto.randomUUID()}`),o.innerHTML=`
-      <div class="${t.container.class}">
-        <p>${e}</p>
-        <theme-modal-button class="${t.button.class}">${t.button.label}</theme-modal-button>
+window.theme = window.theme || {};
+window.theme.scroll = window.theme.scroll || (function () {
+  let lastScrollPosition = 0;
+  let scrollEnabled = true;
+
+  const getScrollbarWidth = () => window.innerWidth - document.documentElement.clientWidth;
+
+  return {
+    isEnabled() {
+      return scrollEnabled;
+    },
+    disable: () => {
+      const scrollbarWidth = getScrollbarWidth()
+      scrollEnabled = false;
+      lastScrollPosition = window.scrollY;
+      document.body.style.top = -window.scrollY + "px";
+      if (window.innerWidth > 576) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      document.body.style.position = "fixed";
+    },
+    enable: () => {
+      scrollEnabled = true;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.paddingRight = "";
+      window.scrollTo({
+        top: lastScrollPosition,
+        behavior: "instant",
+      });
+    },
+  };
+})();
+
+class ThemeModalButton extends HTMLElement {
+  static TAGS = ['theme-modal','theme-alert','theme-notification', 'theme-drawer']
+  static TAG_NAMES = ThemeModalButton.TAGS.map(tag => tag.toUpperCase())
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    this.addEventListener("click", (e) => {
+      const id = this.getAttribute("for")
+      const target = document.getElementById(id) || this.closest(ThemeModalButton.TAGS.join(','))
+      console.log("target",target)
+      if (!target) {
+        console.warn(`[${this.tagName}] Target not found.`);
+        return;
+      }
+      if (!ThemeModalButton.TAG_NAMES.includes(target.tagName)) {
+        console.warn(`[${this.tagName}] Invalid target.`);
+        return;
+      }
+
+      target.toggle();
+    });
+  }
+
+  static get observedAttributes() {
+    return [];
+  }
+  attributeChangedCallback(property, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    this[property] = newValue;
+  }
+}
+
+customElements.define("theme-modal-button", ThemeModalButton);
+
+
+class ThemeModal extends HTMLElement {
+  constructor() {
+    super();
+  }
+  connectedCallback() {
+    const hideOnBlur = this.hasAttribute('hide-on-blur')
+    const hideAfter = this.hasAttribute('hide-after')
+    if(hideAfter){
+      const hideAfterTime = Number(this.getAttribute('hide-after') || 10000)
+      this.addEventListener('opened', () => {
+        setTimeout(() => {
+          this.close()
+        }, hideAfterTime)
+      })
+    }
+    if(hideOnBlur){
+      document.addEventListener("click", (e) => {
+        if (!this.contains(e.target)) this.close();
+      });
+    }
+    window.addEventListener('modal:open', (e) => {
+      // console.log("modal:open", e.detail.id, this.id)
+      if(e.detail.id == this.id) this.open();
+    })
+    window.addEventListener('modal:close', (e) => {
+      // console.log("modal:close", e.detail.id, this.id)
+      if(e.detail.id == this.id) this.close();
+    })
+    window.addEventListener('modal:toggle', (e) => {
+      // console.log("modal:toggle", e.detail.id, this.id)
+      if(e.detail.id == this.id) this.toggle();
+    })
+  }
+  get isScrollingEnabled(){
+    return this.getAttribute('scrolling') != "disabled"
+  }
+  isOpen() {
+    return this.hasAttribute("open");
+  }
+  open() {
+    this.setAttribute("open", true);
+  }
+  close() {
+    this.removeAttribute("open");
+  }
+  toggle() {
+    console.log("toggle")
+    if (this.isOpen()) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+  static get observedAttributes() {
+    return ["open"];
+  }
+  attributeChangedCallback(property, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    if (property === "open") {
+      if (newValue == "true") {
+        console.log("open")
+        if(!this.isScrollingEnabled){
+          window.theme.scroll.disable();
+          console.warn(`[${this.tagName}] Disabled scroll.`);
+        }
+        this.dispatchEvent(new CustomEvent("opened"));
+      } 
+      else {
+        console.log("close")
+        if(!this.isScrollingEnabled){
+          window.theme.scroll.enable();
+          console.warn(`[${this.tagName}] Enabled scroll.`);
+        }
+        this.dispatchEvent(new CustomEvent("closed"));
+      }
+      return;
+    } // do not sync open as it is used as a function
+    this[property] = newValue;
+  }
+}
+customElements.define("theme-modal", ThemeModal);
+
+class ThemeAlert extends ThemeModal {
+  constructor() {
+    super();
+  }
+}
+customElements.define("theme-alert", ThemeAlert);
+
+window.Shopify.theme.alert = (
+  message,
+  options = {
+    button: { label: "Close", class: "btn btn--primary" },
+    container: { class: "flex col gap-small spacing-m" },
+  },
+) => {
+  return new Promise((resolve) => {
+    const alertElement = document.createElement("theme-alert");
+    alertElement.setAttribute("scrolling", "disabled");
+    alertElement.setAttribute("id", `alert-${crypto.randomUUID()}`)
+    alertElement.innerHTML = `
+      <div class="${options.container.class}">
+        <p>${message}</p>
+        <theme-modal-button class="${options.button.class}">${options.button.label}</theme-modal-button>
       </div>
-    `,document.body.appendChild(o),o.addEventListener("closed",()=>{o.remove(),n()}),o.open()}),customElements.define("theme-drawer",class extends t{constructor(){super()}}),customElements.define("theme-notification",class extends t{constructor(){super()}})}();
-//# sourceMappingURL=theme-modal.js.map
+    `;
+    document.body.appendChild(alertElement);
+    alertElement.addEventListener("closed", () => {
+      alertElement.remove();
+      resolve()
+    });
+    alertElement.open();
+  })
+  
+};
+
+class ThemeDrawer extends ThemeModal {
+  constructor() {
+    super();
+  }
+}
+customElements.define("theme-drawer", ThemeDrawer);
+class ThemeNotification extends ThemeModal {
+  constructor() {
+    super();
+  }
+}
+customElements.define("theme-notification", ThemeNotification);
