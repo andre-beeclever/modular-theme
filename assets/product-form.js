@@ -70,12 +70,46 @@ class ProductForm extends HTMLElement {
       oldDOM.replaceWith(newDOM);
     });
   }
+  submit() {
+    const formData = new FormData(this.form);
+    // const sectionId = formData.get('section-id');
+    formData.append("sections", "cart-drawer");
+    this.submitButton.classList.add("loading");
+    fetch(window.Shopify.routes.root + "cart/add.js", {
+      method: "POST",
+      credentials: "same-origin",
+      body: formData
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      if (response.status) {
+        const error_string = `\nCART GET FAILED \nStatus: ${response.status} \nMessage: ${response.message} \nDescription: ${response.description}`;
+        throw new Error(error_string, { cause: "Cart Error" });
+      } else {
+        this.submitButton.classList.remove("loading");
+        window.dispatchEvent(
+          new CustomEvent("cart:add", {
+            detail: {...response, added_count: Number(formData.get("quantity")) || 1 } 
+          })
+        );
+      }
+    })
+    .catch((error) => {
+      this.submitButton.classList.remove("loading");
+      console.error(error);
+    });
+  }
   connectedCallback() {
-    this.productUrlInput = this.querySelector(`form [name="url"]`);
-    this.variantIdInput = this.querySelector(`form [name="id"]`);
-    this.sellingPlanInput = this.querySelector(`form [name="selling_plan"]`);
+    this.form = this.querySelector(`form`);
+    this.productUrlInput = this.form.querySelector(`[name="url"]`);
+    this.variantIdInput = this.form.querySelector(`[name="id"]`);
+    this.sellingPlanInput = this.form.querySelector(`[name="selling_plan"]`);
+    this.submitButton = this.form.querySelector(`button[type="submit"]`);
     this.variantIdInput?.addEventListener('input', this.updateVariant.bind(this));
     this.sellingPlanInput?.addEventListener('input', this.updateSellingplan.bind(this));
+    this.submitButton?.addEventListener('click', this.submit.bind(this));
   }
 }
 customElements.define("product-form", ProductForm);
